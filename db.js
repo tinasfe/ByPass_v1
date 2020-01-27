@@ -1790,7 +1790,10 @@ function change2to7() {
       document.getElementById("p4").style.display = "none";
       document.getElementById("p3").style.display = "none";
       document.getElementById("p6").style.display = "none";
-
+      if ($(".row1").length == 0) {
+        // alert("Yes");
+        $('.alt_page7').css('background-image', 'url(UI/p3-e.png)');
+      }
 
 
     });
@@ -2930,7 +2933,9 @@ function addFromLogin() {
     }
   } else {
     alert("Your account has been added to ByPass.");
-
+    setTimeout(function() {
+      win = window.close();
+    }, 1000);
   }
   // var r = confirm("Your account has been added to ByPass \nDo you want to login right now?");
   // if (r == true) {
