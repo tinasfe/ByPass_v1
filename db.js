@@ -1884,12 +1884,13 @@ function change2to7() {
     $(".mp10_back").click(function() {
       console.log("home");
       document.getElementById("p7").style.display = "none";
-      document.getElementById("p8").style.display = "none";
+      document.getElementById("p8").style.display = "block";
       document.getElementById("p6").style.display = "none";
       document.getElementById("p5").style.display = "none";
       document.getElementById("p4").style.display = "none";
       document.getElementById("p3").style.display = "none";
-      document.getElementById("p9").style.display = "block";
+      document.getElementById("p9").style.display = "none";
+      document.getElementById("p10").style.display = "none";
 
 
     });
