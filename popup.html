@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" manifest="./offline.appcache">
+
+<head>
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <link rel="stylesheet" type="text/css" href="style-meter.css">
+  <script type="text/javascript" src="jquery.min.js"></script>
+  <script type="text/javascript" src="script-meter.js"></script>
+  <script type="text/javascript" src="popup.js"></script>
+  <script type="text/javascript" src="interactor.js"></script>
+  <script type="text/javascript" src="knockout-min.js"></script>
+  <script type="text/javascript" src="knockout.mapping.min.js"></script>
+  <script type="text/javascript" src="db.js"></script>
+  <script type="text/javascript" src="./indexeddb.shim.min.js"></script>
+  <script type="text/javascript" src="zxcvbn.js"></script>
+  <script type="text/javascript" src="shortcut.js"></script>
+
+  <!-- <script type="text/javascript" src="module.js"></script> -->
+  <!-- <script type="text/javascript" src="chunck.js"></script> -->
+
+  <!-- <script type="module">
+    import { openDB, deleteDB } from 'https://unpkg.com/idb?module'
+    </script> -->
+  <link href="css/all.css" rel="stylesheet">
+
+
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body class="logging">
+  <div class=" page1" id="p1">
+    <div class=" alt_page1 ">
+      <div class=" top_page1">
+      </div>
+      <div class=" middle_page1 ">
+        <!-- <form method="post"> -->
+        <div class=" input1_page1 ">
+
+          <section class=" section">
+            <label class=" label1_page1" for="email">Email</label>
+            <input type="email" name="email" id="masterEmail">
+            <div class=" redMessageBox">
+              *This is the only <strong>password</strong> that you have to remember.
+              Please choose it as <strong>secure</strong> as you can!
+            </div>
+          </section>
+        </div>
+        <div class=" input2_page1 ">
+          <section class=" section">
+            <label class=" label2_page1" for="password">Master Password</label>
+            <input type="password" name="password" id="password">
+            <span toggle="#password-field" class=" fa fa-fw fa-eye field-icon toggle-password"></span>
+            <meter max="4" id="password-strength-meter"></meter>
+            <p id="password-strength-text"></p>
+          </section>
+
+        </div>
+        <div class=" input3_page1 " id="inputMain">
+          <section class=" section">
+            <label class=" label3_page1" for="password">Confirm Master Password</label>
+            <input type="password" name="repassword" id="masterRePassword">
+            <div id="msg"></div>
+
+          </section>
+        </div>
+
+      </div>
+      <div class=" bottom_page1 ">
+        <div class="scrollDown" id="scrollDown">
+          <div class="chevron"></div>
+          <div class="chevron"></div>
+          <div class="chevron"></div>
+          <span class="text">Scroll down</span>
+        </div>
+        <button class=" btn1_page1">Create ByPass Account</button>
+      </div>
+      <!-- </form> -->
+    </div>
+  </div>
+  <!-- Page1 -->
+  <!-- Page2 -->
+  <div class=" page2" id="p2">
+    <div class=" alt_page2 ">
+      <div class=" top_page2">
+
+      </div>
+      <div class=" middle_page2">
+        <div class=" welcomeUser">Welcome back!</div>
+        <div class=" input1_page2">
+          <section class=" section_page2">
+            <label class=" label3_page2" for="password">Master Password</label>
+            <input type="password" name="Your account has been deleted from both website and ByPass.sword" id="masterPassword">
+            <span toggle="#password-field" class=" fa fa-fw fa-eye field-icon toggle-password-masterpassword" id="showMasterPass"></span>
+            <meter max="4" id="password-strength-meter"></meter>
+            <p id="password-strength-text"></p>
+          </section>
+        </div>
+
+      </div>
+      <div class=" bottom_page2 ">
+        <!-- <div class=" btn1_page2" id="enterWorks">Get Access</div> -->
+        <btn class=" btn1_page2" id="enterWorks">Get Access</btn>
+      </div>
+    </div>
+  </div>
+  <!-- Page2 -->
+  <!-- Page3 -->
+
+  <div class=" page3" id="p3">
+    <div class=" alt_page3 ">
+      <div class=" top_page3">
+        <div class=" addCircle_page3">+</div>
+        <input class=" input1_page3" type="text" name="" value="">
+      </div>
+      <div class=" middle_page3 ">
+        <img class=" mp3" src="UI/p3-e11.png">
+      </div>
+      <div class=" bottom_page3 ">
+        <div class=" logout logout_p3">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Page3 -->
+  <!-- Page4 -->
+  <div class=" page4" id="p4">
+    <div class=" alt_page4 ">
+      <div class=" top_page4">
+        <img class=" mp4" src="UI/home.png" id="home">
+        <img class=" mp4_back" src="UI/back.png">
+        <div class=" input1_page4"></div>
+      </div>
+      <div class=" middle_page4 ">
+        <div class=" p4_row1 p4_row">
+          <h1>STEP 1</h1>
+          <p class=" page4_p">What website are you adding?</p>
+        </div>
+        <div class=" p4_row2 p4_row">
+          <h1>STEP 2</h1>
+          <p class=" page4_p">Do you already have an account?</p>
+        </div>
+        <div class=" p4_row3 p4_row">
+          <h1>STEP 3</h1>
+          <p class=" page4_p">Enter your account information</p>
+        </div>
+        <div class=" p4_row4 p4_row">
+          <h1>STEP 4</h1>
+          <p class=" page4_p">All done! You are ready to go</p>
+        </div>
+      </div>
+      <div class=" bottom_page4 ">
+        <div class=" logout logout_p4">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Page4 -->
+  <!-- Page5 -->
+  <div class=" page5" id="p5">
+    <div class=" alt_page5 ">
+      <div class=" top_page5">
+        <img class=" mp5" src="UI/home.png" id="home">
+        <img class=" mp5_back" src="UI/back.png">
+        <div class=" input1_page5"></div>
+      </div>
+      <div class=" middle_page5 ">
+        <div class=" middle_page5_top">
+          <p class=" middle_page5_top_p"> What is the address of the website?</p>
+          <section class=" input_website_page5">
+            <input type="website" name="websiteName" id="websiteNameP5" placeholder="www.amazon.safaie.ca">
+          </section>
+        </div>
+        <div class=" middle_page5_down">
+          <btn class=" page5_btn"> NEXT</btn>
+          <br />
+          <img class=" mp5_e1" src="UI/p5.png">
+        </div>
+      </div>
+      <div class=" bottom_page5 ">
+        <div class=" logout logout_p5">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Page5 -->
+  <!-- Page6 -->
+  <div class=" page6" id="p6">
+    <div class=" alt_page6 ">
+      <div class=" top_page6">
+        <img class=" mp6" src="UI/home.png" id="home">
+        <img class=" mp6_back" src="UI/back.png">
+        <div class=" input1_page6"></div>
+      </div>
+      <div class=" middle_page6 ">
+        <div class=" middle_page6_top ">
+          <p class=" middle_page6_top_p"> Do you already have an account on <strong class=" websiteBold"></strong> website?</p>
+          <btn class=" page6_btn1"> Login</btn>
+        </div>
+        <div class=" middle_page6_middle ">
+          <img class=" mp6_e1" src="UI/p6-e1.png">
+        </div>
+        <div class=" middle_page6_down ">
+          <p class=" middle_page6_top_p"> Do you want to create a new account on <strong class=" websiteBold1"></strong> website?</p>
+          <btn class=" page6_btn2"> Create</btn>
+
+        </div>
+      </div>
+      <div class=" bottom_page6 ">
+        <div class=" p6_logout logout">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Page6 -->
+  <!-- Page7 -->
+  <div class=" page7" id="p7">
+    <div class=" alt_page7 ">
+      <div class=" top_page7">
+        <div class=" addCircle addCircle_page7">+</div>
+        <img class=" mp7_back" src="">
+        <input class=" input1_page7" type="text" name="" value="" placeholder="Search...">
+      </div>
+      <div class=" middle_page7 ">
+        <template class=" template1">
+          <div class=" mp7_row">
+            <div class=" mp7_row_left"><img class=" logo_rows" src="UI/web.png"></div>
+            <div class=" mp7_row_middle ">
+              <div class=" mp7_row_middle_top ">
+                Website Name
+              </div>
+              <div class=" mp7_row_middle_down ">
+                Email
+              </div>
+            </div>
+            <div class=" mp7_row_right ">
+              <div class=" mp7_row_right_left ">
+                <btn class=" page7_btn"> Go</btn>
+              </div>
+              <div class=" mp7_row_right_right ">
+                <img class=" mp7_go_detail" src="UI/backB.png">
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+      <div class=" bottom_page7 ">
+        <div class=" logout">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Page7 -->
+  <!-- Page8 -->
+
+  <div class=" page8" id="p8">
+    <template class=" template2">
+      <div class=" alt_page8 off">
+        <div class=" top_page8 ">
+
+          <img class=" mp8" src="UI/home.png" id="home">
+          <img class=" mp8_back" src="UI/back.png">
+          <div class=" navbar_page8">Account Details</div>
+        </div>
+        <div class=" middle_page8 ">
+          <div class=" mp8_edit_element">
+            <div class=" mp8_edit_element_top">
+              <div class=" mp8_edit_element_top_left detailWebsiteName"></div>
+              <div class=" mp8_edit_element_top_right "><img class=" logo_details" src="UI/web.png"></div>
+            </div>
+            <div class=" mp8_edit_element_middle">
+              <div class=" mp8_edit_element_middle_table">
+                <table class=" page8_table">
+                  <tr>
+                    <th>Username</th>
+                    <td class=" detailUsername mn"></td>
+                  </tr>
+                  <tr>
+                    <th>Password</th>
+                    <td class=" detailPassword">*********</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class=" mp8_edit_element_bottom">
+              <div class=" mp8_edit_element_bottom_left detailDel">Delete</div>
+              <div class=" mp8_edit_element_bottom_right detailLogin">Login</div>
+            </div>
+            <btn class=" page8_btn_edit detailEdit">Edit Account</btn>
+          </div>
+        </div>
+        <div class=" bottom_page8">
+          <div id="logout8" class=" logout logout_p8">
+
+          </div>
+        </div>
+      </div>
+    </template>
+  </div>
+  <!-- Page8 -->
+  <!-- Page9 -->
+  <div class=" page9" id="p9">
+    <template class=" template3">
+      <div class=" alt_page9 off">
+        <div class=" top_page9 ">
+
+          <img class=" mp9" src="UI/home.png" id="home">
+          <img class=" mp9_back" src="UI/back.png">
+          <div class=" navbar_page9">Account Edit</div>
+        </div>
+        <div class=" middle_page9 ">
+          <div class=" mp9_edit_element">
+            <div class=" mp9_edit_element_top">
+              <div class=" mp9_edit_element_top_left editWebsiteName"></div>
+              <div class=" mp9_edit_element_top_right "><img class=" logo_edit" src="UI/web.png"></div>
+            </div>
+            <div class=" mp9_edit_element_middle">
+              <div class=" mp9_edit_element_middle_table">
+                <table class=" page9_table">
+                  <tr>
+                    <th>Username</th>
+                    <td class=" editUsername"> </td>
+
+                  </tr>
+                  <tr>
+                    <th>Password</th>
+                    <td class=" ">
+                      <input name="editPasswordInput" class=" editPassword" id="editPasswordPageInput" type="password">
+                      <span toggle="#password-field" class=" fa fa-fw fa-eye field-icon toggle-password-create" id="editPasswordPageInputToggle"></span>
+
+                    </td>
+
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class=" mp9_edit_element_bottom">
+              <btn class=" page9_btn_edit changePass">Change Password</btn>
+              <btn class=" page9_btn_save savebtn">Save Changes</btn>
+            </div>
+
+          </div>
+        </div>
+        <div class=" bottom_page9">
+          <div class=" p9_logout">
+
+          </div>
+        </div>
+      </div>
+    </template>
+  </div>
+  <!-- Page9 -->
+  <!-- Page10 -->
+  <div class=" page10" id="p10">
+    <template class=" template4">
+      <div class=" alt_page10 off">
+        <div class=" top_page10 ">
+
+          <img class=" mp10" src="UI/home.png" id="home">
+          <img class=" mp10_back" src="UI/back.png">
+          <div class=" navbar_page10">Delete Account</div>
+        </div>
+        <div class=" middle_page10 ">
+          <div class=" mp10_edit_element">
+            <div class=" mp10_edit_element_top ">
+              Are you sure you want to delete your account from <strong class=" deleteName">Amazon</strong> website?
+            </div>
+
+            <div class=" mp10_edit_element_bottom ">
+              <div class=" mp10_edit_element_bottom_left deleteAPINO">No</div>
+              <div class=" mp10_edit_element_bottom_right deleteAPIYES">Yes</div>
+            </div>
+          </div>
+          <img class=" mp10_jooje" src="UI/p10.png">
+          <div class=" mp10_edit_element2">
+            <div class=" mp10_edit_element2_top ">
+              Are you sure you want to remove your record from <strong>ByPass</strong>?
+            </div>
+            <div class=" mp10_edit_element2_bottom ">
+              <div class=" mp10_edit_element2_bottom_left deleteLocalNO">No</div>
+              <div class=" mp10_edit_element2_bottom_right deleteLocalYES ">Yes</div>
+            </div>
+          </div>
+        </div>
+        <div class=" bottom_page10">
+          <div class=" p10_logout">
+
+          </div>
+        </div>
+      </div>
+      <template>
+  </div>
+  <!-- Page10 -->
+  <!-- <script type="text/javascript" src="zxcvbn.js"></script> -->
+  <!-- <script src='zxcvbn.js'></script>
+<script  src="script-meter.js"></script> -->
+
+
+
+
+</body>
+
+</html>

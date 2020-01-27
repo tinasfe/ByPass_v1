@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" type="text/css" href="main1.css">
+    <script type="text/javascript" src="./indexeddb.shim.min.js"></script>
+    <script src="zxcvbn.js"></script>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script src="popup.js"></script>
+    <script src="popup1.js"></script>
+    <script src="db.js"></script>
+    <link href="css/all.css" rel="stylesheet">
+    <script type="text/javascript" src="shortcut.js"></script>
+
+
+
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="mainCA_nav">
+      <div class="mainCA_nav_X">X</div>
+    </div>
+    <div class="createAccount">
+      <div class="mainCA">
+        <div class="mainCA_top createTitle" id="CreateTitlee"></div>
+        <div class="mainCA_bottom">
+          <div class="mainCA_bottom_main">
+            <div class="mainCA_bottom_main_top">
+              <div class="mainCA_bottom_main_top_main">
+
+              <section class="sectionCA fnameSection off">
+              <label class="labelEmailOptionCA" for="email">FirstName:</label>
+              <input type="emailOptionCA" name="emailOptionCA" id="createFirstName" class="emailOptionCA">
+            </section>
+              <section class="sectionCA lnameSection off">
+              <label class="labelEmailOptionCA" for="email">LastName:</label>
+              <input type="emailOptionCA" name="emailOptionCA" id="createLastName" class="emailOptionCA">
+            </section>
+              </section>
+              <section class="sectionCA datebirthSection off">
+              <label class="labelEmailOptionCA" for="email">Date of Birth:</label>
+              <input placeholder="MM/DD/YYYY" type="date" data-date-inline-picker="true" name="emailOptionCA" id="createdateOfBirth" class="emailOptionCA">
+            </section>
+            <section class="sectionCA userSection ">
+            <label class="labelEmailOptionCA" for="email">Email:</label>
+            <input type="emailOptionCA" name="emailOptionCA" id="createEmail" class="emailOptionCA">
+          </section>
+              <section class="sectionCA passSection">
+              <label class="labelEmailOptionCA" for="email">Password:</label>
+              <input type="password" name="emailOptionCA" id="createPassword" class="emailOptionCA">
+              <span toggle="#password-field" class=" fa fa-fw fa-eye field-icon toggle-password-create" id="createPass"></span>
+              <label class="labelEmailOptionCA leftT" for="email">generate password length:</label>
+              <input type="passLength" name="passLength" id="passLength" class="emailOptionCA len leftT">
+
+              <!-- <div class=" yellowMessageBox">
+                We have <strong>Auto Generated</strong> a password for you.
+                </br>
+                You can change it too!
+              </div> -->
+              <div class=" create_btn_edit changePassCreate rightT">Change Password</div>
+
+            </section>
+          </div>
+            <div class="mainCA_bottom_main_top_btn" id="addToTinapass_create"> Create and Add  to ByPass</div>
+
+            </div>
+            <div class="mainCA_bottom_main_bottom">
+              <img class="CA1" src="UI/CA.png">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+.username{
+	color:#C33;
+}
+</style>
+</head>
+<body>
+<template id="tmplt">
+
+		<h2></h2>
+		<h1></h1>
+	  <p></p>
+	  <hr>
+
+</template>
+<script>
+var arr = [
+   { name:'Susan', country:'USA', age:27 },
+   { name:'John', country:'Canada', age:34 },
+   { name:'Klaus', country:'Germany', age:23 },
+   { name:'Peter', country:'Greece', age:29 }
+];
+console.log(typeof(arr));
+var template = document.querySelector('#tmplt');
+for (var i = 0; i < arr.length; i++) {
+	var user = arr[i];
+	var clone = template.content.cloneNode(true);
+	var h2 = clone.querySelectorAll('h2');
+	var h1 = clone.querySelectorAll('h1');
+	h2[0].className = "username";
+	h2[0].innerHTML = user.name;
+	h1[0].className = "row"+i;
+	h1[0].innerHTML = i;
+	var p = clone.querySelectorAll('p');
+	p[0].innerHTML = "Country: "+user.country+"<br>Age: "+user.age;
+	var div = clone.querySelectorAll('div');
+	template.parentNode.appendChild(clone);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+	document.querySelector('.row1').addEventListener('click', test);
+	});
+document.addEventListener('DOMContentLoaded', function() {
+	document.querySelector('.row2').addEventListener('click', test1);
+	});
+
+function test() {
+	console.log("hereee m");
+}
+function test1() {
+	alert("finally");
+	console.log("hereee m");
+
+}
+</script>
+</body>
+</html>
