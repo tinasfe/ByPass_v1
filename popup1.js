@@ -46,6 +46,10 @@ document.addEventListener('DOMContentLoaded', function() {
     showPassLoginPassword();
     });
   });
+  window.onload = function() {
+  const createPassword = document.getElementById('createPassword');
+  createPassword.value = generatePassword1();
+};
 document.addEventListener('DOMContentLoaded', function() {
   $(".changePassCreate").click(function(){
     const createPassword = document.getElementById('createPassword');
@@ -69,7 +73,12 @@ $(document).ready(function() {
 
   // var strength = $("#password-strength-meter").val();
 
+  $("#passLength").keyup(function() {
 
+     const createPassword = document.getElementById('createPassword');
+     createPassword.value = generatePassword1();
+
+   });
 
   $(".mainCA_nav_X").click(function() {
     win = window.close();
