@@ -557,7 +557,7 @@ function change2to7() {
     });
     $(".detailDel1").click(function() {
       // console.log("row1");
-      $('#p8').hide(500);
+      $('#p9').hide(500);
       $(".deletePage1").removeClass("off");
       $(".deletePage2").addClass("off");
       $(".deletePage3").addClass("off");
@@ -577,6 +577,10 @@ function change2to7() {
 
     });
     $(".deleteLocalYES1").click(function() {
+
+
+
+
       console.log("deleteLocalYES1");
       console.log(arr[1]);
 
@@ -621,8 +625,13 @@ function change2to7() {
         }
       };
       alert("Your records has been deleted from ByPass.");
+      document.getElementById("mp10_el_local").style.display = "none";
+      document.getElementById("mp10_el_api").style.display = "block";
+      $('#mp10_el_local').hide(500);
+      $('#mp10_el_api').show(500);
+      $("#mp10_el_api").animate({marginTop: "-=100px"});
 
-      win = window.close();
+      // win = window.close();
     });
     $(".savebtn1").click(function() {
       console.log("savebtn1");
@@ -774,7 +783,7 @@ function change2to7() {
     });
     $(".detailDel2").click(function() {
       // console.log("row1");
-      $('#p8').hide(500);
+      $('#p9').hide(500);
       $(".deletePage2").removeClass("off");
       $(".deletePage1").addClass("off");
       $(".deletePage3").addClass("off");
@@ -838,7 +847,12 @@ function change2to7() {
         }
       };
       alert("Your account has been deleted!");
-      win = window.close();
+      // win = window.close();
+      document.getElementById("mp10_el_local").style.display = "none";
+      document.getElementById("mp10_el_api").style.display = "block";
+      $('#mp10_el_local').hide(500);
+      $('#mp10_el_api').show(500);
+      $("#mp10_el_api").animate({marginTop: "-=100px"});
     });
     $(".savebtn2").click(function() {
       console.log("savebtn2");
@@ -979,7 +993,7 @@ function change2to7() {
     });
     $(".detailDel3").click(function() {
       // console.log("row1");
-      $('#p8').hide(500);
+      $('#p9').hide(500);
       $(".deletePage3").removeClass("off");
       $(".deletePage2").addClass("off");
       $(".deletePage1").addClass("off");
@@ -1043,7 +1057,12 @@ function change2to7() {
         }
       };
       alert("Your account has been deleted!");
-      win = window.close();
+      // win = window.close();
+      document.getElementById("mp10_el_local").style.display = "none";
+      document.getElementById("mp10_el_api").style.display = "block";
+      $('#mp10_el_local').hide(500);
+      $('#mp10_el_api').show(500);
+      $("#mp10_el_api").animate({marginTop: "-=100px"});
     });
     $(".savebtn3").click(function() {
       console.log("savebtn3");
@@ -1181,7 +1200,7 @@ function change2to7() {
     });
     $(".detailDel4").click(function() {
       // console.log("row1");
-      $('#p8').hide(500);
+      $('#p9').hide(500);
       $(".deletePage4").removeClass("off");
       $(".deletePage2").addClass("off");
       $(".deletePage3").addClass("off");
@@ -1245,7 +1264,12 @@ function change2to7() {
         }
       };
       alert("Your account has been deleted!");
-      win = window.close();
+      // win = window.close();
+      document.getElementById("mp10_el_local").style.display = "none";
+      document.getElementById("mp10_el_api").style.display = "block";
+      $('#mp10_el_local').hide(500);
+      $('#mp10_el_api').show(500);
+      $("#mp10_el_api").animate({marginTop: "-=100px"});
 
     });
     $(".savebtn4").click(function() {
@@ -1383,7 +1407,7 @@ function change2to7() {
     });
     $(".detailDel5").click(function() {
       // console.log("row1");
-      $('#p8').hide(500);
+      $('#p9').hide(500);
       $(".deletePage5").removeClass("off");
       $(".deletePage2").addClass("off");
       $(".deletePage3").addClass("off");
@@ -1447,7 +1471,12 @@ function change2to7() {
         }
       };
       alert("Your account has been deleted!");
-      win = window.close();
+      // win = window.close();
+      document.getElementById("mp10_el_local").style.display = "none";
+      document.getElementById("mp10_el_api").style.display = "block";
+      $('#mp10_el_local').hide(500);
+      $('#mp10_el_api').show(500);
+      $("#mp10_el_api").animate({marginTop: "-=100px"});
     });
     $(".savebtn5").click(function() {
       console.log("savebtn5");
@@ -1584,7 +1613,7 @@ function change2to7() {
     });
     $(".detailDel6").click(function() {
       // console.log("row1");
-      $('#p8').hide(500);
+      $('#p9').hide(500);
       $(".deletePage6").removeClass("off");
       $(".deletePage2").addClass("off");
       $(".deletePage3").addClass("off");
@@ -1648,7 +1677,12 @@ function change2to7() {
         }
       };
       alert("Your account has been deleted!");
-      win = window.close();
+      // win = window.close();
+      document.getElementById("mp10_el_local").style.display = "none";
+      document.getElementById("mp10_el_api").style.display = "block";
+      $('#mp10_el_local').hide(500);
+      $('#mp10_el_api').show(500);
+      $("#mp10_el_api").animate({marginTop: "-=100px"});
     });
     $(".savebtn6").click(function() {
       console.log("savebtn6");
@@ -2973,7 +3007,7 @@ function addFromLogin() {
       loginToPage("nothing", loginEmail, loginPassword);
       setTimeout(function() {
         win = window.close();
-      }, 2000);
+      }, 1000);
     } else {
       closeTab();
     }
@@ -3290,7 +3324,7 @@ function renderRows() {
       detailPassword.classList.add("detailPassword" + num);
       detailLogin = clone2.querySelector(".detailLogin");
       detailLogin.classList.add("detailLogin" + num);
-      detailDel = clone2.querySelector(".detailDel");
+      detailDel = clone3.querySelector(".detailDel");
       detailDel.classList.add("detailDel" + num);
       detailEdit = clone2.querySelector(".detailEdit");
       alt_page8 = clone2.querySelector(".alt_page8");
