@@ -1931,6 +1931,7 @@ function change2to7() {
       document.getElementById("p10").style.display = "none";
 
 
+
     });
     $(".mp10").click(function() {
       console.log("home");
@@ -1941,6 +1942,10 @@ function change2to7() {
       document.getElementById("p4").style.display = "none";
       document.getElementById("p3").style.display = "none";
       document.getElementById("p9").style.display = "none";
+      document.getElementById("p10").style.display = "none";
+
+
+
       if ($(".mp7_row").length == 0) {
         // $('.alt_page7').css('background-image', 'url(UI/p3-e.png)');
         var imageUrl = "UI/p3-e.png";
