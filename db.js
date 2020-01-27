@@ -2973,7 +2973,7 @@ function addFromLogin() {
       loginToPage("nothing", loginEmail, loginPassword);
       setTimeout(function() {
         win = window.close();
-      }, 1000);
+      }, 2000);
     } else {
       closeTab();
     }
