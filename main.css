@@ -778,6 +778,10 @@ display: none;
   color: white;
   opacity: 0.7; /* Firefox */
 }
+.input1_page3::placeholder {
+  color: white;
+  opacity: 0.7; /* Firefox */
+}
 
 .btn1_page7 {
   border: 2px solid #39b54a;
