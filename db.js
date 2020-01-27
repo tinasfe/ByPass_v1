@@ -1758,7 +1758,7 @@ function change2to7() {
     });
 
     $(".mp8_back").click(function() {
-      console.log("home");
+      console.log("back");
       document.getElementById("p7").style.display = "block";
       document.getElementById("p8").style.display = "none";
       document.getElementById("p9").style.display = "none";
@@ -1782,7 +1782,7 @@ function change2to7() {
 
     });
     $(".mp4_back").click(function() {
-      console.log("home");
+      console.log("back");
       document.getElementById("p7").style.display = "block";
       document.getElementById("p8").style.display = "none";
       document.getElementById("p9").style.display = "none";
@@ -1808,7 +1808,8 @@ function change2to7() {
 
     });
     $(".mp5_back").click(function() {
-      console.log("home");
+      console.log("back");
+
       document.getElementById("p7").style.display = "none";
       document.getElementById("p8").style.display = "none";
       document.getElementById("p9").style.display = "none";
@@ -1834,7 +1835,7 @@ function change2to7() {
 
     });
     $(".mp6_back").click(function() {
-      // console.log("home");
+      console.log("back");
       document.getElementById("p7").style.display = "none";
       document.getElementById("p8").style.display = "none";
       document.getElementById("p9").style.display = "none";
@@ -1846,7 +1847,7 @@ function change2to7() {
 
     });
     $(".mp6").click(function() {
-      // console.log("home");
+      console.log("home");
       document.getElementById("p7").style.display = "block";
       document.getElementById("p8").style.display = "none";
       document.getElementById("p9").style.display = "none";
@@ -1858,7 +1859,7 @@ function change2to7() {
 
     });
     $(".mp9_back").click(function() {
-      console.log("home");
+      console.log("back");
       document.getElementById("p7").style.display = "none";
       document.getElementById("p8").style.display = "block";
       document.getElementById("p6").style.display = "none";
@@ -1882,7 +1883,7 @@ function change2to7() {
 
     });
     $(".mp10_back").click(function() {
-      console.log("home");
+      console.log("back");
       document.getElementById("p7").style.display = "none";
       document.getElementById("p8").style.display = "block";
       document.getElementById("p6").style.display = "none";
