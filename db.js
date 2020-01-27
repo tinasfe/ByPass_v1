@@ -2942,6 +2942,7 @@ function addFromLogin() {
   // console.log("login "+loginEmail);
 
   //Perform the add
+  if (validateEmail(loginEmail)) {
 
 
   var loginAcc = {
@@ -2982,6 +2983,10 @@ function addFromLogin() {
       win = window.close();
     }, 1000);
   }
+}
+else {
+  alert("Enter valid email...");
+}
   // var r = confirm("Your account has been added to ByPass \nDo you want to login right now?");
   // if (r == true) {
   //   loginToPage("nothing", loginEmail, loginPassword);

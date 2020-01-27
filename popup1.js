@@ -87,7 +87,7 @@ $(document).ready(function() {
   chrome.storage.sync.get(['websiteP'], function(items) {
 
 
-    document.getElementById("CreateTitlee").innerText = "Create an account on " + items.websiteP;
+    document.getElementById("CreateTitlee").innerText =  "Enter your information here to create an account on " + items.websiteP;
     if (items.websiteP == "amazon" || items.websiteP == "www.amazon.com" || items.websiteP == "amazon.safaie.ca") {
       // alert("amazon page is called...");
       $(".fnameSection").removeClass("off");
