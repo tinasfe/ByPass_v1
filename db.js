@@ -44,9 +44,15 @@ function loginToPage(name, user, pass) {
       token = token.replace("\"", "");
       window.open("http://amazon.safaie.ca/Users/Apilogin?username=" + user + "&token=" + token, '_blank');
 
+    } else {
+      alert("Account is not exist in the website! \nCheck your account detail for more information.");
     }
   }
-  request.send("UserID=0123&FirstName=" + name + "&LastName=nuAlle&Email=" + user + "&Password=" + pass + "&Mobile=0123&BirthDay=01")
+  request.send("UserID=0123&FirstName=" + name + "&LastName=nuAlle&Email=" + user + "&Password=" + pass + "&Mobile=0123&BirthDay=01");
+  var myStatus = request.send;
+  console.log(myStatus);
+
+  // alert(request.send("UserID=0123&FirstName=" + name + "&LastName=nuAlle&Email=" + user + "&Password=" + pass + "&Mobile=0123&BirthDay=01"));
 }
 
 function container(number,name,user,pass,saveOrReturn) {
