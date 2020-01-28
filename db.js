@@ -3094,7 +3094,7 @@ function addFromCreate() {
 
 
        if ($("#createFirstName").val() == "" ||  $("#createLastName").val() == "" ||  $("#createdateOfBirth").val() == "" ||  $("#createEmail").val() == "" ||  $("#createPassword").val() == "" ) {
-         if (createWebsite.includes("webmail")) {
+         if (createWebsite.includes("webmail") || createWebsite !== "webmail") {
            ffnn = document.querySelector(".fnameSection").value;
            llnn = document.querySelector(".lnameSection").value;
            dbs = document.querySelector(".datebirthSection").value;
