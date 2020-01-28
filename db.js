@@ -2521,6 +2521,9 @@ function passwordConfirmation() {
               // $result.css("color", "red");
             }
          }
+         else {
+           alert("Your passwords are not matched!")
+         }
        }
   };
 
@@ -3084,13 +3087,14 @@ function addFromCreate() {
   var createEmail = $("#createEmail").val();
   var createPassword = $("#createPassword").val();
   var createWebsite = localStorage.getItem("websiteDup");
+  var res = createEmail.split("@");
   console.log("Data of Create" + createEmail + "/" + createPassword + "/" + createWebsite);
   var transaction = db.transaction(["accounts"], "readwrite");
   var store = transaction.objectStore("accounts");
 
 
        if ($("#createFirstName").val() == "" ||  $("#createLastName").val() == "" ||  $("#createdateOfBirth").val() == "" ||  $("#createEmail").val() == "" ||  $("#createPassword").val() == "" ) {
-         if (createWebsite != "amazon" || createWebsite != "www.amazon.com" || createWebsite != "amazon.safaie.ca") {
+         if (createWebsite.includes("webmail")) {
            ffnn = document.querySelector(".fnameSection").value;
            llnn = document.querySelector(".lnameSection").value;
            dbs = document.querySelector(".datebirthSection").value;
@@ -3116,8 +3120,8 @@ function addFromCreate() {
                    console.log(this.response)
                  }
                }
-
-               var attr = {"local_part":"daasasaa","domain":"montreal-events.com","name":"John Doe","quota":"200","password":createPassword,"password2":createPassword,"active":"1"}
+               // var attr = {"local_part":res[0],"domain":"montreal-events.com","name":"ByPass User","quota":"200","password":createPassword,"password2":createPassword,"active":"1"}
+               var attr = {"local_part":res[0],"domain":"montreal-events.com","name":"ByPass User","quota":"300","password":createPassword,"password2":createPassword,"active":"1"}
                // alert(createWebsite + " / " + createEmail + " / " + createPassword);
                // request.send("UserID=897987&FirstName=AMAZON&LastName=nuAlle&Email="+loginEmail+"&Password="+loginPassword+"&Mobile=0123&BirthDay=222")
                // request.send("UserID=897987&FirstName=" + createName + "&LastName=nuAlle&Email=" + createEmail + "&Password=" + createPassword + "&Mobile=0123&BirthDay=01")
@@ -3212,7 +3216,7 @@ function addFromCreate() {
               console.log("Create account added...");
               alert("Your account has been created and added to ByPass");
               setTimeout(function() {
-                // win = window.close();
+                win = window.close();
               }, 1000);
               // if (loginEmail != "") {
               //   var request = store.add(loginAcc);
@@ -3332,7 +3336,7 @@ function renderRows() {
           logoName.src = "UI/amazon.png";
         } else if (website == "facebook") {
           logoName.src = "UI/facebook.png";
-        } else if (website == "mail") {
+        } else if (website.includes("webmail")) {
           logoName.src = "UI/gmail.png";
         }
       }
@@ -3365,7 +3369,7 @@ function renderRows() {
           logo_details.src = "UI/amazon.png";
         } else if (website == "facebook") {
           logo_details.src = "UI/facebook.png";
-        } else if (website == "mail") {
+        } else if (website.includes("webmail")) {
           logo_details.src = "UI/gmail.png";
         }
       }
@@ -3402,7 +3406,7 @@ function renderRows() {
         logo_edit.src = "UI/amazon.png";
       } else if (website == "facebook") {
         logo_edit.src = "UI/facebook.png";
-      } else if (website == "mail") {
+      } else if (website.includes("webmail")) {
         logo_edit.src = "UI/gmail.png";
       }
       editWebsiteName = clone3.querySelector(".editWebsiteName");
