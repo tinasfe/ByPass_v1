@@ -642,7 +642,7 @@ text-align: center;
 }
 .mp6_e1{
   width: 100%;
-padding-top: 30px;
+margin-top: 30px;
 
 }
 .mp6_back{
@@ -723,6 +723,8 @@ text-align: center;
   cursor: pointer;
   width: 25%;
   margin-left: 37%;
+  margin-top: -16px;
+
 
 }
 .page6_btn2{
