@@ -498,7 +498,8 @@ width: 75%;
 }
 .mp5_e1{
   width: 9em;
-padding-top: 30px;
+  margin-left: -1em;
+
 
 }
 .mp5_back{
@@ -565,18 +566,19 @@ text-align: center;
 .page5_btn{
   background-color: #39b562;
   padding: 10px;
-  padding-left: 35px;
-  padding-right: 35px;
   border-radius: 10px;
   color: white;
   cursor: pointer;
+  width: 20%;
+  text-align: center;
+  margin-left: 38%;
 }
 
 .logout_p5{
   margin-top: -2% !important;
 }
 .logout_p8{
-  margin-top: -2% !important;
+  margin-top: 4% !important;
 }
 /*----------------------------------------------Page 5  */
 /*----------------------------------------------Page 4  */
@@ -714,27 +716,31 @@ text-align: center;
 .page6_btn1{
   background-color: #39b562;
   padding: 10px;
-  padding-left: 35px;
-  padding-right: 35px;
+  /* padding-left: 35px; */
+  /* padding-right: 35px; */
   border-radius: 10px;
   color: white;
   cursor: pointer;
+  width: 25%;
+  margin-left: 37%;
 
 }
 .page6_btn2{
   background-color: #39b562;
   padding: 10px;
-  padding-left: 35px;
-  padding-right: 35px;
+  /* padding-left: 35px; */
+  /* padding-right: 35px; */
   border-radius: 10px;
   color: white;
   cursor: pointer;
+  width: 25%;
+  margin-left: 37%;
 
 }
 .p6_logout{
-  padding-top: 40px;
+  margin-top: 40px;
   padding-left: 10px;
-  margin-top: -7% !important;
+  margin-top: 4% !important;
 }
 
 /*----------------------------------------------Page 6  */
@@ -1235,7 +1241,7 @@ display: none;
 .p9_logout{
   line-height: 60px;
   margin-left: 5%;
-  margin-top: 19%;
+  margin-top: 4%;
 }
 .mp9{
   width: 40px;

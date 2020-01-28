@@ -2110,6 +2110,21 @@ function change2to7() {
 
     });
 
+
+    // $("#logout8").on("click", logout);
+    // $(".logout").each(function(index) {
+    //     $(this).on("click", function(){
+    //         logout();
+    //     });
+    // });
+    // $(".logout").each(function(index) {
+        $(".logout").on("click", function(){
+            logout();
+        });
+    // });
+
+
+
 }
 
 function change2to3() {
@@ -2366,7 +2381,7 @@ document.addEventListener('DOMContentLoaded', function() {
   $(".page6_btn2").on("click", optionPage1);
   $("#addToTinapass_login").on("click", addFromLogin);
   $("#addToTinapass_create").on("click", addFromCreate);
-  $(".logout").on("click", logout);
+  // $(".logout").on("click", logout);
 
 
 
@@ -2868,11 +2883,11 @@ function dontLoadSignUp() {
 
       console.log("user 1  found...");
       $(".logout").each(function(index) {
+        localStorage.setItem("logoutEmail", note.masterEmail);
+
         this.innerText = "Logout: " + note.masterEmail;
       });
-      $("#logout8").each(function(index) {
-        this.innerText = "Logout: " + note.masterEmail;
-      });
+
 
       // $('.page1').remove();
 
@@ -3332,6 +3347,9 @@ function renderRows() {
           logo_details.src = "UI/gmail.png";
         }
       }
+      logout_p8 = clone2.querySelector(".logout_p8");
+      logout_p8.innerText = "Logout: " + localStorage.getItem("logoutEmail");
+
       detailWebsiteName = clone2.querySelector(".detailWebsiteName");
       detailWebsiteName.innerText = website;
       detailWebsiteName.classList.add("detailWebsiteName" + num);
@@ -3342,8 +3360,7 @@ function renderRows() {
       detailPassword.classList.add("detailPassword" + num);
       detailLogin = clone2.querySelector(".detailLogin");
       detailLogin.classList.add("detailLogin" + num);
-      detailDel = clone3.querySelector(".detailDel");
-      detailDel.classList.add("detailDel" + num);
+
       detailEdit = clone2.querySelector(".detailEdit");
       alt_page8 = clone2.querySelector(".alt_page8");
       alt_page8.classList.add("detail" + num);
@@ -3369,6 +3386,11 @@ function renderRows() {
       editWebsiteName = clone3.querySelector(".editWebsiteName");
       editWebsiteName.innerText = website;
 
+      logout_p9 = clone3.querySelector(".logout_p9");
+      logout_p9.innerText = "Logout: " + localStorage.getItem("logoutEmail");
+
+      detailDel = clone3.querySelector(".detailDel");
+      detailDel.classList.add("detailDel" + num);
 
       editUsername = clone3.querySelector(".editUsername");
       editUsername.innerHTML = email;
