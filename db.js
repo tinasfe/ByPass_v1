@@ -3043,7 +3043,7 @@ function addFromLogin() {
   // var request = store.add(createAcc);
   // console.log("Create account added...");
   // }
-  if (loginWebsite == "amazon") {
+  if (loginWebsite.includes("amazon") || loginWebsite.includes("Amazon") ) {
 
     var r = confirm("Your account has been added to ByPass \nDo you want to login right now?");
     if (r == true) {
@@ -3328,7 +3328,7 @@ function renderRows() {
         console.log("empty");
       } else {
         // console.log("called");
-        if (website == "amazon" || website == "www.amazon.com" || website == "amazon.safaie.ca") {
+        if (website.includes("amazon") || website.includes("Amazon")) {
           logoName.src = "UI/amazon.png";
         } else if (website == "facebook") {
           logoName.src = "UI/facebook.png";
@@ -3361,7 +3361,7 @@ function renderRows() {
 
       logo_details = clone2.querySelector(".logo_details");
       if (typeof(website) != "undefined") {
-        if (website == "amazon" || website == "www.amazon.com" || website == "amazon.safaie.ca") {
+        if (website.includes("amazon") || website.includes("Amazon")) {
           logo_details.src = "UI/amazon.png";
         } else if (website == "facebook") {
           logo_details.src = "UI/facebook.png";
@@ -3398,7 +3398,7 @@ function renderRows() {
 
 
       logo_edit = clone3.querySelector(".logo_edit");
-      if (website == "amazon" || website == "www.amazon.com" || website == "amazon.safaie.ca") {
+      if (website.includes("amazon") || website.includes("Amazon")) {
         logo_edit.src = "UI/amazon.png";
       } else if (website == "facebook") {
         logo_edit.src = "UI/facebook.png";
