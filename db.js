@@ -704,44 +704,44 @@ function change2to7() {
       // var objectStore = db.transaction("accounts").objectStore("accounts");
       console.log("row1 wants to be deleted");
       $(".row1").addClass("off");
-      objectStore.openCursor().onsuccess = function(event) {
-        var cursor = event.target.result;
-
-        if (cursor) {
-
-          if (cursor.key == 1) {
-            // alert("aaaa");
-          // delPOST(cursor.loginEmail,cursor.loginEmail,cursor.loginPassword);
-          // alert(cursor.loginEmail,cursor.loginEmail,cursor.loginPassword);
-
-            var request = cursor.delete();
-            // var deleteAcc = {
-            //   // masterEmail: masterEmail,
-            //   loginEmail: cursor.value.loginEmail,
-            //   loginPassword: updatedPass,
-            //   loginWebsite: cursor.value.loginWebsite,
-            //   login: "0",
-            //   created: new Date().getTime()
-            // }
-            // var objectStoreRequest = objectStore.delete(deleteAcc);
-
-            // var request = objectStore.add(updated);
-
-            // const request = cursor.update(updatedPass);
-            request.onsuccess = function() {
-              console.log('Deleted...');
-
-              setTimeout(function() {
-                // win = window.close();
-              }, 1000);
-            };
-
-          }
-          cursor.continue();
-        } else {
-
-        }
-      };
+      // objectStore.openCursor().onsuccess = function(event) {
+      //   var cursor = event.target.result;
+      //
+      //   if (cursor) {
+      //
+      //     if (cursor.key == 1) {
+      //       // alert("aaaa");
+      //     // delPOST(cursor.loginEmail,cursor.loginEmail,cursor.loginPassword);
+      //     // alert(cursor.loginEmail,cursor.loginEmail,cursor.loginPassword);
+      //
+      //       var request = cursor.delete();
+      //       // var deleteAcc = {
+      //       //   // masterEmail: masterEmail,
+      //       //   loginEmail: cursor.value.loginEmail,
+      //       //   loginPassword: updatedPass,
+      //       //   loginWebsite: cursor.value.loginWebsite,
+      //       //   login: "0",
+      //       //   created: new Date().getTime()
+      //       // }
+      //       // var objectStoreRequest = objectStore.delete(deleteAcc);
+      //
+      //       // var request = objectStore.add(updated);
+      //
+      //       // const request = cursor.update(updatedPass);
+      //       request.onsuccess = function() {
+      //         console.log('Deleted...');
+      //
+      //         setTimeout(function() {
+      //           // win = window.close();
+      //         }, 1000);
+      //       };
+      //
+      //     }
+      //     cursor.continue();
+      //   } else {
+      //
+      //   }
+      // };
       alert("Your records has been deleted from website.");
       document.getElementById("mp10_el_api").style.display = "none";
       document.getElementById("mp10_el_local").style.display = "block";
@@ -3150,7 +3150,7 @@ function addFromCreate() {
                }
                var request = store.add(createAcc);
                console.log("Create account added...");
-               alert("Your account has been created on Amazon and added to ByPass");
+               alert("Your account has been created and added to ByPass.");
                setTimeout(function() {
                  // win = window.close();
                }, 1000);
