@@ -927,42 +927,6 @@ function change2to7() {
       // var objectStore = db.transaction("accounts").objectStore("accounts");
       console.log("row2 wants to be deleted");
       $(".row2").addClass("off");
-      objectStore.openCursor().onsuccess = function(event) {
-        var cursor = event.target.result;
-
-        if (cursor) {
-
-          if (cursor.key == 2) {
-            alert(cursor.key);
-            alert(cursor);
-
-            var request = cursor.delete();
-            // var deleteAcc = {
-            //   // masterEmail: masterEmail,
-            //   loginEmail: cursor.value.loginEmail,
-            //   loginPassword: updatedPass,
-            //   loginWebsite: cursor.value.loginWebsite,
-            //   login: "0",
-            //   created: new Date().getTime()
-            // }
-            // var objectStoreRequest = objectStore.delete(deleteAcc);
-
-            // var request = objectStore.add(updated);
-
-            // const request = cursor.update(updatedPass);
-            request.onsuccess = function() {
-              console.log('Deleted...');
-              setTimeout(function() {
-                // win = window.close();
-              }, 1000);
-            };
-
-          }
-          cursor.continue();
-        } else {
-
-        }
-      };
       alert("Your account has been deleted from  website.");
       document.getElementById("mp10_el_api").style.display = "none";
       document.getElementById("mp10_el_local").style.display = "block";
@@ -1141,40 +1105,6 @@ function change2to7() {
       // var objectStore = db.transaction("accounts").objectStore("accounts");
       console.log("row3 wants to be deleted");
       $(".row3").addClass("off");
-      objectStore.openCursor().onsuccess = function(event) {
-        var cursor = event.target.result;
-
-        if (cursor) {
-
-          if (cursor.key == 3) {
-
-            var request = cursor.delete();
-            // var deleteAcc = {
-            //   // masterEmail: masterEmail,
-            //   loginEmail: cursor.value.loginEmail,
-            //   loginPassword: updatedPass,
-            //   loginWebsite: cursor.value.loginWebsite,
-            //   login: "0",
-            //   created: new Date().getTime()
-            // }
-            // var objectStoreRequest = objectStore.delete(deleteAcc);
-
-            // var request = objectStore.add(updated);
-
-            // const request = cursor.update(updatedPass);
-            request.onsuccess = function() {
-              console.log('Deleted...');
-              setTimeout(function() {
-                // win = window.close();
-              }, 1000);
-            };
-
-          }
-          cursor.continue();
-        } else {
-
-        }
-      };
       alert("Your account has been deleted from website.");
       document.getElementById("mp10_el_api").style.display = "none";
       document.getElementById("mp10_el_local").style.display = "block";
@@ -1353,40 +1283,6 @@ function change2to7() {
       // var objectStore = db.transaction("accounts").objectStore("accounts");
       console.log("row4 wants to be deleted");
       $(".row4").addClass("off");
-      objectStore.openCursor().onsuccess = function(event) {
-        var cursor = event.target.result;
-
-        if (cursor) {
-
-          if (cursor.key == 4) {
-
-            var request = cursor.delete();
-            // var deleteAcc = {
-            //   // masterEmail: masterEmail,
-            //   loginEmail: cursor.value.loginEmail,
-            //   loginPassword: updatedPass,
-            //   loginWebsite: cursor.value.loginWebsite,
-            //   login: "0",
-            //   created: new Date().getTime()
-            // }
-            // var objectStoreRequest = objectStore.delete(deleteAcc);
-
-            // var request = objectStore.add(updated);
-
-            // const request = cursor.update(updatedPass);
-            request.onsuccess = function() {
-              console.log('Deleted...');
-              setTimeout(function() {
-                // win = window.close();
-              }, 1000);
-            };
-
-          }
-          cursor.continue();
-        } else {
-
-        }
-      };
       alert("Your account has been deleted from website.");
       document.getElementById("mp10_el_api").style.display = "none";
       document.getElementById("mp10_el_local").style.display = "block";
@@ -1563,40 +1459,6 @@ function change2to7() {
       // var objectStore = db.transaction("accounts").objectStore("accounts");
       console.log("row5 wants to be deleted");
       $(".row5").addClass("off");
-      objectStore.openCursor().onsuccess = function(event) {
-        var cursor = event.target.result;
-
-        if (cursor) {
-
-          if (cursor.key == 5) {
-
-            var request = cursor.delete();
-            // var deleteAcc = {
-            //   // masterEmail: masterEmail,
-            //   loginEmail: cursor.value.loginEmail,
-            //   loginPassword: updatedPass,
-            //   loginWebsite: cursor.value.loginWebsite,
-            //   login: "0",
-            //   created: new Date().getTime()
-            // }
-            // var objectStoreRequest = objectStore.delete(deleteAcc);
-
-            // var request = objectStore.add(updated);
-
-            // const request = cursor.update(updatedPass);
-            request.onsuccess = function() {
-              console.log('Deleted...');
-              setTimeout(function() {
-                // win = window.close();
-              }, 1000);
-            };
-
-          }
-          cursor.continue();
-        } else {
-
-        }
-      };
       alert("Your account has been deleted from website.");
       document.getElementById("mp10_el_api").style.display = "none";
       document.getElementById("mp10_el_local").style.display = "block";
@@ -1773,40 +1635,6 @@ function change2to7() {
       // var objectStore = db.transaction("accounts").objectStore("accounts");
       console.log("row6 wants to be deleted");
       $(".row6").addClass("off");
-      objectStore.openCursor().onsuccess = function(event) {
-        var cursor = event.target.result;
-
-        if (cursor) {
-
-          if (cursor.key == 6) {
-
-            var request = cursor.delete();
-            // var deleteAcc = {
-            //   // masterEmail: masterEmail,
-            //   loginEmail: cursor.value.loginEmail,
-            //   loginPassword: updatedPass,
-            //   loginWebsite: cursor.value.loginWebsite,
-            //   login: "0",
-            //   created: new Date().getTime()
-            // }
-            // var objectStoreRequest = objectStore.delete(deleteAcc);
-
-            // var request = objectStore.add(updated);
-
-            // const request = cursor.update(updatedPass);
-            request.onsuccess = function() {
-              console.log('Deleted...');
-              setTimeout(function() {
-                // win = window.close();
-              }, 1000);
-            };
-
-          }
-          cursor.continue();
-        } else {
-
-        }
-      };
       alert("Your account has been deleted from website.");
       document.getElementById("mp10_el_api").style.display = "none";
       document.getElementById("mp10_el_local").style.display = "block";
