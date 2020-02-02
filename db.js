@@ -2036,24 +2036,30 @@ function change5to4() {
 
 function change5to6() {
   // document.getElementById("p1").style.display = "none";
+
+
   websiteP = $("#websiteNameP5").val();
   localStorage.setItem("websiteDup", websiteP)
   if (websiteP != "") {
-    chrome.storage.sync.set({
-      'websiteP': websiteP
-    }, function() {
-      console.log('Settings saved');
-    });
+    if (websiteP.includes("amazon") || websiteP.includes("Amazon") || websiteP.includes("webmail") || websiteP.includes("Webmail")) {
+      chrome.storage.sync.set({
+        'websiteP': websiteP
+      }, function () {
+        console.log('Settings saved');
+      });
 
-    chrome.storage.sync.get(['websiteP'], function(items) {
-      // console.log('Saved ' + items.websiteP);
-      websiteBold = document.querySelector(".websiteBold");
-      websiteBold.innerText = items.websiteP;
-      websiteBold1 = document.querySelector(".websiteBold1");
-      websiteBold1.innerText = items.websiteP;
-    });
-    $('#p5').hide(500);
-    document.getElementById("p6").style.display = "block";
+      chrome.storage.sync.get(['websiteP'], function (items) {
+        // console.log('Saved ' + items.websiteP);
+        websiteBold = document.querySelector(".websiteBold");
+        websiteBold.innerText = items.websiteP;
+        websiteBold1 = document.querySelector(".websiteBold1");
+        websiteBold1.innerText = items.websiteP;
+      });
+      $('#p5').hide(500);
+      document.getElementById("p6").style.display = "block";
+    } else {
+      alert("sorry :( \nIt seems we do not support creating an account on this website.")
+    }
   } else {
     alert("Please enter website name!");
   }
@@ -2738,7 +2744,7 @@ function dontLoadSignUp() {
       $(".logout").each(function(index) {
         localStorage.setItem("logoutEmail", note.masterEmail);
 
-        this.innerText = "Logout: " + note.masterEmail;
+        this.innerHTML = "Logout: " + note.masterEmail;
       });
 
 
