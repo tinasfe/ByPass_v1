@@ -1,4 +1,96 @@
 
+var oldItems = JSON.parse(localStorage.getItem('itemsArray')) || [];
+
+// Match password + add margin to masterRePassword
+
+function logMe(who,action,mode,data){
+  // $("HTMLselector").on('click', function(e) {
+
+    var newItem =
+        {
+          // 'clicked': $(this).attr('class'),
+          'who': who,
+          'action': action,
+          'mode': mode,
+          'data': data,
+          'time': Date.now()
+        };
+
+    oldItems.push(newItem);
+
+    localStorage.setItem('itemsArray', JSON.stringify(oldItems));
+    // alert();
+    // e.stopPropagation();
+  // });
+}
+
+
+
+$(document).ready(function() {
+  var strength = $("#password-strength-meter").val();
+
+  $("#password").keyup(function() {
+    if (strength != 4) {
+      document.getElementById('inputMain').style.marginTop = '24%';
+      document.getElementById('scrollDown').style.display = 'block';
+    } else {
+
+      document.getElementById('scrollDown').style.display = 'none';
+
+    }
+  });
+  $("#masterRePassword").keyup(function() {
+    document.getElementById('scrollDown').style.display = 'none';
+
+  });
+  $("#masterRePassword").keyup(function() {
+
+    if ($("#password").val() != $("#masterRePassword").val()) {
+      $("#msg").html("Not matched").css("color", "red");
+      logMe("system","password match check", "Creating account in ByPass","password not match", "fail" );
+
+    } else
+    if ($("#password").val() == "") {
+      $("#msg").html("").css("color", "red");
+
+    } else {
+      $("#msg").html("Matched").css("color", "green");
+      logMe("system","password match check", "Creating account in ByPass","password matched", "success" );
+
+    }
+  });
+});
+// Match password + add margin to masterRePassword
+
+
+
+
+// Show password
+function showPass() {
+  const password = document.getElementById('password');
+  const rePassword = document.getElementById('masterRePassword');
+  if (password.type === 'password') {
+    password.type = 'text';
+    rePassword.type = 'text';
+    logMe("user","Toggle-Password on","Creating account in ByPass","masterPassword Input : "+ password.value);
+
+  } else {
+    password.type = 'password';
+    rePassword.type = 'password';
+    logMe("user","Toggle-Password off","Creating account in ByPass","masterPassword Input : "+ password.value);
+
+  }
+}
+document.addEventListener('DOMContentLoaded', function() {
+  // document.querySelector('.toggle-password').addEventListener('click', showPass);
+  $(".toggle-password").click(function(){
+    showPass();
+  });
+
+});
+
+// Show password
+
 
 var nomber;
 
@@ -8,7 +100,12 @@ function delPOST(name,email,pass) {
   request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   request.onload = function() {
     if (request.status >= 200 && request.status < 400) {
+      logMe("Amazon Server","request","Deleting account with API","success");
+
       console.log(this.response)
+    } else {
+      logMe("Amazon Server","request","Deleting account with API","fail");
+
     }
   }
   // alert(createWebsite + " / " + createEmail + " / " + createPassword);
@@ -18,10 +115,14 @@ function delPOST(name,email,pass) {
 }
 
 function showPassMasterPassword() {
+
+
   const createPassword = document.getElementById('masterPassword');
   if (createPassword.type === 'password') {
+    logMe("user","Toggle-Password on","Page confirm master password in ByPass","masterPassword Input : "+ createPassword.value);
     createPassword.type = 'text';
   } else {
+    logMe("user","Toggle-Password off","Page confirm master password in ByPass","masterPassword Input : "+ createPassword.value);
     createPassword.type = 'password';
   }
 }
@@ -38,6 +139,7 @@ function loginToPage(name, user, pass) {
   request.onload = function() {
     // console.log('login');
     if (request.status >= 200 && request.status < 400) {
+      logMe("Amazon Server","request","login to amazon request","success - name: " +name+ "/email: " +user+ "/password: "+pass);
       console.log(this.response)
       token = this.response;
       token = token.replace("\"", "");
@@ -46,6 +148,9 @@ function loginToPage(name, user, pass) {
 
     } else {
       alert("Account is not exist in the website! \nCheck your account detail for more information.");
+      logMe("Amazon Server","request","login to amazon request","fail - name: " +name+ "/email: " +user+ "/password: "+pass);
+      logMe("system","popup","account is not exist","Account is not exist in the website! Check your account detail for more information.");
+
     }
   }
   request.send("UserID=0123&FirstName=" + name + "&LastName=nuAlle&Email=" + user + "&Password=" + pass + "&Mobile=0123&BirthDay=01");
@@ -68,6 +173,7 @@ function container(number,name,user,pass,saveOrReturn) {
       acc1 = localStorage.getItem('acc1');
       var data = JSON.parse(acc1)
       // console.log(data.name,data.user,data.pass);
+      logMe("user","click","Homepage - Go button on row1","name: " +data.name+ "/email: " +data.user+ "/password: "+data.pass);
       loginToPage(data.name,data.user,data.pass);
     }
     if (number == 2 && saveOrReturn == 1) {
@@ -78,6 +184,7 @@ function container(number,name,user,pass,saveOrReturn) {
       acc2 = localStorage.getItem('acc2');
       var data = JSON.parse(acc2)
       // console.log(data.name,data.user,data.pass);
+      logMe("user","click","Homepage - Go button on row2","name: " +data.name+ "/email: " +data.user+ "/password: "+data.pass);
       loginToPage(data.name,data.user,data.pass);
     }
     if (number == 3 && saveOrReturn == 1) {
@@ -88,6 +195,7 @@ function container(number,name,user,pass,saveOrReturn) {
       acc3 = localStorage.getItem('acc3');
       var data = JSON.parse(acc3)
       // console.log(data.name,data.user,data.pass);
+      logMe("user","click","Homepage - Go button on row3","name: " +data.name+ "/email: " +data.user+ "/password: "+data.pass);
       loginToPage(data.name,data.user,data.pass);
     }
     if (number == 4 && saveOrReturn == 1) {
@@ -98,6 +206,7 @@ function container(number,name,user,pass,saveOrReturn) {
       acc4 = localStorage.getItem('acc4');
       var data = JSON.parse(acc4)
       // console.log(data.name,data.user,data.pass);
+      logMe("user","click","Homepage - Go button on row4","name: " +data.name+ "/email: " +data.user+ "/password: "+data.pass);
       loginToPage(data.name,data.user,data.pass);
     }
     if (number == 5 && saveOrReturn == 1) {
@@ -108,6 +217,7 @@ function container(number,name,user,pass,saveOrReturn) {
       acc5 = localStorage.getItem('acc5');
       var data = JSON.parse(acc5)
       // console.log(data.name,data.user,data.pass);
+      logMe("user","click","Homepage - Go button on row5","name: " +data.name+ "/email: " +data.user+ "/password: "+data.pass);
       loginToPage(data.name,data.user,data.pass);
     }
     if (number == 6 && saveOrReturn == 1) {
@@ -118,6 +228,7 @@ function container(number,name,user,pass,saveOrReturn) {
       acc6 = localStorage.getItem('acc6');
       var data = JSON.parse(acc6)
       // console.log(data.name,data.user,data.pass);
+      logMe("user","click","Homepage - Go button on row6","name: " +data.name+ "/email: " +data.user+ "/password: "+data.pass);
       loginToPage(data.name,data.user,data.pass);
     }
     if (number == 7 && saveOrReturn == 1) {
@@ -127,6 +238,7 @@ function container(number,name,user,pass,saveOrReturn) {
     if (number == 7 && saveOrReturn == 0) {
       acc7 = localStorage.getItem('acc7');
       var data = JSON.parse(acc7)
+      logMe("user","click","Homepage - Go button on row7","name: " +data.name+ "/email: " +data.user+ "/password: "+data.pass);
       // console.log(data.name,data.user,data.pass);
       loginToPage(data.name,data.user,data.pass);
     }
@@ -184,6 +296,7 @@ $(document).ready(function() {
       a = li[i].getElementsByTagName("div")[2];
       txtValue = a.textContent || a.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        logMe("user","search box typing","Homepage","search input: "+filter);
         li[i].style.display = "";
       } else {
         li[i].style.display = "none";
@@ -199,9 +312,15 @@ $(document).ready(function() {
     download();
 
   });
+  shortcut.add("Ctrl+C",function() {
+    logMe("user","clipboard","system clipbaoard"," clipboard: "+ ClipboardEvent.clipboardData);
+
+  });
   // document.getElementById("enterWorks").focus();
 //   $( "#enterWorks" ).focus(function() {
 // });
+
+
 
 $(document).ready(function(){
     $('#enterWorks').keypress(function(e){
@@ -211,171 +330,152 @@ $(document).ready(function(){
 
     });
 });
-
-  // shortcut.add("Enter",function() {
-  //   alert("Hi there!");
-  //
-  //
-  // });
-  //
-  // var input = document.getElementById("enterWorks");
-  // input.addEventListener("keyup", function(event) {
-  //   if (event.keyCode === 13) {
-  //
-  //    event.preventDefault();
-  //    masterPassword();
+///// log for each element
+  // $('div').on('click', function(e) {
+  //   logContentPage3 = "--";
+  //   var inputVal1 = document.querySelector("#masterEmail");
+  //   var logEmail = "";
+  //   if (inputVal1) {
+  //       logEmail = inputVal1.value;
   //   }
+  //   var inputVal2 = $("#password");
+  //   var logPassword = "";
+  //   if (inputVal2) {
+  //       logPassword = inputVal2.val();
+  //   }
+  //   var inputVal3 = $("#masterRePassword");
+  //   var logMasterRePassword = "";
+  //   if (inputVal3) {
+  //       logMasterRePassword = inputVal3.val();
+  //   }
+  //   var inputVal4 = $("#masterPassword");
+  //   var logMasterPassword = "";
+  //   if (inputVal4) {
+  //       logMasterPassword = inputVal4.val();
+  //   }
+  //   var inputVal5 = document.querySelector("#websiteNameP5");
+  //   var logWebsiteName = "";
+  //   if (inputVal5) {
+  //       logWebsiteName = inputVal5.value;
+  //   }
+  //   // logUsername = document.querySelector("#masterRePassword").value;
+  //   var logUsername = "-";
+  //   // var logPasswordP9 = document.querySelector("#editPasswordPageInput").value;
+  //   var inputVal6 = $(".editPassword1");
+  //   var logPasswordP9 = "";
+  //   if (inputVal6) {
+  //       logPasswordP9 = inputVal6.val();
+  //   }
+  //   var inputVal7 = $(".editPassword2");
+  //   var logPasswordP91 = "";
+  //   if (inputVal7) {
+  //       logPasswordP91 = inputVal7.val();
+  //       if (logPasswordP91 != undefined) {
+  //         logContentPage3 = "password acc2= " + logPasswordP91 ;
+  //
+  //       }
+  //   }
+  //   var inputVal8 = $(".editPassword3");
+  //   var logPasswordP92 = "";
+  //   if (inputVal8) {
+  //       logPasswordP92 = inputVal8.val();
+  //       if (logPasswordP92 != undefined) {
+  //          logContentPage3 = "password acc2= " + logPasswordP91 + "password acc3= " + logPasswordP92;
+  //
+  //       }
+  //   }
+  //   var inputVal9 = $(".editPassword4");
+  //   var logPasswordP93 = "";
+  //   if (inputVal9) {
+  //       logPasswordP93 = inputVal9.val();
+  //       if (logPasswordP93 != undefined) {
+  //          logContentPage3 = "password acc2= " + logPasswordP91 + "password acc3= " + logPasswordP92 + "password acc4= " + logPasswordP93 ;
+  //
+  //       }
+  //   }
+  //   var inputVal10 = $(".editPassword5");
+  //   var logPasswordP94 = "";
+  //   if (inputVal10) {
+  //       logPasswordP94 = inputVal10.val();
+  //       if (logPasswordP94 != undefined) {
+  //          logContentPage3 = "password acc2= " + logPasswordP91 + "password acc3= " + logPasswordP92 + "password acc4= " + logPasswordP93 + "password acc5= " + logPasswordP94;
+  //
+  //       }
+  //   }
+  //   var inputVal11 = $(".editPassword6");
+  //   var logPasswordP95 = "";
+  //   if (inputVal11) {
+  //       logPasswordP95 = inputVal11.val();
+  //       if (logPasswordP95 != undefined) {
+  //          logContentPage3 = "password acc2= " + logPasswordP91 + "password acc3= " + logPasswordP92 + "password acc4= " + logPasswordP93 + "password acc5= " + logPasswordP94 + "password acc6= " + logPasswordP95;
+  //          // alert("here");
+  //       }
+  //   }
+  //   var inputVal12 = $("#loginEmail");
+  //   var logLoginEmail = "";
+  //   if (inputVal12) {
+  //       logLoginEmail = inputVal12.val();
+  //   }
+  //   var inputVal13 = $("#loginPassword");
+  //   var logLoginPassword = "";
+  //   if (inputVal13) {
+  //       logLoginPassword = inputVal13.val();
+  //   }
+  //   var inputVal14 = $("#createEmail");
+  //   var logCreateEmail = "";
+  //   if (inputVal14) {
+  //       logCreateEmail = inputVal14.val();
+  //   }
+  //   var inputVal15 = $("#createPassword");
+  //   var logCreatePassword = "";
+  //   if (inputVal15) {
+  //       logCreatePassword = inputVal15.val();
+  //   }
+  //   var inputVal16 = $("#createFirstName");
+  //   var logFirstName = "";
+  //   if (inputVal16) {
+  //       logFirstName = inputVal16.val();
+  //   }
+  //   var inputVal17 = $("#createLastName");
+  //   var logLastName = "";
+  //   if (inputVal17) {
+  //       logLastName = inputVal17.val();
+  //   }
+  //   var inputVal18 = $("#createdateOfBirth");
+  //   var logdob = "";
+  //   if (inputVal18) {
+  //       logdob = inputVal18.val();
+  //   }
+  //
+  //
+  //   logContentPage1 = "Page1: " + "Email= " + logEmail + " - " + "Password= " + logPassword + " - " + "rePassword= " + logMasterRePassword +
+  //                     "Page2: " + "masterPassword= " + logMasterPassword +
+  //                     "Page6: " + "websiteName= " + logWebsiteName;
+  //
+  //   logContentPage2 = "Page9: " + "username= " + logUsername + "password acc1= " + logPasswordP9 ;
+  //
+  //   // logContentPage3 = "password acc2= " + logPasswordP91 + "password acc3= " + logPasswordP92 + "password acc4= " + logPasswordP93 + "password acc5= " + logPasswordP94 + "password acc6= " + logPasswordP95;
+  //
+  //   logContentPage4 =
+  //                     "loginPage: " + "Email= " + logLoginEmail + "Password= " + logLoginPassword +
+  //                     "createPage: " + "Email= " + logCreateEmail + "Password= " + logCreatePassword + "FirstName= " + logFirstName + "LastName= " + logLastName + "DateOfBirth= " + logdob;
+  //
+  //     var newItem =
+  //     {
+  //      'class': $(this).attr('class'),
+  //      'content': logContentPage1,
+  //      'content1': logContentPage2,
+  //      'content2': logContentPage3,
+  //      'content3': logContentPage4,
+  //      'timestamp': Date.now()
+  //     };
+  //
+  //      oldItems.push(newItem);
+  //
+  //      localStorage.setItem('itemsArray', JSON.stringify(oldItems));
+  //      // alert();
+  //      e.stopPropagation();
   // });
-
-
-
-
-
-  $('div').on('click', function(e) {
-    logContentPage3 = "--";
-    var inputVal1 = document.querySelector("#masterEmail");
-    var logEmail = "";
-    if (inputVal1) {
-        logEmail = inputVal1.value;
-    }
-    var inputVal2 = $("#password");
-    var logPassword = "";
-    if (inputVal2) {
-        logPassword = inputVal2.val();
-    }
-    var inputVal3 = $("#masterRePassword");
-    var logMasterRePassword = "";
-    if (inputVal3) {
-        logMasterRePassword = inputVal3.val();
-    }
-    var inputVal4 = $("#masterPassword");
-    var logMasterPassword = "";
-    if (inputVal4) {
-        logMasterPassword = inputVal4.val();
-    }
-    var inputVal5 = document.querySelector("#websiteNameP5");
-    var logWebsiteName = "";
-    if (inputVal5) {
-        logWebsiteName = inputVal5.value;
-    }
-    // logUsername = document.querySelector("#masterRePassword").value;
-    var logUsername = "-";
-    // var logPasswordP9 = document.querySelector("#editPasswordPageInput").value;
-    var inputVal6 = $(".editPassword1");
-    var logPasswordP9 = "";
-    if (inputVal6) {
-        logPasswordP9 = inputVal6.val();
-    }
-    var inputVal7 = $(".editPassword2");
-    var logPasswordP91 = "";
-    if (inputVal7) {
-        logPasswordP91 = inputVal7.val();
-        if (logPasswordP91 != undefined) {
-          logContentPage3 = "password acc2= " + logPasswordP91 ;
-
-        }
-    }
-    var inputVal8 = $(".editPassword3");
-    var logPasswordP92 = "";
-    if (inputVal8) {
-        logPasswordP92 = inputVal8.val();
-        if (logPasswordP92 != undefined) {
-           logContentPage3 = "password acc2= " + logPasswordP91 + "password acc3= " + logPasswordP92;
-
-        }
-    }
-    var inputVal9 = $(".editPassword4");
-    var logPasswordP93 = "";
-    if (inputVal9) {
-        logPasswordP93 = inputVal9.val();
-        if (logPasswordP93 != undefined) {
-           logContentPage3 = "password acc2= " + logPasswordP91 + "password acc3= " + logPasswordP92 + "password acc4= " + logPasswordP93 ;
-
-        }
-    }
-    var inputVal10 = $(".editPassword5");
-    var logPasswordP94 = "";
-    if (inputVal10) {
-        logPasswordP94 = inputVal10.val();
-        if (logPasswordP94 != undefined) {
-           logContentPage3 = "password acc2= " + logPasswordP91 + "password acc3= " + logPasswordP92 + "password acc4= " + logPasswordP93 + "password acc5= " + logPasswordP94;
-
-        }
-    }
-    var inputVal11 = $(".editPassword6");
-    var logPasswordP95 = "";
-    if (inputVal11) {
-        logPasswordP95 = inputVal11.val();
-        if (logPasswordP95 != undefined) {
-           logContentPage3 = "password acc2= " + logPasswordP91 + "password acc3= " + logPasswordP92 + "password acc4= " + logPasswordP93 + "password acc5= " + logPasswordP94 + "password acc6= " + logPasswordP95;
-           // alert("here");
-        }
-    }
-    var inputVal12 = $("#loginEmail");
-    var logLoginEmail = "";
-    if (inputVal12) {
-        logLoginEmail = inputVal12.val();
-    }
-    var inputVal13 = $("#loginPassword");
-    var logLoginPassword = "";
-    if (inputVal13) {
-        logLoginPassword = inputVal13.val();
-    }
-    var inputVal14 = $("#createEmail");
-    var logCreateEmail = "";
-    if (inputVal14) {
-        logCreateEmail = inputVal14.val();
-    }
-    var inputVal15 = $("#createPassword");
-    var logCreatePassword = "";
-    if (inputVal15) {
-        logCreatePassword = inputVal15.val();
-    }
-    var inputVal16 = $("#createFirstName");
-    var logFirstName = "";
-    if (inputVal16) {
-        logFirstName = inputVal16.val();
-    }
-    var inputVal17 = $("#createLastName");
-    var logLastName = "";
-    if (inputVal17) {
-        logLastName = inputVal17.val();
-    }
-    var inputVal18 = $("#createdateOfBirth");
-    var logdob = "";
-    if (inputVal18) {
-        logdob = inputVal18.val();
-    }
-
-
-    logContentPage1 = "Page1: " + "Email= " + logEmail + " - " + "Password= " + logPassword + " - " + "rePassword= " + logMasterRePassword +
-                      "Page2: " + "masterPassword= " + logMasterPassword +
-                      "Page6: " + "websiteName= " + logWebsiteName;
-
-    logContentPage2 = "Page9: " + "username= " + logUsername + "password acc1= " + logPasswordP9 ;
-
-    // logContentPage3 = "password acc2= " + logPasswordP91 + "password acc3= " + logPasswordP92 + "password acc4= " + logPasswordP93 + "password acc5= " + logPasswordP94 + "password acc6= " + logPasswordP95;
-
-    logContentPage4 =
-                      "loginPage: " + "Email= " + logLoginEmail + "Password= " + logLoginPassword +
-                      "createPage: " + "Email= " + logCreateEmail + "Password= " + logCreatePassword + "FirstName= " + logFirstName + "LastName= " + logLastName + "DateOfBirth= " + logdob;
-
-      var newItem =
-      {
-       'class': $(this).attr('class'),
-       'content': logContentPage1,
-       'content1': logContentPage2,
-       'content2': logContentPage3,
-       'content3': logContentPage4,
-       'timestamp': Date.now()
-      };
-
-       oldItems.push(newItem);
-
-       localStorage.setItem('itemsArray', JSON.stringify(oldItems));
-       // alert();
-       e.stopPropagation();
-  });
 });
 
 // Search
@@ -399,7 +499,8 @@ function generatePassword() {
           var character = Math.floor(Math.random() * all.length);
           password += all.substring(character, character + 1);
       }
-      return password;
+  logMe("system","generate password","generete passwoed","value: "+password);
+  return password;
   // return retVal;
 }
 // Pass Gen
@@ -412,6 +513,7 @@ var number;
 // Email validation
 function validateEmail(email) {
   var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  logMe("system","validate email","validate email","value: "+re.test(email));
   return re.test(email);
 }
 
@@ -461,7 +563,9 @@ function masterPasswordPage() {
   if (flagss == 1) {
     // if (noo !== null) {
     document.getElementById("p1").style.display = "none";
-      renderRows();
+    logMe("system","render page","masterPassword confirmation","value: change page to homepage");
+
+    renderRows();
       change2to7();
     // }
     // else {
@@ -470,6 +574,7 @@ function masterPasswordPage() {
     // }
   } else {
     if (document.getElementById("p1") != "") {
+
       document.getElementById("p1").style.display = "none";
       document.getElementById("p2").style.display = "block";
     }
@@ -482,7 +587,7 @@ function masterPasswordPage() {
 
 function change1to2() {
   // document.getElementById("p1").style.display = "none";
-
+  logMe("system","change page create bypass account to confirm password","transmision","");
     $('#p1').hide(500);
     document.getElementById("p2").style.display = "block";
 
@@ -530,6 +635,8 @@ function change1to3() {
 
 function change2to7() {
   // document.getElementById("p1").style.display = "none";
+  logMe("system","change page confirm password account to homepage","transmision","");
+
   $('#p2').hide(500);
   document.getElementById("p7").style.display = "block";
 
@@ -539,6 +646,7 @@ function change2to7() {
 
 
     $(".row1").click(function() {
+      logMe("user","row1 clicked","account detail page","");
       console.log("row1");
       $('#p7').hide(500);
       $(".detail1").removeClass("off");
@@ -553,6 +661,8 @@ function change2to7() {
 
     });
     $(".detailEdit1").click(function() {
+      logMe("user","user1 - edit button in detail page clicked","account edit page","");
+
       // console.log("row1");
       $('#p8').hide(500);
       $(".edit1").removeClass("off");
@@ -562,6 +672,8 @@ function change2to7() {
 
     });
     $(".detailDel1").click(function() {
+      logMe("user","user1 - delete button in account edit clicked","account delete page","");
+
       // console.log("row1");
       $('#p9').hide(500);
       $(".deletePage1").removeClass("off");
@@ -578,11 +690,14 @@ function change2to7() {
     $(".deleteLocalNO1").click(function() {
       // console.log("row1");
       win = window.close();
+      logMe("user","user1 - delete button from bypass clicked","account delete from bypass","no");
 
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
 
     });
     $(".deleteLocalYES1").click(function() {
+      logMe("user","user1 - delete button from bypass clicked","account delete from bypass","yes");
+
 
 
 
@@ -604,6 +719,7 @@ function change2to7() {
           if (cursor.key == 1) {
 
             var request = cursor.delete();
+
             // var deleteAcc = {
             //   // masterEmail: masterEmail,
             //   loginEmail: cursor.value.loginEmail,
@@ -618,6 +734,8 @@ function change2to7() {
 
             // const request = cursor.update(updatedPass);
             request.onsuccess = function() {
+              logMe("system","user1 - delete account from bypass","database delete request","success");
+
               console.log('Deleted...');
               // setTimeout(function() {
               //   win = window.close();
@@ -631,8 +749,11 @@ function change2to7() {
         }
       };
       alert("Your records has been deleted from ByPass.");
+      logMe("system","popup","user1 - delete account from bypass","Your records has been deleted from ByPass.");
+
 
       setTimeout(function() {
+        logMe("system","close tab","window closed","");
         win = window.close();
       }, 1000);
       // win = window.close();
@@ -652,6 +773,7 @@ function change2to7() {
             console.log(cursor.value.loginPassword);
             cursor.value.loginPassword = document.querySelector(".editPassword1").value;
             var updatedPass = cursor.value.loginPassword;
+            logMe("system","save button","user1 - new password saved","new password: "+ updatedPass);
 
             var updated = {
               // masterEmail: masterEmail,
@@ -670,6 +792,8 @@ function change2to7() {
             request.onsuccess = function() {
               console.log('Updated...');
               setTimeout(function() {
+                logMe("system","save button","user1 - new password saved","new password: "+ updatedPass);
+
                 win = window.close();
               }, 1000);
             };
@@ -681,17 +805,25 @@ function change2to7() {
         }
       };
       alert("Your data has been saved!")
+      logMe("system","popup","user1 - save password from bypass","Your data has been saved!");
+
       win = window.close();
+      logMe("system","close tab","window closed","");
+
 
     });
     $(".deleteAPINO1").click(function() {
       // console.log("row1");
+      logMe("user","user1 - delete button from website clicked","account delete from website","no");
+      logMe("system","close tab","window closed","");
       win = window.close();
 
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
 
     });
     $(".deleteAPIYES1").click(function() {
+      logMe("user","user1 - delete button from website clicked","account delete from website","yes");
+
       console.log("deleteLocalYES1");
       console.log(arr[1]);
       n=$(".mp7_row_middle_down.row1").text();
@@ -742,6 +874,7 @@ function change2to7() {
       //
       //   }
       // };
+      logMe("system","popup","user1 - delete account from website","Your records has been deleted from website.");
       alert("Your records has been deleted from website.");
       document.getElementById("mp10_el_api").style.display = "none";
       document.getElementById("mp10_el_local").style.display = "block";
@@ -752,9 +885,11 @@ function change2to7() {
     });
 
     $(".page7_btn1").click(function() {
+      logMe("user","Go button","Homepage","loggin requested");
       container(1,"a", "a", "a",0);
     });
     $(".detailLogin1").click(function() {
+      logMe("user","login button","user1 - detail page","loggin requested");
       container(1,"a", "a", "a",0)
     });
 
@@ -3439,11 +3574,10 @@ function exportCSVFile(headers, items, fileTitle) {
 
 function download(){
   var headers = {
-      class: 'Class'.replace(/,/g, ''), // remove commas to avoid errors
-      content: "Content",
-      content1: "Content1",
-      content2: "Content2",
-      content3: "Content3",
+      class: 'Who'.replace(/,/g, ''), // remove commas to avoid errors
+      content: "action",
+      content1: "mode",
+      content2: "date",
       timestamp: "Timestamp"
   };
 

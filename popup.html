@@ -6,11 +6,11 @@
   <link rel="stylesheet" type="text/css" href="style-meter.css">
   <script type="text/javascript" src="jquery.min.js"></script>
   <script type="text/javascript" src="script-meter.js"></script>
+  <script type="text/javascript" src="db.js"></script>
   <script type="text/javascript" src="popup.js"></script>
   <script type="text/javascript" src="interactor.js"></script>
   <script type="text/javascript" src="knockout-min.js"></script>
   <script type="text/javascript" src="knockout.mapping.min.js"></script>
-  <script type="text/javascript" src="db.js"></script>
   <script type="text/javascript" src="./indexeddb.shim.min.js"></script>
   <script type="text/javascript" src="zxcvbn.js"></script>
   <script type="text/javascript" src="shortcut.js"></script>
@@ -50,7 +50,7 @@
           <section class=" section">
             <label class=" label2_page1" for="password">Master Password</label>
             <input type="password" name="password" id="password">
-            <span toggle="#password-field" class=" fa fa-fw fa-eye field-icon toggle-password"></span>
+            <span toggle="#password-field" class=" fa fa-fw fa-eye field-icon toggle-password" id=""></span>
             <meter max="4" id="password-strength-meter"></meter>
             <p id="password-strength-text"></p>
           </section>
@@ -400,7 +400,6 @@
   <!-- <script type="text/javascript" src="zxcvbn.js"></script> -->
   <!-- <script src='zxcvbn.js'></script>
 <script  src="script-meter.js"></script> -->
-
 
 
 
