@@ -72,12 +72,12 @@ function showPass() {
   if (password.type === 'password') {
     password.type = 'text';
     rePassword.type = 'text';
-    logMe("user","Toggle-Password on","Creating account in ByPass","masterPassword Input : "+ password.value);
+    logMe("user","Toggle-Password on","Creating account in ByPass","Password Confirm Input : "+ password.value);
 
   } else {
     password.type = 'password';
     rePassword.type = 'password';
-    logMe("user","Toggle-Password off","Creating account in ByPass","masterPassword Input : "+ password.value);
+    logMe("user","Toggle-Password off","Creating account in ByPass","Password Confirm Input : "+ password.value);
 
   }
 }
@@ -147,7 +147,7 @@ function loginToPage(name, user, pass) {
       window.open("http://amazon.safaie.ca/Users/Apilogin?username=" + user + "&token=" + token, '_blank');
 
     } else {
-      alert("Account is not exist in the website! \nCheck your account detail for more information.");
+      alert("Account does not exist in the website! \nCheck your account detail for more information.");
       logMe("Amazon Server","request","login to amazon request","fail - name: " +name+ "/email: " +user+ "/password: "+pass);
       logMe("system","popup","account is not exist","Account is not exist in the website! Check your account detail for more information.");
 
@@ -3083,6 +3083,7 @@ function addFromCreate() {
                request.open('POST', 'http://webmail.montreal-events.com/api/v1/add/mailbox', true);
                request.setRequestHeader("Content-Type", "application/json");
                request.setRequestHeader("Authorization","79DC3B-86B430-C222C7-8C9D02-6EEBCB");
+               request.setRequestHeader('Access-Control-Allow-Origin','*');
 
                request.onload = function() {
                  if (request.status >= 200 && request.status < 400) {
@@ -3090,7 +3091,7 @@ function addFromCreate() {
                  }
                }
                // var attr = {"local_part":res[0],"domain":"montreal-events.com","name":"ByPass User","quota":"200","password":createPassword,"password2":createPassword,"active":"1"}
-               var attr = {"local_part":res[0],"domain":"montreal-events.com","name":"ByPass User","quota":"300","password":createPassword,"password2":createPassword,"active":"1"}
+               var attr = {"local_part":res[0],"domain":"webmail.com","name":"ByPass User","quota":"300","password":createPassword,"password2":createPassword,"active":"1"}
                // alert(createWebsite + " / " + createEmail + " / " + createPassword);
                // request.send("UserID=897987&FirstName=AMAZON&LastName=nuAlle&Email="+loginEmail+"&Password="+loginPassword+"&Mobile=0123&BirthDay=222")
                // request.send("UserID=897987&FirstName=" + createName + "&LastName=nuAlle&Email=" + createEmail + "&Password=" + createPassword + "&Mobile=0123&BirthDay=01")
@@ -3577,7 +3578,7 @@ function download(){
       class: 'Who'.replace(/,/g, ''), // remove commas to avoid errors
       content: "action",
       content1: "mode",
-      content2: "date",
+      content2: "data",
       timestamp: "Timestamp"
   };
 
