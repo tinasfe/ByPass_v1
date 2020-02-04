@@ -827,6 +827,7 @@ display: none;
   height: 2em;
   margin-top: 20%;
   float: right;
+  margin-right: -28px;
 }
 /*----------------------------------------------Page 7  */
 /*----------------------------------------------Page 8  */
@@ -1848,18 +1849,19 @@ padding: 10px;
 /* padding-right: 55px; */
 border-radius: 10px;
 color: white;
-margin-left: 10em;
+margin-left: 1em;
 float: left;
 
-margin-top: -2.5em;
+margin-top: 1.5em;
 
-/* font-size: 20px; */
+ font-size: 13px;
 cursor: pointer;
 
   }
 
 .len{
-  margin-top:5%;
+  margin-top: 13%;
+
   width: 5% !important;
   margin-left: 4%;
 }

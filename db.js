@@ -1,4 +1,6 @@
 
+
+
 var oldItems = JSON.parse(localStorage.getItem('itemsArray')) || [];
 
 // Match password + add margin to masterRePassword
@@ -29,7 +31,11 @@ function logMe(who,action,mode,data){
 $(document).ready(function() {
   var strength = $("#password-strength-meter").val();
 
-  $("#password").keyup(function() {
+  $("#createPassword").keyup(function() {
+    document.getElementById('passLength').value =     document.getElementById('createPassword').value.length;
+  });
+
+    $("#password").keyup(function() {
     if (strength != 4) {
       document.getElementById('inputMain').style.marginTop = '24%';
       document.getElementById('scrollDown').style.display = 'block';
@@ -61,6 +67,7 @@ $(document).ready(function() {
   });
 });
 // Match password + add margin to masterRePassword
+
 
 
 
@@ -147,7 +154,8 @@ function loginToPage(name, user, pass) {
       window.open("http://amazon.safaie.ca/Users/Apilogin?username=" + user + "&token=" + token, '_blank');
 
     } else {
-      alert("Account does not exist in the website! \nCheck your account detail for more information.");
+      alert("Hmm... There was an error undrestanding request.");
+      // alert("Account does not exist in the website! \nCheck your account detail for more information.");
       logMe("Amazon Server","request","login to amazon request","fail - name: " +name+ "/email: " +user+ "/password: "+pass);
       logMe("system","popup","account is not exist","Account is not exist in the website! Check your account detail for more information.");
 
@@ -316,6 +324,7 @@ $(document).ready(function() {
     logMe("user","clipboard","system clipbaoard"," clipboard: "+ ClipboardEvent.clipboardData);
 
   });
+
   // document.getElementById("enterWorks").focus();
 //   $( "#enterWorks" ).focus(function() {
 // });
@@ -646,7 +655,7 @@ function change2to7() {
 
 
     $(".row1").click(function() {
-      logMe("user","row1 clicked","account detail page","");
+      logMe("user","user1 - row1 clicked","account detail page","");
       console.log("row1");
       $('#p7').hide(500);
       $(".detail1").removeClass("off");
@@ -806,9 +815,9 @@ function change2to7() {
       };
       alert("Your data has been saved!")
       logMe("system","popup","user1 - save password from bypass","Your data has been saved!");
+      logMe("system","close tab","window closed","");
 
       win = window.close();
-      logMe("system","close tab","window closed","");
 
 
     });
@@ -835,7 +844,7 @@ function change2to7() {
       var objectStore = transaction.objectStore("accounts");
       // var objectStore = db.transaction("accounts").objectStore("accounts");
       console.log("row1 wants to be deleted");
-      $(".row1").addClass("off");
+      // $(".row1").addClass("off");
       // objectStore.openCursor().onsuccess = function(event) {
       //   var cursor = event.target.result;
       //
@@ -880,12 +889,13 @@ function change2to7() {
       document.getElementById("mp10_el_local").style.display = "block";
       $('#mp10_el_api').hide(500);
       $('#mp10_el_local').show(500);
+      $('.mp10_jooje').show(500);
       $("#mp10_el_local").animate({marginTop: "-=100px"});
       // win = window.close();
     });
 
     $(".page7_btn1").click(function() {
-      logMe("user","Go button","Homepage","loggin requested");
+      logMe("user","Go button - user2","Homepage","loggin requested");
       container(1,"a", "a", "a",0);
     });
     $(".detailLogin1").click(function() {
@@ -893,9 +903,31 @@ function change2to7() {
       container(1,"a", "a", "a",0)
     });
 
+  // $(".radiobtn1-1").click(function() {
+  //   $('.radiobtn1-1').attr('checked', 'checked');
+  //   $('.radiobtn2-1').removeAttr('checked');
+  //   $('.radiobtn3-1').removeAttr('checked');;
+  //   logMe("user","30 day option","edit account page","selected");
+  // });
+  // $(".radiobtn2-1").click(function() {
+  //   $('.radiobtn2-1').attr('checked', 'checked');
+  //   $('.radiobtn1-1').removeAttr('checked');
+  //   $('.radiobtn3-1').removeAttr('checked');;
+  //   logMe("user","60 day option","edit account page","selected");
+  // });
+  // $(".radiobtn3-1").click(function() {
+  //   $('.radiobtn3-1').attr('checked', 'checked');
+  //   $('.radiobtn2-1').removeAttr('checked');
+  //   $('.radiobtn1-1').removeAttr('checked');;
+  //   logMe("user","90 day option","edit account page","selected");
+  //
+  // });
+
 
 
     $(".row2").click(function() {
+      logMe("user","user2 - row2 clicked","account detail page","");
+
       console.log("row2");
       $('#p7').hide(500);
       $(".detail2").removeClass("off");
@@ -910,6 +942,8 @@ function change2to7() {
 
     });
     $(".detailEdit2").click(function() {
+      logMe("user","user1 - edit button in detail page clicked","account edit page","");
+
       // console.log("row1");
       $('#p8').hide(500);
       $(".edit2").removeClass("off");
@@ -919,12 +953,16 @@ function change2to7() {
 
     });
     $(".page7_btn2").click(function() {
+      logMe("user","Go button - user2","Homepage","loggin requested");
       container(2,"a", "a", "a",0);
     });
     $(".detailLogin2").click(function() {
+      logMe("user","login button","user2 - detail page","loggin requested");
       container(2,"a", "a", "a",0)
     });
     $(".detailDel2").click(function() {
+      logMe("user","user2 - delete button in account edit clicked","account delete page","");
+
       // console.log("row1");
       $('#p9').hide(500);
       $(".deletePage2").removeClass("off");
@@ -939,6 +977,8 @@ function change2to7() {
 
     });
     $(".deleteLocalNO2").click(function() {
+      logMe("user","user2 - delete button from bypass clicked","account delete from bypass","no");
+
       // console.log("row1");
       win = window.close();
 
@@ -946,6 +986,7 @@ function change2to7() {
 
     });
     $(".deleteLocalYES2").click(function() {
+      logMe("user","user2 - delete button from bypass clicked","account delete from bypass","yes");
       console.log("deleteLocalYES2");
       console.log(arr[1]);
 
@@ -990,9 +1031,12 @@ function change2to7() {
         }
       };
       alert("Your account has been deleted from ByPass!");
+      logMe("system","popup","user2 - delete account from bypass","Your records has been deleted from ByPass.");
+
       // win = window.close();
 
       setTimeout(function() {
+        logMe("system","close tab","window closed","");
         win = window.close();
       }, 1000);
     });
@@ -1008,6 +1052,9 @@ function change2to7() {
         if (cursor) {
 
           if (cursor.key == 2) {
+            var updatedPass = cursor.value.loginPassword;
+            logMe("system","save button","user2 - new password saved","new password: "+ updatedPass);
+
             console.log(cursor.value.loginPassword);
             cursor.value.loginPassword = document.querySelector(".editPassword2").value;
             var updatedPass = cursor.value.loginPassword;
@@ -1029,6 +1076,7 @@ function change2to7() {
             request.onsuccess = function() {
               console.log('Updated...');
               setTimeout(function() {
+                logMe("system","save button","user2 - new password saved","new password: "+ updatedPass);
                 // win = window.close();
               }, 1000);
             };
@@ -1040,10 +1088,15 @@ function change2to7() {
         }
       };
       alert("Your data has been saved!")
+      logMe("system","popup","user2 - save password from bypass","Your data has been saved!");
+      logMe("system","close tab","window closed","");
       win = window.close();
+
 
     });
     $(".deleteAPINO2").click(function() {
+      logMe("user","user2 - delete button from website clicked","account delete from website","no");
+      logMe("system","close tab","window closed","");
       // console.log("row1");
       win = window.close();
 
@@ -1051,6 +1104,7 @@ function change2to7() {
 
     });
     $(".deleteAPIYES2").click(function() {
+      logMe("user","user2 - delete button from website clicked","account delete from website","yes");
       // console.log("row1");
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
       n=$(".mp7_row_middle_down.row2").text();
@@ -1061,12 +1115,13 @@ function change2to7() {
       var objectStore = transaction.objectStore("accounts");
       // var objectStore = db.transaction("accounts").objectStore("accounts");
       console.log("row2 wants to be deleted");
-      $(".row2").addClass("off");
+      // $(".row2").addClass("off");
       alert("Your account has been deleted from  website.");
       document.getElementById("mp10_el_api").style.display = "none";
       document.getElementById("mp10_el_local").style.display = "block";
       $('#mp10_el_api').hide(500);
       $('#mp10_el_local').show(500);
+      $('.mp10_jooje').show(500);
       $("#mp10_el_local").animate({marginTop: "-=100px"});
       // win = window.close();
 
@@ -1076,6 +1131,8 @@ function change2to7() {
 
 
     $(".row3").click(function() {
+      logMe("user","user3 - row3 clicked","account detail page","");
+
       console.log("row3");
       $('#p7').hide(500);
       $(".detail3").removeClass("off");
@@ -1088,6 +1145,8 @@ function change2to7() {
 
     });
     $(".detailEdit3").click(function() {
+      logMe("user","user3 - edit button in detail page clicked","account edit page","");
+
       // console.log("row1");
       $('#p8').hide(500);
       $(".edit3").removeClass("off");
@@ -1097,12 +1156,16 @@ function change2to7() {
 
     });
     $(".page7_btn3").click(function() {
+      logMe("user","Go button - user3","Homepage","loggin requested");
       container(3,"a", "a", "a",0);
     });
     $(".detailLogin3").click(function() {
+      logMe("user","login button","user3 - detail page","loggin requested");
       container(3,"a", "a", "a",0)
     });
     $(".detailDel3").click(function() {
+      logMe("user","user3 - delete button in account edit clicked","account delete page","");
+
       // console.log("row1");
       $('#p9').hide(500);
       $(".deletePage3").removeClass("off");
@@ -1117,6 +1180,8 @@ function change2to7() {
 
     });
     $(".deleteLocalNO3").click(function() {
+      logMe("user","user3 - delete button from bypass clicked","account delete from bypass","no");
+
       // console.log("row1");
       win = window.close();
 
@@ -1124,6 +1189,8 @@ function change2to7() {
 
     });
     $(".deleteLocalYES3").click(function() {
+      logMe("user","user3 - delete button from bypass clicked","account delete from bypass","yes");
+
       console.log("deleteLocalYES3");
       console.log(arr[1]);
 
@@ -1168,9 +1235,12 @@ function change2to7() {
         }
       };
       alert("Your account has been deleted from ByPass.");
+      logMe("system","popup","user3 - delete account from bypass","Your records has been deleted from ByPass.");
+
       // win = window.close();
 
       setTimeout(function() {
+        logMe("system","close tab","window closed","");
         win = window.close();
       }, 1000);
     });
@@ -1186,6 +1256,9 @@ function change2to7() {
         if (cursor) {
 
           if (cursor.key == 3) {
+            var updatedPass = cursor.value.loginPassword;
+            logMe("system","save button","user3 - new password saved","new password: "+ updatedPass);
+
             console.log(cursor.value.loginPassword);
             cursor.value.loginPassword = document.querySelector(".editPassword3").value;
             var updatedPass = cursor.value.loginPassword;
@@ -1207,6 +1280,8 @@ function change2to7() {
             request.onsuccess = function() {
               console.log('Updated...');
               setTimeout(function() {
+                logMe("system","save button","user3 - new password saved","new password: "+ updatedPass);
+
                 // win = window.close();
               }, 1000);
             };
@@ -1218,10 +1293,14 @@ function change2to7() {
         }
       };
       alert("Your data has been saved!")
+      logMe("system","popup","user3 - save password from bypass","Your data has been saved!");
+      logMe("system","close tab","window closed","");
       win = window.close();
 
     });
     $(".deleteAPINO3").click(function() {
+      logMe("user","user3 - delete button from website clicked","account delete from website","no");
+      logMe("system","close tab","window closed","");
       // console.log("row1");
       win = window.close();
 
@@ -1229,6 +1308,8 @@ function change2to7() {
 
     });
     $(".deleteAPIYES3").click(function() {
+      logMe("user","user3 - delete button from website clicked","account delete from website","yes");
+
       // console.log("row1");
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
       n=$(".mp7_row_middle_down.row3").text();
@@ -1239,12 +1320,13 @@ function change2to7() {
       var objectStore = transaction.objectStore("accounts");
       // var objectStore = db.transaction("accounts").objectStore("accounts");
       console.log("row3 wants to be deleted");
-      $(".row3").addClass("off");
+      // $(".row3").addClass("off");
       alert("Your account has been deleted from website.");
       document.getElementById("mp10_el_api").style.display = "none";
       document.getElementById("mp10_el_local").style.display = "block";
       $('#mp10_el_api').hide(500);
       $('#mp10_el_local').show(500);
+      $('.mp10_jooje').show(500);
       $("#mp10_el_local").animate({marginTop: "-=100px"});
       // win = window.close();
 
@@ -1254,6 +1336,8 @@ function change2to7() {
 
 
     $(".row4").click(function() {
+      logMe("user","user4 - row4 clicked","account detail page","");
+
       console.log("row4");
       $('#p7').hide(500);
       $(".detail4").removeClass("off");
@@ -1265,6 +1349,8 @@ function change2to7() {
       document.getElementById("p8").style.display = "block";
     });
     $(".detailEdit4").click(function() {
+      logMe("user","user4 - edit button in detail page clicked","account edit page","");
+
       // console.log("row1");
       $('#p8').hide(500);
       $(".edit4").removeClass("off");
@@ -1274,12 +1360,16 @@ function change2to7() {
 
     });
     $(".page7_btn4").click(function() {
+      logMe("user","Go button - user4","Homepage","loggin requested");
       container(4,"a", "a", "a",0);
     });
     $(".detailLogin4").click(function() {
+      logMe("user","login button","user4 - detail page","loggin requested");
       container(4,"a", "a", "a",0)
     });
     $(".detailDel4").click(function() {
+      logMe("user","user4 - delete button in account edit clicked","account delete page","");
+
       // console.log("row1");
       $('#p9').hide(500);
       $(".deletePage4").removeClass("off");
@@ -1294,6 +1384,8 @@ function change2to7() {
 
     });
     $(".deleteLocalNO4").click(function() {
+      logMe("user","user4 - delete button from bypass clicked","account delete from bypass","no");
+
       // console.log("row1");
       win = window.close();
 
@@ -1301,6 +1393,8 @@ function change2to7() {
 
     });
     $(".deleteLocalYES4").click(function() {
+      logMe("user","user4 - delete button from bypass clicked","account delete from bypass","yes");
+
       console.log("deleteLocalYES1");
       console.log(arr[4]);
 
@@ -1345,9 +1439,12 @@ function change2to7() {
         }
       };
       alert("Your account has been deleted from ByPass");
+      logMe("system","popup","user2 - delete account from bypass","Your records has been deleted from ByPass.");
+
       // win = window.close();
 
       setTimeout(function() {
+        logMe("system","close tab","window closed","");
         win = window.close();
       }, 1000);
 
@@ -1364,6 +1461,9 @@ function change2to7() {
         if (cursor) {
 
           if (cursor.key == 4) {
+            var updatedPass = cursor.value.loginPassword;
+            logMe("system","save button","user4 - new password saved","new password: "+ updatedPass);
+
             console.log(cursor.value.loginPassword);
             cursor.value.loginPassword = document.querySelector(".editPassword4").value;
             var updatedPass = cursor.value.loginPassword;
@@ -1385,6 +1485,8 @@ function change2to7() {
             request.onsuccess = function() {
               console.log('Updated...');
               setTimeout(function() {
+                logMe("system","save button","user4 - new password saved","new password: "+ updatedPass);
+
                 // win = window.close();
               }, 1000);
             };
@@ -1396,10 +1498,14 @@ function change2to7() {
         }
       };
       alert("Your data has been saved!")
+      logMe("system","popup","user2 - save password from bypass","Your data has been saved!");
+      logMe("system","close tab","window closed","");
       win = window.close();
 
     });
     $(".deleteAPINO4").click(function() {
+      logMe("user","user2 - delete button from website clicked","account delete from website","no");
+      logMe("system","close tab","window closed","");
       // console.log("row1");
       win = window.close();
 
@@ -1407,6 +1513,8 @@ function change2to7() {
 
     });
     $(".deleteAPIYES4").click(function() {
+      logMe("user","user4 - delete button from website clicked","account delete from website","yes");
+
       n=$(".mp7_row_middle_down.row4").text();
       e=$(".mp7_row_middle_down.row4").text();
       p=$(".mp7_row_middle_down.row4").text();
@@ -1417,12 +1525,13 @@ function change2to7() {
       var objectStore = transaction.objectStore("accounts");
       // var objectStore = db.transaction("accounts").objectStore("accounts");
       console.log("row4 wants to be deleted");
-      $(".row4").addClass("off");
+      // $(".row4").addClass("off");
       alert("Your account has been deleted from website.");
       document.getElementById("mp10_el_api").style.display = "none";
       document.getElementById("mp10_el_local").style.display = "block";
       $('#mp10_el_api').hide(500);
       $('#mp10_el_local').show(500);
+      $('.mp10_jooje').show(500);
       $("#mp10_el_local").animate({marginTop: "-=100px"});
       // win = window.close();
 
@@ -1431,6 +1540,8 @@ function change2to7() {
     });
 
     $(".row5").click(function() {
+      logMe("user","user5 - row5 clicked","account detail page","");
+
       // console.log("row5");
       $('#p7').hide(500);
       $(".detail5").removeClass("off");
@@ -1442,6 +1553,8 @@ function change2to7() {
       document.getElementById("p8").style.display = "block";
     });
     $(".detailEdit5").click(function() {
+      logMe("user","user5 - edit button in detail page clicked","account edit page","");
+
       // console.log("row1");
       $('#p8').hide(500);
       $(".edit5").removeClass("off");
@@ -1451,12 +1564,18 @@ function change2to7() {
 
     });
     $(".page7_btn5").click(function() {
+      logMe("user","Go button - user5","Homepage","loggin requested");
+
       container(5,"a", "a", "a",0);
     });
     $(".detailLogin5").click(function() {
+      logMe("user","login button","user2 - detail page","loggin requested");
+
       container(5,"a", "a", "a",0)
     });
     $(".detailDel5").click(function() {
+      logMe("user","user5 - delete button in account edit clicked","account delete page","");
+
       // console.log("row1");
       $('#p9').hide(500);
       $(".deletePage5").removeClass("off");
@@ -1471,6 +1590,8 @@ function change2to7() {
 
     });
     $(".deleteLocalNO5").click(function() {
+      logMe("user","user5 - delete button from bypass clicked","account delete from bypass","no");
+
       // console.log("row1");
       win = window.close();
 
@@ -1478,6 +1599,8 @@ function change2to7() {
 
     });
     $(".deleteLocalYES5").click(function() {
+      logMe("user","user5 - delete button from bypass clicked","account delete from bypass","yes");
+
       console.log("deleteLocalYES5");
       console.log(arr[5]);
 
@@ -1522,9 +1645,12 @@ function change2to7() {
         }
       };
       alert("Your account has been deleted from ByPass.");
+      logMe("system","popup","user2 - delete account from bypass","Your records has been deleted from ByPass.");
+
       // win = window.close();
 
       setTimeout(function() {
+        logMe("system","close tab","window closed","");
         win = window.close();
       }, 1000);
     });
@@ -1540,6 +1666,9 @@ function change2to7() {
         if (cursor) {
 
           if (cursor.key == 5) {
+            var updatedPass = cursor.value.loginPassword;
+            logMe("system","save button","user5 - new password saved","new password: "+ updatedPass);
+
             console.log(cursor.value.loginPassword);
             cursor.value.loginPassword = document.querySelector(".editPassword5").value;
             var updatedPass = cursor.value.loginPassword;
@@ -1561,6 +1690,8 @@ function change2to7() {
             request.onsuccess = function() {
               console.log('Updated...');
               setTimeout(function() {
+                logMe("system","save button","user5 - new password saved","new password: "+ updatedPass);
+
                 // win = window.close();
               }, 1000);
             };
@@ -1572,10 +1703,14 @@ function change2to7() {
         }
       };
       alert("Your data has been saved!")
+      logMe("system","popup","user5 - save password from bypass","Your data has been saved!");
+      logMe("system","close tab","window closed","");
       win = window.close();
 
     });
     $(".deleteAPINO5").click(function() {
+      logMe("user","user5 - delete button from website clicked","account delete from website","no");
+      logMe("system","close tab","window closed","");
       // console.log("row1");
       win = window.close();
 
@@ -1583,6 +1718,8 @@ function change2to7() {
 
     });
     $(".deleteAPIYES5").click(function() {
+      logMe("user","user5 - delete button from website clicked","account delete from website","yes");
+
       n=$(".mp7_row_middle_down.row5").text();
       e=$(".mp7_row_middle_down.row5").text();
       p=$(".mp7_row_middle_down.row5").text();
@@ -1593,12 +1730,13 @@ function change2to7() {
       var objectStore = transaction.objectStore("accounts");
       // var objectStore = db.transaction("accounts").objectStore("accounts");
       console.log("row5 wants to be deleted");
-      $(".row5").addClass("off");
+      // $(".row5").addClass("off");
       alert("Your account has been deleted from website.");
       document.getElementById("mp10_el_api").style.display = "none";
       document.getElementById("mp10_el_local").style.display = "block";
       $('#mp10_el_api').hide(500);
       $('#mp10_el_local').show(500);
+      $('.mp10_jooje').show(500);
       $("#mp10_el_local").animate({marginTop: "-=100px"});
       // win = window.close();
 
@@ -1607,6 +1745,8 @@ function change2to7() {
     });
 
     $(".row6").click(function() {
+      logMe("user","user6 - row6 clicked","account detail page","");
+
       // console.log("row6");
       $('#p7').hide(500);
       $(".detail6").removeClass("off");
@@ -1618,6 +1758,8 @@ function change2to7() {
       document.getElementById("p8").style.display = "block";
     });
     $(".detailEdit6").click(function() {
+      logMe("user","user6 - edit button in detail page clicked","account edit page","");
+
       // console.log("row1");
       $('#p8').hide(500);
       $(".edit6").removeClass("off");
@@ -1627,12 +1769,16 @@ function change2to7() {
 
     });
     $(".page7_btn6").click(function() {
+      logMe("user","Go button - user6","Homepage","loggin requested");
       container(6,"a", "a", "a",0)
     });
     $(".detailLogin6").click(function() {
+      logMe("user","login button","user6 - detail page","loggin requested");
       container(6,"a", "a", "a",0)
     });
     $(".detailDel6").click(function() {
+      logMe("user","user6 - delete button in account edit clicked","account delete page","");
+
       // console.log("row1");
       $('#p9').hide(500);
       $(".deletePage6").removeClass("off");
@@ -1648,12 +1794,16 @@ function change2to7() {
     });
     $(".deleteLocalNO6").click(function() {
       // console.log("row1");
+      logMe("user","user6 - delete button from bypass clicked","account delete from bypass","no");
+
       win = window.close();
 
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
 
     });
     $(".deleteLocalYES6").click(function() {
+      logMe("user","user6 - delete button from bypass clicked","account delete from bypass","yes");
+
       console.log("deleteLocalYES1");
       console.log(arr[6]);
 
@@ -1698,9 +1848,13 @@ function change2to7() {
         }
       };
       alert("Your account has been deleted from ByPass.");
+      logMe("system","popup","user6 - delete account from bypass","Your records has been deleted from ByPass.");
+
       // win = window.close();
 
       setTimeout(function() {
+        logMe("system","close tab","window closed","");
+
         win = window.close();
       }, 1000);
     });
@@ -1716,6 +1870,9 @@ function change2to7() {
         if (cursor) {
 
           if (cursor.key == 6) {
+            var updatedPass = cursor.value.loginPassword;
+            logMe("system","save button","user6 - new password saved","new password: "+ updatedPass);
+
             console.log(cursor.value.loginPassword);
             cursor.value.loginPassword = document.querySelector(".editPassword6").value;
             var updatedPass = cursor.value.loginPassword;
@@ -1737,6 +1894,8 @@ function change2to7() {
             request.onsuccess = function() {
               console.log('Updated...');
               setTimeout(function() {
+                logMe("system","save button","user6 - new password saved","new password: "+ updatedPass);
+
                 // win = window.close();
               }, 1000);
             };
@@ -1748,17 +1907,24 @@ function change2to7() {
         }
       };
       alert("Your data has been saved!")
+      logMe("system","popup","user6 - save password from bypass","Your data has been saved!");
+      logMe("system","close tab","window closed","");
       win = window.close();
 
     });
     $(".deleteAPINO6").click(function() {
       // console.log("row1");
+      logMe("user","user6 - delete button from website clicked","account delete from website","no");
+      logMe("system","close tab","window closed","");
+
       win = window.close();
 
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
 
     });
     $(".deleteAPIYES6").click(function() {
+      logMe("user","user6 - delete button from website clicked","account delete from website","yes");
+
       n=$(".mp7_row_middle_down.row6").text();
       e=$(".mp7_row_middle_down.row6").text();
       p=$(".mp7_row_middle_down.row6").text();
@@ -1769,12 +1935,13 @@ function change2to7() {
       var objectStore = transaction.objectStore("accounts");
       // var objectStore = db.transaction("accounts").objectStore("accounts");
       console.log("row6 wants to be deleted");
-      $(".row6").addClass("off");
+      // $(".row6").addClass("off");
       alert("Your account has been deleted from website.");
       document.getElementById("mp10_el_api").style.display = "none";
       document.getElementById("mp10_el_local").style.display = "block";
       $('#mp10_el_api').hide(500);
       $('#mp10_el_local').show(500);
+      $('.mp10_jooje').show(500);
       $("#mp10_el_local").animate({marginTop: "-=100px"});
       // win = window.close();
 
@@ -1783,6 +1950,8 @@ function change2to7() {
     });
 
     $(".mp8_back").click(function() {
+      logMe("user","back button clicked","detail page to home page","");
+
       console.log("back");
       document.getElementById("p7").style.display = "block";
       document.getElementById("p8").style.display = "none";
@@ -1795,6 +1964,8 @@ function change2to7() {
 
     });
     $(".mp8").click(function() {
+      logMe("user","home button clicked","detail page","");
+
       console.log("home");
       document.getElementById("p7").style.display = "block";
       document.getElementById("p8").style.display = "none";
@@ -1813,6 +1984,8 @@ function change2to7() {
 
     });
     $(".mp4_back").click(function() {
+      logMe("user","back button clicked","wizard page to home page","");
+
       console.log("back");
       document.getElementById("p7").style.display = "block";
       document.getElementById("p8").style.display = "none";
@@ -1833,6 +2006,8 @@ function change2to7() {
 
     });
     $(".mp4").click(function() {
+      logMe("user","home button clicked","wizard page","");
+
       console.log("home");
       document.getElementById("p7").style.display = "block";
       document.getElementById("p8").style.display = "none";
@@ -1852,6 +2027,8 @@ function change2to7() {
 
     });
     $(".mp5_back").click(function() {
+      logMe("user","back button clicked","website name page to wizard page","");
+
       console.log("back");
 
       document.getElementById("p7").style.display = "none";
@@ -1866,6 +2043,8 @@ function change2to7() {
 
     });
     $(".mp5").click(function() {
+      logMe("user","home button clicked","enter website name page","");
+
       console.log("home");
       document.getElementById("p7").style.display = "block";
       document.getElementById("p8").style.display = "none";
@@ -1885,6 +2064,8 @@ function change2to7() {
 
     });
     $(".mp6_back").click(function() {
+      logMe("user","back button clicked","login or create page to website name page","");
+
       console.log("back");
       document.getElementById("p7").style.display = "none";
       document.getElementById("p8").style.display = "none";
@@ -1897,6 +2078,8 @@ function change2to7() {
 
     });
     $(".mp6").click(function() {
+      logMe("user","home button clicked","login or create page","");
+
       console.log("home");
       document.getElementById("p7").style.display = "block";
       document.getElementById("p8").style.display = "none";
@@ -1915,6 +2098,8 @@ function change2to7() {
       }
     });
     $(".mp9_back").click(function() {
+      logMe("user","back button clicked","edit page to detail page","");
+
       console.log("back");
       document.getElementById("p7").style.display = "none";
       document.getElementById("p8").style.display = "block";
@@ -1927,6 +2112,8 @@ function change2to7() {
 
     });
     $(".mp9").click(function() {
+      logMe("user","home button clicked","edit page","");
+
       console.log("home");
       document.getElementById("p7").style.display = "block";
       document.getElementById("p8").style.display = "none";
@@ -1945,6 +2132,8 @@ function change2to7() {
 
     });
     $(".mp10_back").click(function() {
+      logMe("user","back button clicked","delete page to edit page","");
+
       console.log("back");
       document.getElementById("p7").style.display = "none";
       document.getElementById("p8").style.display = "block";
@@ -1959,6 +2148,8 @@ function change2to7() {
 
     });
     $(".mp10").click(function() {
+      logMe("user","home button clicked","edit page","");
+
       console.log("home");
       document.getElementById("p7").style.display = "block";
       document.getElementById("p8").style.display = "none";
@@ -1984,16 +2175,21 @@ function change2to7() {
 
     $(".changePass1").click(function() {
       document.querySelector(".editPassword1").value = generatePassword();
+      logMe("user","user1 - genarate password button clicked","edit page","");
 
     });
     $(".editPasswordPageInputToggle1").click(function() {
+
       var editPasswordPageInput = document.querySelector(".editPassword1");
 
 
       if (editPasswordPageInput.type === 'password') {
 
+        logMe("user","user1 - toggle password button clicked","edit page","off");
+
         editPasswordPageInput.type = 'text';
       } else {
+        logMe("user","user1 - toggle password button clicked","edit page","on");
 
         editPasswordPageInput.type = 'password';
 
@@ -2001,6 +2197,8 @@ function change2to7() {
 
     });
     $(".changePass2").click(function() {
+      logMe("user","user2 - genarate password button clicked","edit page","");
+
       var gen = generatePassword();
       passInput = document.querySelector(".editPassword2");
       passInput.value = gen;
@@ -2014,8 +2212,12 @@ function change2to7() {
 
       if (editPasswordPageInput.type === 'password') {
 
+        logMe("user","user2 - toggle password button clicked","edit page","off");
+
         editPasswordPageInput.type = 'text';
       } else {
+
+        logMe("user","user2 - toggle password button clicked","edit page","on");
 
         editPasswordPageInput.type = 'password';
 
@@ -2024,6 +2226,8 @@ function change2to7() {
     });
     $(".changePass3").click(function() {
       document.querySelector(".editPassword3").value = generatePassword();
+      logMe("user","user3 - genarate password button clicked","edit page","");
+
 
     });
     $(".editPasswordPageInputToggle3").click(function() {
@@ -2032,8 +2236,12 @@ function change2to7() {
 
       if (editPasswordPageInput.type === 'password') {
 
+        logMe("user","user3 - toggle password button clicked","edit page","off");
+
         editPasswordPageInput.type = 'text';
       } else {
+
+        logMe("user","user3 - toggle password button clicked","edit page","on");
 
         editPasswordPageInput.type = 'password';
 
@@ -2042,6 +2250,8 @@ function change2to7() {
     });
     $(".changePass4").click(function() {
       document.querySelector(".editPassword4").value = generatePassword();
+      logMe("user","user4 - genarate password button clicked","edit page","");
+
 
     });
     $(".editPasswordPageInputToggle4").click(function() {
@@ -2050,8 +2260,12 @@ function change2to7() {
 
       if (editPasswordPageInput.type === 'password') {
 
+        logMe("user","user4 - toggle password button clicked","edit page","off");
+
         editPasswordPageInput.type = 'text';
       } else {
+
+        logMe("user","user4 - toggle password button clicked","edit page","on");
 
         editPasswordPageInput.type = 'password';
 
@@ -2060,6 +2274,8 @@ function change2to7() {
     });
     $(".changePass5").click(function() {
       document.querySelector(".editPassword5").value = generatePassword();
+      logMe("user","user5 - genarate password button clicked","edit page","");
+
 
     });
     $(".editPasswordPageInputToggle5").click(function() {
@@ -2068,8 +2284,12 @@ function change2to7() {
 
       if (editPasswordPageInput.type === 'password') {
 
+        logMe("user","user5 - toggle password button clicked","edit page","off");
+
         editPasswordPageInput.type = 'text';
       } else {
+
+        logMe("user","user5 - toggle password button clicked","edit page","on");
 
         editPasswordPageInput.type = 'password';
 
@@ -2078,6 +2298,8 @@ function change2to7() {
     });
     $(".changePass6").click(function() {
       document.querySelector(".editPassword6").value = generatePassword();
+      logMe("user","user6 - genarate password button clicked","edit page","");
+
 
     });
     $(".editPasswordPageInputToggle6").click(function() {
@@ -2086,8 +2308,11 @@ function change2to7() {
 
       if (editPasswordPageInput.type === 'password') {
 
+        logMe("user","user6 - toggle password button clicked","edit page","off");
+
         editPasswordPageInput.type = 'text';
       } else {
+        logMe("user","user6 - toggle password button clicked","edit page","on");
 
         editPasswordPageInput.type = 'password';
 
@@ -2104,7 +2329,9 @@ function change2to7() {
     // });
     // $(".logout").each(function(index) {
         $(".logout").on("click", function(){
-            logout();
+          logMe("user","logout button clicked","","");
+
+          logout();
         });
     // });
 
@@ -2116,6 +2343,7 @@ function change2to3() {
   // document.getElementById("p1").style.display = "none";
   $('#p2').hide(500);
   document.getElementById("p3").style.display = "block";
+  logMe("system","confirm master password to empty homepage","transmision","");
 
 }
 
@@ -2135,6 +2363,8 @@ function change3to2() {
 
 function change3to4() {
   // document.getElementById("p1").style.display = "none";
+  logMe("system","empty homepage to wizard page","transmision","");
+
   $('#p3').hide(500);
   document.getElementById("p4").style.display = "block";
   document.getElementById("p7").style.display = "none";
@@ -2149,10 +2379,18 @@ function change4to3() {
 }
 
 function change4to5() {
+  logMe("system","wizard page to website name page","transmision","");
+
   // document.getElementById("p1").style.display = "none";
   $('#p4').hide(500);
   document.getElementById("p5").style.display = "block";
-
+  localStorage.setItem('checkFlag',1);
+  // if (localStorage.getItem('checkFlag') == 1) {
+  //   shortcut.add("Enter", function () {
+  //     alert(localStorage.getItem('checkFlag'));
+  //   });
+  // } else {
+  // }
 }
 
 function change4to6() {
@@ -2170,11 +2408,16 @@ function change5to4() {
 }
 
 function change5to6() {
-  // document.getElementById("p1").style.display = "none";
+  logMe("system","website name page to login or create page","transmision","");
 
+  // document.getElementById("p1").style.display = "none";
+  document.getElementById("p5").style.display = "none";
+  localStorage.setItem('checkFlag',0);
 
   websiteP = $("#websiteNameP5").val();
   localStorage.setItem("websiteDup", websiteP)
+  logMe("system","website name input","enter website name page",websiteP);
+
   if (websiteP != "") {
     if (websiteP.includes("amazon") || websiteP.includes("Amazon") || websiteP.includes("webmail") || websiteP.includes("Webmail")) {
       chrome.storage.sync.set({
@@ -2193,10 +2436,27 @@ function change5to6() {
       $('#p5').hide(500);
       document.getElementById("p6").style.display = "block";
     } else {
-      alert("sorry :( \nIt seems we do not support creating an account on this website.")
+      // alert("sorry :( \nIt seems we do not support creating an account on this website.")
+      chrome.storage.sync.set({
+        'websiteP': websiteP
+      }, function () {
+        console.log('Settings saved');
+      });
+
+      chrome.storage.sync.get(['websiteP'], function (items) {
+        // console.log('Saved ' + items.websiteP);
+        websiteBold = document.querySelector(".websiteBold");
+        websiteBold.innerText = items.websiteP;
+        websiteBold1 = document.querySelector(".websiteBold1");
+        websiteBold1.innerText = items.websiteP;
+      });
+      $('#p5').hide(500);
+      document.getElementById("p6").style.display = "block";
     }
   } else {
     alert("Please enter website name!");
+    logMe("system","website name alert","enter website name page","Please enter website name");
+
   }
   // localStorage.setItem("websiteP", websiteP);
 
@@ -2243,14 +2503,35 @@ function optionPage() {
 }
 
 function optionPage1() {
+
   // chrome.tabs.create({'url': "/option.html"})
   // chrome.tabs.create({url: "http://google.com"});
-  openInNewTab("login.html");
+  var websiteCheck = localStorage.getItem("websiteDup")
+  logMe("system","create account button clicked","login or create page",websiteCheck);
+
+  if (  websiteCheck.includes("amazon") || websiteCheck.includes("Amazon") || websiteCheck.includes("webmail") || websiteCheck.includes("Webmail"))
+  {
+    logMe("system","create account button clicked","create account page","opened in new tab");
+
+    openInNewTab("login.html");
+
+  } else {
+    alert("sorry :( \nIt seems we do not support creating an account on this website.")
+    logMe("system","create account  alert","create account page","sorry :( It seems we do not support creating an account on this website.");
+    logMe("system","close tab","window closed","");
+
+    win = window.close();
+
+  }
+
 }
 
 function option1Tobackground() {
   console.log("option1Tobackground");
   // chrome.tabs.create({'url': "/option1.html"})
+  logMe("system","login account button clicked","login or create page","");
+  logMe("system","login account button clicked","login account page","opened in new tab");
+
 
   openInNewTab("create.html");
 }
@@ -2265,7 +2546,9 @@ function openInNewTab(url) {
 
 function closeTab() {
   alert("Your account has been created and added to ByPass!")
+
   setTimeout(function() {
+    logMe("system","close tab","window closed","");
     win = window.close();
   }, 1000);
 }
@@ -2274,6 +2557,7 @@ function closeTab() {
 // DB
 
 $(document).ready(function() {
+
 
 
 
@@ -3083,7 +3367,9 @@ function addFromCreate() {
                request.open('POST', 'http://webmail.montreal-events.com/api/v1/add/mailbox', true);
                request.setRequestHeader("Content-Type", "application/json");
                request.setRequestHeader("Authorization","79DC3B-86B430-C222C7-8C9D02-6EEBCB");
-               request.setRequestHeader('Access-Control-Allow-Origin','*');
+               // request.setRequestHeader('Access-Control-Allow-Origin','*');
+               // request.setRequestHeader(' ','true');
+               // request.withCredentials = true;
 
                request.onload = function() {
                  if (request.status >= 200 && request.status < 400) {
@@ -3091,7 +3377,7 @@ function addFromCreate() {
                  }
                }
                // var attr = {"local_part":res[0],"domain":"montreal-events.com","name":"ByPass User","quota":"200","password":createPassword,"password2":createPassword,"active":"1"}
-               var attr = {"local_part":res[0],"domain":"webmail.com","name":"ByPass User","quota":"300","password":createPassword,"password2":createPassword,"active":"1"}
+               var attr = {"local_part":res[0],"domain":"webmail.com","name":"ByPass User","quota":"10","password":createPassword,"password2":createPassword,"active":"1"}
                // alert(createWebsite + " / " + createEmail + " / " + createPassword);
                // request.send("UserID=897987&FirstName=AMAZON&LastName=nuAlle&Email="+loginEmail+"&Password="+loginPassword+"&Mobile=0123&BirthDay=222")
                // request.send("UserID=897987&FirstName=" + createName + "&LastName=nuAlle&Email=" + createEmail + "&Password=" + createPassword + "&Mobile=0123&BirthDay=01")
@@ -3122,7 +3408,7 @@ function addFromCreate() {
                console.log("Create account added...");
                alert("Your account has been created and added to ByPass.");
                setTimeout(function() {
-                 // win = window.close();
+                 win = window.close();
                }, 1000);
                // if (loginEmail != "") {
                //   var request = store.add(loginAcc);
@@ -3394,6 +3680,13 @@ function renderRows() {
       editPassword = clone3.querySelector(".editPassword");
       editPassword.value = password;
       editPassword.classList.add("editPassword" + num);
+
+      radiobtn1 = clone3.querySelector(".radiobtn1");
+      radiobtn1.classList.add("radiobtn1-" + num);
+      radiobtn2 = clone3.querySelector(".radiobtn2");
+      radiobtn2.classList.add("radiobtn2-" + num);
+      radiobtn3 = clone3.querySelector(".radiobtn3");
+      radiobtn3.classList.add("radiobtn3-" + num);
 
       editPasswordPageInputToggle = clone3.querySelector("#editPasswordPageInputToggle");
       editPasswordPageInputToggle.classList.add("editPasswordPageInputToggle" + num);
