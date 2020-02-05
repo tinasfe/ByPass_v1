@@ -316,6 +316,7 @@ $(document).ready(function() {
 $(document).ready(function() {
   var oldItems = JSON.parse(localStorage.getItem('itemsArray')) || [];
 
+
   shortcut.add("Ctrl+Shift+L",function() {
     download();
 
@@ -671,6 +672,10 @@ function change2to7() {
     });
     $(".detailEdit1").click(function() {
       logMe("user","user1 - edit button in detail page clicked","account edit page","");
+      var user1Radio = localStorage.getItem("radioUser1");
+      if (user1Radio){
+        $("."+"radiobtn"+user1Radio+"-1").attr("checked","checked");
+      }
 
       // console.log("row1");
       $('#p8').hide(500);
@@ -903,6 +908,153 @@ function change2to7() {
       container(1,"a", "a", "a",0)
     });
 
+    // $(".radiobtn1-1").prop(function () {
+    //   alert($this.class());
+    // })
+
+
+
+
+  $("input[name='timePeriod']").click(function() {
+    if(this.checked){
+      radioCheck = $(this).attr('class');
+      if (radioCheck.includes("radiobtn1-1"))
+      {
+        localStorage.setItem("radioUser1", 1);
+        logMe("user","user1 - automatic change passwrod option selected","account edit page","value: every 30 day");
+
+
+      } else if (radioCheck.includes("radiobtn2-1")){
+
+        localStorage.setItem("radioUser1", 2);
+        logMe("user","user1 - automatic change passwrod option selected","account edit page","value: every 60 day");
+
+
+      } else if (radioCheck.includes("radiobtn3-1")){
+        localStorage.setItem("radioUser1", 3);
+        logMe("user","user1 - automatic change passwrod option selected","account edit page","value: every 90 day");
+
+
+      } else if (radioCheck.includes("radiobtn4-1")){
+
+        localStorage.setItem("radioUser1", 4);
+        logMe("user","user1 - automatic change passwrod option selected","account edit page","value: every 3year");
+
+
+      } else if (radioCheck.includes("radiobtn1-2")){
+
+        localStorage.setItem("radioUser2", 1);
+        logMe("user","user2 - automatic change passwrod option selected","account edit page","value: every 30 day");
+
+
+      } else if (radioCheck.includes("radiobtn2-2")){
+
+        localStorage.setItem("radioUser2", 2);
+        logMe("user","user2 - automatic change passwrod option selected","account edit page","value: every 60 day");
+
+
+      } else if (radioCheck.includes("radiobtn3-2")){
+        localStorage.setItem("radioUser2", 3);
+        logMe("user","user2 - automatic change passwrod option selected","account edit page","value: every 60 day");
+
+      } else if (radioCheck.includes("radiobtn4-2")){
+
+        localStorage.setItem("radioUser2", 4);
+        logMe("user","user2 - automatic change passwrod option selected","account edit page","value: every year");
+
+
+      } else if (radioCheck.includes("radiobtn1-3")){
+
+        localStorage.setItem("radioUser3", 1);
+        logMe("user","user3 - automatic change passwrod option selected","account edit page","value: every 30 day");
+
+
+      } else if (radioCheck.includes("radiobtn2-3")){
+
+        localStorage.setItem("radioUser3", 2);
+        logMe("user","user3 - automatic change passwrod option selected","account edit page","value: every 60 day");
+
+
+      } else if (radioCheck.includes("radiobtn3-3")){
+        localStorage.setItem("radioUser3", 3);
+        logMe("user","user3 - automatic change passwrod option selected","account edit page","value: every 90 day");
+
+
+      } else if (radioCheck.includes("radiobtn4-3")){
+
+        localStorage.setItem("radioUser3", 4);
+        logMe("user","user3 - automatic change passwrod option selected","account edit page","value: every year");
+
+
+      } else if (radioCheck.includes("radiobtn1-4")){
+
+        localStorage.setItem("radioUser4", 1);
+        logMe("user","user4 - automatic change passwrod option selected","account edit page","value: every 30 day");
+
+
+      } else if (radioCheck.includes("radiobtn2-4")){
+
+        localStorage.setItem("radioUser4", 2);
+        logMe("user","user4 - automatic change passwrod option selected","account edit page","value: every 60 day");
+
+
+      } else if (radioCheck.includes("radiobtn3-4")){
+        localStorage.setItem("radioUser4", 3);
+        logMe("user","user4 - automatic change passwrod option selected","account edit page","value: every 90 day");
+
+
+      } else if (radioCheck.includes("radiobtn4-4")){
+        localStorage.setItem("radioUser4", 4);
+        logMe("user","user4 - automatic change passwrod option selected","account edit page","value: every year");
+
+      }  else if (radioCheck.includes("radiobtn1-5")){
+
+        localStorage.setItem("radioUser5", 1);
+        logMe("user","user5 - automatic change passwrod option selected","account edit page","value: every 30 day");
+
+
+      } else if (radioCheck.includes("radiobtn2-5")){
+
+        localStorage.setItem("radioUser5", 2);
+        logMe("user","user5 - automatic change passwrod option selected","account edit page","value: every 60 day");
+
+
+      } else if (radioCheck.includes("radiobtn3-5")){
+        localStorage.setItem("radioUser5", 3);
+        logMe("user","user5 - automatic change passwrod option selected","account edit page","value: every 90 day");
+
+
+      } else if (radioCheck.includes("radiobtn4-5")){
+        localStorage.setItem("radioUser5", 4);
+        logMe("user","user5 - automatic change passwrod option selected","account edit page","value: every year");
+
+      }  else if (radioCheck.includes("radiobtn1-6")){
+
+        localStorage.setItem("radioUser6", 1);
+        logMe("user","user6 - automatic change passwrod option selected","account edit page","value: every 30 day");
+
+
+      } else if (radioCheck.includes("radiobtn2-6")){
+
+        localStorage.setItem("radioUser6", 2);
+        logMe("user","user6 - automatic change passwrod option selected","account edit page","value: every 60 day");
+
+
+      } else if (radioCheck.includes("radiobtn3-6")){
+        localStorage.setItem("radioUser6", 3);
+        logMe("user","user6 - automatic change passwrod option selected","account edit page","value: every 90 day");
+
+
+      } else if (radioCheck.includes("radiobtn4-6")){
+        localStorage.setItem("radioUser6", 4);
+        logMe("user","user6 - automatic change passwrod option selected","account edit page","value: every year");
+
+      }
+    }
+  });
+
+
+
   // $(".radiobtn1-1").click(function() {
   //   $('.radiobtn1-1').attr('checked', 'checked');
   //   $('.radiobtn2-1').removeAttr('checked');
@@ -944,6 +1096,11 @@ function change2to7() {
     $(".detailEdit2").click(function() {
       logMe("user","user1 - edit button in detail page clicked","account edit page","");
 
+
+      var user2Radio = localStorage.getItem("radioUser2");
+      if (user2Radio){
+        $("."+"radiobtn"+user2Radio+"-2").attr("checked","checked");
+      }
       // console.log("row1");
       $('#p8').hide(500);
       $(".edit2").removeClass("off");
@@ -1147,6 +1304,11 @@ function change2to7() {
     $(".detailEdit3").click(function() {
       logMe("user","user3 - edit button in detail page clicked","account edit page","");
 
+
+      var user3Radio = localStorage.getItem("radioUser3");
+      if (user3Radio){
+        $("."+"radiobtn"+user3Radio+"-3").attr("checked","checked");
+      }
       // console.log("row1");
       $('#p8').hide(500);
       $(".edit3").removeClass("off");
@@ -1350,6 +1512,12 @@ function change2to7() {
     });
     $(".detailEdit4").click(function() {
       logMe("user","user4 - edit button in detail page clicked","account edit page","");
+
+
+      var user4Radio = localStorage.getItem("radioUser4");
+      if (user4Radio){
+        $("."+"radiobtn"+user4Radio+"-4").attr("checked","checked");
+      }
 
       // console.log("row1");
       $('#p8').hide(500);
@@ -1555,6 +1723,11 @@ function change2to7() {
     $(".detailEdit5").click(function() {
       logMe("user","user5 - edit button in detail page clicked","account edit page","");
 
+
+      var user5Radio = localStorage.getItem("radioUser5");
+      if (user5Radio){
+        $("."+"radiobtn"+user5Radio+"-5").attr("checked","checked");
+      }
       // console.log("row1");
       $('#p8').hide(500);
       $(".edit5").removeClass("off");
@@ -1759,6 +1932,12 @@ function change2to7() {
     });
     $(".detailEdit6").click(function() {
       logMe("user","user6 - edit button in detail page clicked","account edit page","");
+
+
+      var user6Radio = localStorage.getItem("radioUser6");
+      if (user6Radio){
+        $("."+"radiobtn"+user6Radio+"-6").attr("checked","checked");
+      }
 
       // console.log("row1");
       $('#p8').hide(500);
@@ -3754,6 +3933,8 @@ function renderRows() {
       radiobtn2.classList.add("radiobtn2-" + num);
       radiobtn3 = clone3.querySelector(".radiobtn3");
       radiobtn3.classList.add("radiobtn3-" + num);
+      radiobtn4 = clone3.querySelector(".radiobtn4");
+      radiobtn4.classList.add("radiobtn4-" + num);
 
       editPasswordPageInputToggle = clone3.querySelector("#editPasswordPageInputToggle");
       editPasswordPageInputToggle.classList.add("editPasswordPageInputToggle" + num);
