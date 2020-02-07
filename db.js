@@ -29,16 +29,19 @@ function logMe(who,action,mode,data){
 $(document).ready(function() {
 
   $("input").click(function() {
-    alert($(this).attr('id'));
+    // alert($(this).attr('id'));
     logInputBoxClass = $(this).attr('class');
     logInputBoxID = $(this).attr('id');
     if (logInputBoxID.includes("masterEmail")) {
       logMe("User","Email box", "Create ByPass account","Clicked");
     } else if(logInputBoxID.includes("password")){
-      logMe("User","Masterpassword box", "Create ByPass account","Clicked");
+      logMe("User","Password box", "Create ByPass account","Clicked");
+
+    }else if(logInputBoxID.includes("masterRePassword")){
+      logMe("User","Confirm password box", "Create ByPass account","Clicked");
 
     }else if(logInputBoxID.includes("masterPassword")){
-      logMe("User","Confirm master password box", "Create ByPass account","Clicked");
+      logMe("User","Confirm Masterpassword box", "Create ByPass account","Clicked");
 
     }else if(logInputBoxID.includes("p4_row2")){
       logMe("User","Step2", "Wizard","Clicked");
