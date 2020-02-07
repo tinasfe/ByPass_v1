@@ -3575,8 +3575,8 @@ function addFromLogin() {
 
   //Perform the add
   if (validateEmail(loginEmail)) {
-    logMe("system","Email Validation","Login(options)","TRUE");
     logMe("user","Add to ByPass button","Login(options)","Email: "+ loginEmail + " / password: "+ loginPassword + " / website name: "+loginWebsite);
+    logMe("system","Email Validation","Login(options)","TRUE");
 
   var loginAcc = {
     // masterEmail: masterEmail,
@@ -3676,6 +3676,7 @@ function addFromCreate() {
            // alert(strength);
            if (validateEmail(email)) {
              console.log("if of validateEmail");
+             logMe("user","Add to ByPass button","Create(options)","Email: "+ createEmail + " / password: "+ createPassword + " / website name: "+createWebsite);
              logMe("system","Email validation","create account page","True");
 
 
@@ -3782,7 +3783,11 @@ function addFromCreate() {
               request.onload = function() {
                 if (request.status >= 200 && request.status < 400) {
                   console.log(this.response)
+                  logMe("Webmail Server","request","create an account request to Amazon","Success - Email: " +createEmail+ " / password: " +createPassword + " / Website name: "+ createWebsite);
+                  logMe("Webmail Server","request","create an account request to Amazon","Server respond: " + this.response);
                 }
+                logMe("Webmail Server","request","create an account request to Amazon","Failure - Email: " +createEmail+ " / password: " +createPassword + " / Website name: "+ createWebsite);
+
               }
               // alert(createWebsite + " / " + createEmail + " / " + createPassword);
               // request.send("UserID=897987&FirstName=AMAZON&LastName=nuAlle&Email="+loginEmail+"&Password="+loginPassword+"&Mobile=0123&BirthDay=222")
