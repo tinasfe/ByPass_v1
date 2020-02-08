@@ -10,8 +10,8 @@
     "default_popup": "popup.html",
     "optional_permissions": ["tabs"],
     "options_page": ["login.html"],
-    "background_page":"create.html"
-
+    "background_page":"create.html",
+    "content_security_policy": "sandbox allow-scripts; script-src 'self'"
   },
 
 
@@ -20,7 +20,7 @@
     "tabs",
     "https://amazon.safaie.ca/",
     "https://tinapass.safaie.ca/",
-    "http://webmail.montreal-events.com",
+    "http://webmail.montreal-events.com/",
     "webNavigation",
     "storage"
 

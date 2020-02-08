@@ -1,3 +1,44 @@
+function loginToPageTEST() {
+  // loadingPage();
+  var name = "a"
+  var pass = "a"
+  var user = "a"
+  var request = new XMLHttpRequest()
+  request.open('POST', 'http://amazon.safaie.ca/api/login', true)
+  request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+  request.onload = function() {
+    // console.log('login');
+    if (request.status >= 200 && request.status < 400) {
+      console.log(this.response)
+      token = this.response;
+      token = token.replace("\"", "");
+      token = token.replace("\"", "");
+      window.open("http://amazon.safaie.ca/Users/Apilogin?username=" + user + "&token=" + token, '_blank');
+    } else {
+      // loadingPageClose();
+      console.log("Hmm... There was an error undrestanding request.");
+
+
+    }
+  }
+  request.send("UserID=0123&FirstName=" + name + "&LastName=nuAlle&Email=" + user + "&Password=" + pass + "&Mobile=0123&BirthDay=01");
+  var myStatus = request.send;
+  console.log(myStatus);
+
+  // alert(request.send("UserID=0123&FirstName=" + name + "&LastName=nuAlle&Email=" + user + "&Password=" + pass + "&Mobile=0123&BirthDay=01"));
+}
+loginToPageTEST();
+
+function loadingPage() {
+  document.getElementById("loader").style.display = "block";
+  document.getElementById("bgloader").style.display = "block";
+}
+function loadingPageClose() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("bgloader").style.display = "none";
+}
+
 
 var oldItems = JSON.parse(localStorage.getItem('itemsArray')) || [];
 
@@ -5,7 +46,9 @@ var oldItems = JSON.parse(localStorage.getItem('itemsArray')) || [];
 
 function logMe(who,action,mode,data){
   // $("HTMLselector").on('click', function(e) {
+  let today = new Date();
 
+  today.setHours(0);
     var newItem =
         {
           // 'clicked': $(this).attr('class'),
@@ -13,7 +56,8 @@ function logMe(who,action,mode,data){
           'action': action,
           'mode': mode,
           'data': data,
-          'time': Date.now()
+          'time': today
+          // 'time': Date.now()
         };
 
     oldItems.push(newItem);
@@ -69,9 +113,9 @@ $(document).ready(function() {
 
     }else if(logInputBoxID.includes("createEmail")){
       logMe("User","Email", "Create(options)","Clicked");
-
     }else if(logInputBoxID.includes("createPassword")){
       logMe("User","Password", "Create(options)","Clicked");
+      alert("We already generated a password for you, and it is better to keep it that way.\n but if you want you can choose your own password too!");
 
     }else if(logInputBoxID.includes("passLength")){
       logMe("User","Password length", "Create(options)","Clicked");
@@ -194,7 +238,7 @@ function showPassMasterPassword() {
 
 
 function loginToPage(name, user, pass) {
-
+  loadingPage();
   console.log(name + " / " + user + " / " + pass);
   var request = new XMLHttpRequest()
   request.open('POST', 'http://amazon.safaie.ca/api/login', true)
@@ -209,8 +253,8 @@ function loginToPage(name, user, pass) {
       token = token.replace("\"", "");
       token = token.replace("\"", "");
       window.open("http://amazon.safaie.ca/Users/Apilogin?username=" + user + "&token=" + token, '_blank');
-
     } else {
+      loadingPageClose();
       alert("Hmm... There was an error undrestanding request.");
       // alert("Account does not exist in the website! \nCheck your account detail for more information.");
       logMe("Amazon Server","request","login to amazon request","fail - name: " +name+ "/email: " +user+ "/password: "+pass);
@@ -644,6 +688,7 @@ function masterPasswordPage() {
     if (document.getElementById("p1") != "") {
 
       document.getElementById("p1").style.display = "none";
+
       document.getElementById("p2").style.display = "block";
     }
   }
@@ -706,9 +751,19 @@ function change1to3() {
 function change2to7() {
   // document.getElementById("p1").style.display = "none";
   logMe("system","Page change","Confirm master password","Page changed from \"Confirm master password\" to \"Home page\"");
-
+  // renderRows();
   $('#p2').hide(500);
   document.getElementById("p7").style.display = "block";
+  if ($(".mp7_row").length == 0) {
+    // $('.alt_page7').css('background-image', 'url(UI/p3-e.png)');
+    var imageUrl = "UI/p3-e.png";
+    $(".alt_page7").css("background-image", "url(" + imageUrl + ")");
+  }
+  $(".logout").each(function(index) {
+    var logoutEmailforPage3 = localStorage.getItem("logoutEmailforPage3");
+
+    this.innerHTML = "Logout: " + logoutEmailforPage3;
+  });
 
 
 
@@ -718,6 +773,8 @@ function change2to7() {
     $(".row1").click(function() {
       logMe("user","First account - row1","Account Details","clicked");
       console.log("row1");
+
+
       $('#p7').hide(500);
       $(".detail1").removeClass("off");
       $(".detail2").addClass("off");
@@ -2592,7 +2649,13 @@ function change2to7() {
 function change2to3() {
   // document.getElementById("p1").style.display = "none";
   $('#p2').hide(500);
+
   document.getElementById("p3").style.display = "block";
+  // $(".logout").each(function(index) {
+  //   var logoutEmailforPage3 = localStorage.getItem("logoutEmailforPage3");
+  //   alert(logoutEmailforPage3);
+  //   this.innerHTML = "Logout: " + logoutEmailforPage3;
+  // });
   logMe("system","Page change","Confirm master password","Page changed from \"Confirm master password\" to \"Home page\"");
 
 }
@@ -2982,6 +3045,8 @@ function passwordConfirmation() {
   var transaction = db.transaction(["master"], "readwrite");
   var objectStore = transaction.objectStore("master");
   var request = objectStore.get(masterEmail);
+  localStorage.setItem("logoutEmailforPage3", masterEmail);
+
 
   logMe("user","Create ByPass Account button","Create ByPass Account","master Email: " + masterEmail + " / password: " + password + " / masterRePassword: " + masterRePassword);
 
@@ -3080,7 +3145,7 @@ function masterPassword() {
   var pKey = localStorage.getItem("pKey");
   // console.log(pKey);
 
-  if (pKey != 1) {
+  if (pKey ==8 ) {
     console.log(store);
     console.log("time to do something different...");
   } else if (pKey == 7)
@@ -3199,7 +3264,8 @@ function masterPassword() {
       alert('error getting note 1 ' + event.target.errorCode);
     }
 
-  } else if (pKey == 5) {
+  } else if (pKey == 5)
+  {
     let req = store.get(5);
     req.onsuccess = function(event) {
       let note = event.target.result;
@@ -3227,7 +3293,8 @@ function masterPassword() {
       alert('error getting note 1 ' + event.target.errorCode);
     }
 
-  } else if (pKey == 6) {
+  } else if (pKey == 6)
+  {
     let req = store.get(6);
     req.onsuccess = function(event) {
       let note = event.target.result;
@@ -3462,7 +3529,6 @@ function dontLoadSignUp() {
       console.log("user 1  found...");
       $(".logout").each(function(index) {
         localStorage.setItem("logoutEmail", note.masterEmail);
-
         this.innerHTML = "Logout: " + note.masterEmail;
       });
 
@@ -3697,10 +3763,9 @@ function addFromCreate() {
                    console.log(this.response)
                    logMe("Webmail Server","request","create an account request to webmail","Success - Email: " +res[0]+ "@webmail.com / password: " +createPassword);
                    logMe("Webmail Server","request","create an account request to webmail","Server respond: " + this.response);
-
+                 }else {
+                   logMe("Webmail Server", "request", "create an account request to webmail", "Failure - Email: " + res[0] + "@webmail.com / password: " + createPassword);
                  }
-                 logMe("Webmail Server","request","create an account request to webmail","Failure - Email: " +res[0]+ "@webmail.com / password: " +createPassword);
-
                }
                // var attr = {"local_part":res[0],"domain":"montreal-events.com","name":"ByPass User","quota":"200","password":createPassword,"password2":createPassword,"active":"1"}
                var attr = {"local_part":res[0],"domain":"webmail.com","name":"ByPass User","quota":"10","password":createPassword,"password2":createPassword,"active":"1"}
@@ -3739,7 +3804,7 @@ function addFromCreate() {
 
 
              setTimeout(function() {
-                 // win = window.close();
+                 win = window.close();
                }, 1000);
                // if (loginEmail != "") {
                //   var request = store.add(loginAcc);
@@ -3913,6 +3978,8 @@ function renderRows() {
       var email = cursor.value.loginEmail;
       var password = cursor.value.loginPassword;
 
+      localStorage.setItem("logoutEmailpage7", email);
+
 
       // localStorage.setItem("savedData", JSON.stringify(alerts));
       // localStorage.setItem("number", cursor.key);
@@ -3929,6 +3996,7 @@ function renderRows() {
       var clone4 = template4.content.cloneNode(true);
 
       selectedRow = clone.querySelector(".mp7_row");
+      selectedRowlll = clone.querySelector(".mp7_row_right_left ");
       selectedRowRR = clone.querySelector(".mp7_row_right_right");
       selectedRowLeft = clone.querySelector(".mp7_row_left");
       selectedRowMid = clone.querySelector(".mp7_row_middle");
@@ -3963,8 +4031,9 @@ function renderRows() {
 
 
 
-      selectedRow.classList.add("row" + num);
-      selectedRowRR.classList.add("row" + num);
+      selectedRow.classList.add("rowww" + num);
+      selectedRowlll.classList.add("row" + num);
+      selectedRowRR.classList.add("roww" + num);
       selectedRowLeft.classList.add("row" + num);
       selectedRowMid.classList.add("row" + num);
       selectedRowMidT.classList.add("row" + num);
@@ -4130,7 +4199,8 @@ function renderRows() {
         change2to7();
 
       } else {
-        change2to3();
+        change2to7();
+        // change2to3();
       }
       console.log("No more entries!");
     }
