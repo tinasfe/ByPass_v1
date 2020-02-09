@@ -72,6 +72,10 @@ function logMe(who,action,mode,data){
 
 $(document).ready(function() {
 
+  $( function() {
+    $( document ).tooltip();
+  } );
+
   $("div").click(function() {
     logDivBoxClass = $(this).attr('class');
     logDivBoxID = $(this).attr('id');
