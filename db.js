@@ -72,6 +72,34 @@ function logMe(who,action,mode,data){
 
 $(document).ready(function() {
 
+  $("div").click(function() {
+    logDivBoxClass = $(this).attr('class');
+    logDivBoxID = $(this).attr('id');
+    if(logDivBoxClass.includes("p4_row2")){
+      logMe("User","Step2", "Wizard","Clicked");
+
+    }else if(logDivBoxClass.includes("p4_row3")){
+      logMe("User","Step3", "Wizard","Clicked");
+
+    }else if(logDivBoxClass.includes("p4_row4")){
+      logMe("User","Step4", "Wizard","Clicked");
+    }else if(logDivBoxClass.includes("p4_row1")){
+      logMe("User","Step1", "Wizard","Clicked");
+    }else if(logDivBoxClass.includes("detailUsername")){
+      logMe("User","Username Box", "Detail Page","Clicked");
+    }else if(logDivBoxClass.includes("detailPassword")){
+      logMe("User","Password Box", "Detail Page","Clicked");
+    }else if(logDivBoxClass.includes("editUsername")){
+      logMe("User","Username Box", "Edit Page","Clicked");
+    }else if(logDivBoxClass.includes("editPassword")){
+      logMe("User","Password Box", "Edit Page","Clicked");
+    }else if(logDivBoxClass.includes("detailEdit")){
+      logMe("User","Edit account button", "Detail Page","Clicked");
+    }else{
+      // logMe("User","Clicked", "Full Log","Element with Class: " + $(this).attr('class') + " and ID: "+ $(this).attr('id'));
+    }
+
+  });
   $("input").click(function() {
     // alert($(this).attr('id'));
     logInputBoxClass = $(this).attr('class');
@@ -86,15 +114,6 @@ $(document).ready(function() {
 
     }else if(logInputBoxID.includes("masterPassword")){
       logMe("User","Confirm Masterpassword box", "Create ByPass account","Clicked");
-
-    }else if(logInputBoxID.includes("p4_row2")){
-      logMe("User","Step2", "Wizard","Clicked");
-
-    }else if(logInputBoxID.includes("p4_row3")){
-      logMe("User","Step3", "Wizard","Clicked");
-
-    }else if(logInputBoxID.includes("p4_row4")){
-      logMe("User","Step4", "Wizard","Clicked");
 
     }else if(logInputBoxID.includes("loginEmail")){
       logMe("User","Email", "Login(options)","Clicked");
@@ -118,10 +137,14 @@ $(document).ready(function() {
       alert("We already generated a password for you, and it is better to keep it that way.\n but if you want you can choose your own password too!");
 
     }else if(logInputBoxID.includes("passLength")){
-      logMe("User","Password length", "Create(options)","Clicked");
+      var pli = $('passLength').val();
+      logMe("User","Password Length Box", "Create(options)","Clicked / Password Length: " + pli );
 
     }else if(logInputBoxID.includes("websiteNameP5")){
       logMe("User","Website name", "Create or Login","Clicked");
+
+    }else if(logInputBoxID.includes("input1_page7")){
+      logMe("User","Search Box", "Homepage","Clicked");
 
     }
   });
@@ -130,7 +153,10 @@ $(document).ready(function() {
 
 
 
+
   var strength = $("#password-strength-meter").val();
+
+
 
   $("#createPassword").keyup(function() {
     document.getElementById('passLength').value =     document.getElementById('createPassword').value.length;
@@ -154,7 +180,7 @@ $(document).ready(function() {
 
     if ($("#password").val() != $("#masterRePassword").val()) {
       $("#msg").html("Not matched").css("color", "red");
-      logMe("system","Password match check", "Create ByPass account","password not match" );
+      logMe("System","Password match check", "Create ByPass account","password not match" );
 
     } else
     if ($("#password").val() == "") {
@@ -162,7 +188,7 @@ $(document).ready(function() {
 
     } else {
       $("#msg").html("Matched").css("color", "green");
-      logMe("system","Password match check", "Create ByPass account","password matched" );
+      logMe("System","Password match check", "Create ByPass account","password matched" );
 
     }
   });
@@ -180,12 +206,12 @@ function showPass() {
   if (password.type === 'password') {
     password.type = 'text';
     rePassword.type = 'text';
-    logMe("user","Toggle-Password","Create ByPass account","ON - Password Confirm Input : "+ password.value);
+    logMe("User","Toggle-Password","Create ByPass account","ON - Password Confirm Input : "+ password.value);
 
   } else {
     password.type = 'password';
     rePassword.type = 'password';
-    logMe("user","Toggle-Password","Create ByPass account","OFF - Password Confirm Input : "+ password.value);
+    logMe("User","Toggle-Password","Create ByPass account","OFF - Password Confirm Input : "+ password.value);
 
   }
 }
@@ -227,10 +253,10 @@ function showPassMasterPassword() {
 
   const createPassword = document.getElementById('masterPassword');
   if (createPassword.type === 'password') {
-    logMe("user","Toggle-Password","Create ByPass account","ON - masterPassword Input : "+ createPassword.value);
+    logMe("User","Toggle-Password","Create ByPass account","ON - masterPassword Input : "+ createPassword.value);
     createPassword.type = 'text';
   } else {
-    logMe("user","Toggle-Password","Create ByPass account","OFF - masterPassword Input : "+ createPassword.value);
+    logMe("User","Toggle-Password","Create ByPass account","OFF - masterPassword Input : "+ createPassword.value);
     createPassword.type = 'password';
   }
 }
@@ -258,7 +284,7 @@ function loginToPage(name, user, pass) {
       alert("Hmm... There was an error undrestanding request.");
       // alert("Account does not exist in the website! \nCheck your account detail for more information.");
       logMe("Amazon Server","request","login to amazon request","fail - name: " +name+ "/email: " +user+ "/password: "+pass);
-      logMe("system","Popup msg3","Homepage","Hmm... There was an error undrestanding request.");
+      logMe("System","Popup msg3","Homepage","Hmm... There was an error undrestanding request.");
       logMe("User","User response to popup msg3","Homepage","OK");
 
     }
@@ -275,7 +301,7 @@ function container(number,name,user,pass,saveOrReturn) {
 
     if (number == 1 && saveOrReturn == 1) {
       // a1 = [name,user,pass]
-      a1 = { "name": name, "user": user, "pass": pass};
+      a1 = { "name": name, "User": user, "pass": pass};
       localStorage.setItem('acc1', JSON.stringify(a1));
       // console.log(a1);
     }
@@ -283,72 +309,72 @@ function container(number,name,user,pass,saveOrReturn) {
       acc1 = localStorage.getItem('acc1');
       var data = JSON.parse(acc1)
       // console.log(data.name,data.user,data.pass);
-      logMe("user","Go button on first created account","Homepage","name: " +data.name+ " / email: " +data.user+ " / password: "+data.pass);
+      logMe("User","Go button on first created account","Homepage","name: " +data.name+ " / email: " +data.user+ " / password: "+data.pass);
       loginToPage(data.name,data.user,data.pass);
     }
     if (number == 2 && saveOrReturn == 1) {
-      a2 = { "name": name, "user": user, "pass": pass};
+      a2 = { "name": name, "User": user, "pass": pass};
       localStorage.setItem('acc2', JSON.stringify(a2));
     }
     if (number == 2 && saveOrReturn == 0) {
       acc2 = localStorage.getItem('acc2');
       var data = JSON.parse(acc2)
       // console.log(data.name,data.user,data.pass);
-      logMe("user","Go button on second created account","Homepage","name: " +data.name+ " / email: " +data.user+ " / password: "+data.pass);
+      logMe("User","Go button on second created account","Homepage","name: " +data.name+ " / email: " +data.user+ " / password: "+data.pass);
       loginToPage(data.name,data.user,data.pass);
     }
     if (number == 3 && saveOrReturn == 1) {
-      a3 = { "name": name, "user": user, "pass": pass};
+      a3 = { "name": name, "User": user, "pass": pass};
       localStorage.setItem('acc3', JSON.stringify(a3));
     }
     if (number == 3 && saveOrReturn == 0) {
       acc3 = localStorage.getItem('acc3');
       var data = JSON.parse(acc3)
       // console.log(data.name,data.user,data.pass);
-      logMe("user","Go button on third created account","Homepage","name: " +data.name+ " / email: " +data.user+ " / password: "+data.pass);
+      logMe("User","Go button on third created account","Homepage","name: " +data.name+ " / email: " +data.user+ " / password: "+data.pass);
       loginToPage(data.name,data.user,data.pass);
     }
     if (number == 4 && saveOrReturn == 1) {
-      a4 = { "name": name, "user": user, "pass": pass};
+      a4 = { "name": name, "User": user, "pass": pass};
       localStorage.setItem('acc4', JSON.stringify(a4));
     }
     if (number == 4 && saveOrReturn == 0) {
       acc4 = localStorage.getItem('acc4');
       var data = JSON.parse(acc4)
       // console.log(data.name,data.user,data.pass);
-      logMe("user","Go button on forth created account","Homepage","name: " +data.name+ " / email: " +data.user+ " / password: "+data.pass);
+      logMe("User","Go button on forth created account","Homepage","name: " +data.name+ " / email: " +data.user+ " / password: "+data.pass);
       loginToPage(data.name,data.user,data.pass);
     }
     if (number == 5 && saveOrReturn == 1) {
-      a5 = { "name": name, "user": user, "pass": pass};
+      a5 = { "name": name, "User": user, "pass": pass};
       localStorage.setItem('acc5', JSON.stringify(a5));
     }
     if (number == 5 && saveOrReturn == 0) {
       acc5 = localStorage.getItem('acc5');
       var data = JSON.parse(acc5)
       // console.log(data.name,data.user,data.pass);
-      logMe("user","Go button on fifth created account","Homepage","name: " +data.name+ " / email: " +data.user+ " / password: "+data.pass);
+      logMe("User","Go button on fifth created account","Homepage","name: " +data.name+ " / email: " +data.user+ " / password: "+data.pass);
       loginToPage(data.name,data.user,data.pass);
     }
     if (number == 6 && saveOrReturn == 1) {
-      a6 = { "name": name, "user": user, "pass": pass};
+      a6 = { "name": name, "User": user, "pass": pass};
       localStorage.setItem('acc6', JSON.stringify(a6));
     }
     if (number == 6 && saveOrReturn == 0) {
       acc6 = localStorage.getItem('acc6');
       var data = JSON.parse(acc6)
       // console.log(data.name,data.user,data.pass);
-      logMe("user","Go button on sixth created account","Homepage","name: " +data.name+ " / email: " +data.user+ " / password: "+data.pass);
+      logMe("User","Go button on sixth created account","Homepage","name: " +data.name+ " / email: " +data.user+ " / password: "+data.pass);
       loginToPage(data.name,data.user,data.pass);
     }
     if (number == 7 && saveOrReturn == 1) {
-      a7 = { "name": name, "user": user, "pass": pass};
+      a7 = { "name": name, "User": user, "pass": pass};
       localStorage.setItem('acc7', JSON.stringify(a7));
     }
     if (number == 7 && saveOrReturn == 0) {
       acc7 = localStorage.getItem('acc7');
       var data = JSON.parse(acc7)
-      logMe("user","Go button on seventh created account","Homepage","name: " +data.name+ " / email: " +data.user+ " / password: "+data.pass);
+      logMe("User","Go button on seventh created account","Homepage","name: " +data.name+ " / email: " +data.user+ " / password: "+data.pass);
       // console.log(data.name,data.user,data.pass);
       loginToPage(data.name,data.user,data.pass);
     }
@@ -406,7 +432,7 @@ $(document).ready(function() {
       a = li[i].getElementsByTagName("div")[2];
       txtValue = a.textContent || a.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        logMe("user","search box typing","Homepage","search input: "+filter);
+        logMe("User","search box typing","Homepage","search input: "+filter);
         li[i].style.display = "";
       } else {
         li[i].style.display = "none";
@@ -424,7 +450,7 @@ $(document).ready(function() {
 
   });
   shortcut.add("Ctrl+C",function() {
-    logMe("user","clipboard","system clipbaoard"," clipboard: "+ ClipboardEvent.clipboardData);
+    logMe("User","clipboard","system clipbaoard"," clipboard: "+ ClipboardEvent.clipboardData);
 
   });
 
@@ -611,7 +637,7 @@ function generatePassword() {
           var character = Math.floor(Math.random() * all.length);
           password += all.substring(character, character + 1);
       }
-  logMe("system","generate password","generete passwoed","value: "+password);
+  logMe("System","generate password","generete passwoed","value: "+password);
   return password;
   // return retVal;
 }
@@ -625,7 +651,7 @@ var number;
 // Email validation
 function validateEmail(email) {
   var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  logMe("system","validate email","validate email","value: "+re.test(email));
+  logMe("System","validate email","validate email","value: "+re.test(email));
   return re.test(email);
 }
 
@@ -675,7 +701,7 @@ function masterPasswordPage() {
   if (flagss == 1) {
     // if (noo !== null) {
     document.getElementById("p1").style.display = "none";
-    logMe("system","render page","masterPassword confirmation","value: change page to homepage");
+    logMe("System","render page","masterPassword confirmation","value: change page to homepage");
 
     renderRows();
       change2to7();
@@ -700,7 +726,7 @@ function masterPasswordPage() {
 
 function change1to2() {
   // document.getElementById("p1").style.display = "none";
-  logMe("system","Page change","Create ByPass account","Page changed from \"Create ByPass account\" to \"Confirm master password\"");
+  logMe("System","Page change","Create ByPass account","Page changed from \"Create ByPass account\" to \"Confirm master password\"");
     $('#p1').hide(500);
     document.getElementById("p2").style.display = "block";
 
@@ -750,7 +776,7 @@ function change1to3() {
 
 function change2to7() {
   // document.getElementById("p1").style.display = "none";
-  logMe("system","Page change","Confirm master password","Page changed from \"Confirm master password\" to \"Home page\"");
+  logMe("System","Page change","Confirm master password","Page changed from \"Confirm master password\" to \"Home page\"");
   // renderRows();
   $('#p2').hide(500);
   document.getElementById("p7").style.display = "block";
@@ -771,7 +797,7 @@ function change2to7() {
 
 
     $(".row1").click(function() {
-      logMe("user","First account - row1","Account Details","clicked");
+      logMe("User","First account - row1","Homepage","clicked");
       console.log("row1");
 
 
@@ -788,8 +814,8 @@ function change2to7() {
 
     });
     $(".detailEdit1").click(function() {
-      logMe("user","First account - row1 clicked","Account details page","");
-      logMe("system","Page change","Homepage","Page changed from \"Home page\" to \"Account details page\"");
+      logMe("User","First account - Detail button clicked","Account details page","");
+      logMe("System","Page change","Homepage","Page changed from \"Home page\" to \"Account details page\"");
       var user1Radio = localStorage.getItem("radioUser1");
       if (user1Radio){
         $("."+"radiobtn"+user1Radio+"-1").attr("checked","checked");
@@ -804,7 +830,7 @@ function change2to7() {
 
     });
     $(".detailDel1").click(function() {
-      logMe("user","First account - Delete button on detail page","Account Details","Clicked");
+      logMe("User","First account - Delete button on detail page","Account Details","Clicked");
 
       // console.log("row1");
       $('#p9').hide(500);
@@ -822,13 +848,13 @@ function change2to7() {
     $(".deleteLocalNO1").click(function() {
       // console.log("row1");
       win = window.close();
-      logMe("user","First account - Delete from ByPass","Delete account ByPass","no");
+      logMe("User","First account - Delete from ByPass","Delete account ByPass","no");
 
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
 
     });
     $(".deleteLocalYES1").click(function() {
-      logMe("user","First account - Delete from ByPass","Delete account ByPass","yes");
+      logMe("User","First account - Delete from ByPass","Delete account ByPass","yes");
 
 
 
@@ -866,7 +892,7 @@ function change2to7() {
 
             // const request = cursor.update(updatedPass);
             request.onsuccess = function() {
-              logMe("system","user1 - delete account from bypass","database delete request","success");
+              logMe("System","First Account - delete account from bypass","database delete request","success");
 
               console.log('Deleted...');
               // setTimeout(function() {
@@ -881,11 +907,11 @@ function change2to7() {
         }
       };
       alert("Your records has been deleted from ByPass.");
-      logMe("system","popup","user1 - delete account from bypass","Your records has been deleted from ByPass.");
+      logMe("System","popup","First Account - delete account from bypass","Your records has been deleted from ByPass.");
 
 
       setTimeout(function() {
-        logMe("system","close tab","window closed","");
+        logMe("System","close tab","window closed","");
         win = window.close();
       }, 1000);
       // win = window.close();
@@ -905,7 +931,7 @@ function change2to7() {
             console.log(cursor.value.loginPassword);
             cursor.value.loginPassword = document.querySelector(".editPassword1").value;
             var updatedPass = cursor.value.loginPassword;
-            logMe("system","save button","user1 - new password saved","new password: "+ updatedPass);
+            logMe("System","save button","First Account - new password saved","new password: "+ updatedPass);
 
             var updated = {
               // masterEmail: masterEmail,
@@ -924,7 +950,7 @@ function change2to7() {
             request.onsuccess = function() {
               console.log('Updated...');
               setTimeout(function() {
-                logMe("system","save button","user1 - new password saved","new password: "+ updatedPass);
+                logMe("System","save button","First Account - new password saved","new password: "+ updatedPass);
 
                 win = window.close();
               }, 1000);
@@ -937,8 +963,8 @@ function change2to7() {
         }
       };
       alert("Your data has been saved!")
-      logMe("system","popup","Account edit","Your data has been saved!");
-      logMe("system","close tab","window closed","");
+      logMe("System","popup","Account edit","Your data has been saved!");
+      logMe("System","close tab","window closed","");
 
       win = window.close();
 
@@ -946,15 +972,15 @@ function change2to7() {
     });
     $(".deleteAPINO1").click(function() {
       // console.log("row1");
-      logMe("user","First account - Delete from website","Delete account Website","no");
-      logMe("system","close tab","window closed","");
+      logMe("User","First account - Delete from website","Delete account Website","no");
+      logMe("System","close tab","window closed","");
       win = window.close();
 
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
 
     });
     $(".deleteAPIYES1").click(function() {
-      logMe("user","First account - Delete from website","Delete account Website","yes");
+      logMe("User","First account - Delete from website","Delete account Website","yes");
 
       console.log("deleteLocalYES1");
       console.log(arr[1]);
@@ -1006,7 +1032,7 @@ function change2to7() {
       //
       //   }
       // };
-      logMe("system","popup","Delete account website","Your records has been deleted from website.");
+      logMe("System","popup","Delete account website","Your records has been deleted from website.");
       alert("Your records has been deleted from website.");
       document.getElementById("mp10_el_api").style.display = "none";
       document.getElementById("mp10_el_local").style.display = "block";
@@ -1018,11 +1044,11 @@ function change2to7() {
     });
 
     $(".page7_btn1").click(function() {
-      logMe("user","Go button on first created account","Homepage","Clicked and login requested");
+      logMe("User","Go button on first created account","Homepage","Clicked and login requested");
       container(1,"a", "a", "a",0);
     });
     $(".detailLogin1").click(function() {
-      logMe("user","login button on first created account","Detail Page","Clicked and login requested");
+      logMe("User","login button on first created account","Detail Page","Clicked and login requested");
       container(1,"a", "a", "a",0)
     });
 
@@ -1039,133 +1065,133 @@ function change2to7() {
       if (radioCheck.includes("radiobtn1-1"))
       {
         localStorage.setItem("radioUser1", 1);
-        logMe("user","Automatic change passwrod function ","Account edit","Every 30 day");
+        logMe("User","Automatic change passwrod function ","Account edit","Every 30 day");
 
 
       } else if (radioCheck.includes("radiobtn2-1")){
 
         localStorage.setItem("radioUser1", 2);
-        logMe("user","Automatic change passwrod function ","Account edit","Every 60 day");
+        logMe("User","Automatic change passwrod function ","Account edit","Every 60 day");
 
 
       } else if (radioCheck.includes("radiobtn3-1")){
         localStorage.setItem("radioUser1", 3);
-        logMe("user","Automatic change passwrod function ","Account edit","Every 90 day");
+        logMe("User","Automatic change passwrod function ","Account edit","Every 90 day");
 
 
       } else if (radioCheck.includes("radiobtn4-1")){
 
         localStorage.setItem("radioUser1", 4);
-        logMe("user","Automatic change passwrod function ","Account edit","Every 3year");
+        logMe("User","Automatic change passwrod function ","Account edit","Every 3year");
 
 
       } else if (radioCheck.includes("radiobtn1-2")){
 
         localStorage.setItem("radioUser2", 1);
-        logMe("user","Automatic change passwrod function ","Account edit","Every 30 day");
+        logMe("User","Automatic change passwrod function ","Account edit","Every 30 day");
 
 
       } else if (radioCheck.includes("radiobtn2-2")){
 
         localStorage.setItem("radioUser2", 2);
-        logMe("user","Automatic change passwrod function ","Account edit","Every 60 day");
+        logMe("User","Automatic change passwrod function ","Account edit","Every 60 day");
 
 
       } else if (radioCheck.includes("radiobtn3-2")){
         localStorage.setItem("radioUser2", 3);
-        logMe("user","Automatic change passwrod function ","Account edit","Every 60 day");
+        logMe("User","Automatic change passwrod function ","Account edit","Every 60 day");
 
       } else if (radioCheck.includes("radiobtn4-2")){
 
         localStorage.setItem("radioUser2", 4);
-        logMe("user","Automatic change passwrod function ","Account edit","Every year");
+        logMe("User","Automatic change passwrod function ","Account edit","Every year");
 
 
       } else if (radioCheck.includes("radiobtn1-3")){
 
         localStorage.setItem("radioUser3", 1);
-        logMe("user","Automatic change passwrod function ","Account edit","Every 30 day");
+        logMe("User","Automatic change passwrod function ","Account edit","Every 30 day");
 
 
       } else if (radioCheck.includes("radiobtn2-3")){
 
         localStorage.setItem("radioUser3", 2);
-        logMe("user","Automatic change passwrod function ","Account edit","Every 60 day");
+        logMe("User","Automatic change passwrod function ","Account edit","Every 60 day");
 
 
       } else if (radioCheck.includes("radiobtn3-3")){
         localStorage.setItem("radioUser3", 3);
-        logMe("user","Automatic change passwrod function ","Account edit","Every 90 day");
+        logMe("User","Automatic change passwrod function ","Account edit","Every 90 day");
 
 
       } else if (radioCheck.includes("radiobtn4-3")){
 
         localStorage.setItem("radioUser3", 4);
-        logMe("user","Automatic change passwrod function ","Account edit","Every year");
+        logMe("User","Automatic change passwrod function ","Account edit","Every year");
 
 
       } else if (radioCheck.includes("radiobtn1-4")){
 
         localStorage.setItem("radioUser4", 1);
-        logMe("user","Automatic change passwrod function ","Account edit","Every 30 day");
+        logMe("User","Automatic change passwrod function ","Account edit","Every 30 day");
 
 
       } else if (radioCheck.includes("radiobtn2-4")){
 
         localStorage.setItem("radioUser4", 2);
-        logMe("user","Automatic change passwrod function ","Account edit","Every 60 day");
+        logMe("User","Automatic change passwrod function ","Account edit","Every 60 day");
 
 
       } else if (radioCheck.includes("radiobtn3-4")){
         localStorage.setItem("radioUser4", 3);
-        logMe("user","Automatic change passwrod function ","Account edit","Every 90 day");
+        logMe("User","Automatic change passwrod function ","Account edit","Every 90 day");
 
 
       } else if (radioCheck.includes("radiobtn4-4")){
         localStorage.setItem("radioUser4", 4);
-        logMe("user","Automatic change passwrod function ","Account edit","Every year");
+        logMe("User","Automatic change passwrod function ","Account edit","Every year");
 
       }  else if (radioCheck.includes("radiobtn1-5")){
 
         localStorage.setItem("radioUser5", 1);
-        logMe("user","Automatic change passwrod function ","Account edit","Every 30 day");
+        logMe("User","Automatic change passwrod function ","Account edit","Every 30 day");
 
 
       } else if (radioCheck.includes("radiobtn2-5")){
 
         localStorage.setItem("radioUser5", 2);
-        logMe("user","Automatic change passwrod function ","Account edit","Every 60 day");
+        logMe("User","Automatic change passwrod function ","Account edit","Every 60 day");
 
 
       } else if (radioCheck.includes("radiobtn3-5")){
         localStorage.setItem("radioUser5", 3);
-        logMe("user","Automatic change passwrod function ","Account edit","Every 90 day");
+        logMe("User","Automatic change passwrod function ","Account edit","Every 90 day");
 
 
       } else if (radioCheck.includes("radiobtn4-5")){
         localStorage.setItem("radioUser5", 4);
-        logMe("user","Automatic change passwrod function ","Account edit","Every year");
+        logMe("User","Automatic change passwrod function ","Account edit","Every year");
 
       }  else if (radioCheck.includes("radiobtn1-6")){
 
         localStorage.setItem("radioUser6", 1);
-        logMe("user","Automatic change passwrod function ","Account edit","Every 30 day");
+        logMe("User","Automatic change passwrod function ","Account edit","Every 30 day");
 
 
       } else if (radioCheck.includes("radiobtn2-6")){
 
         localStorage.setItem("radioUser6", 2);
-        logMe("user","Automatic change passwrod function ","Account edit","Every 60 day");
+        logMe("User","Automatic change passwrod function ","Account edit","Every 60 day");
 
 
       } else if (radioCheck.includes("radiobtn3-6")){
         localStorage.setItem("radioUser6", 3);
-        logMe("user","Automatic change passwrod function ","Account edit","Every 90 day");
+        logMe("User","Automatic change passwrod function ","Account edit","Every 90 day");
 
 
       } else if (radioCheck.includes("radiobtn4-6")){
         localStorage.setItem("radioUser6", 4);
-        logMe("user","Automatic change passwrod function ","Account edit","Every year");
+        logMe("User","Automatic change passwrod function ","Account edit","Every year");
 
       }
     }
@@ -1177,26 +1203,26 @@ function change2to7() {
   //   $('.radiobtn1-1').attr('checked', 'checked');
   //   $('.radiobtn2-1').removeAttr('checked');
   //   $('.radiobtn3-1').removeAttr('checked');;
-  //   logMe("user","30 day option","edit account page","selected");
+  //   logMe("User","30 day option","edit account page","selected");
   // });
   // $(".radiobtn2-1").click(function() {
   //   $('.radiobtn2-1').attr('checked', 'checked');
   //   $('.radiobtn1-1').removeAttr('checked');
   //   $('.radiobtn3-1').removeAttr('checked');;
-  //   logMe("user","60 day option","edit account page","selected");
+  //   logMe("User","60 day option","edit account page","selected");
   // });
   // $(".radiobtn3-1").click(function() {
   //   $('.radiobtn3-1').attr('checked', 'checked');
   //   $('.radiobtn2-1').removeAttr('checked');
   //   $('.radiobtn1-1').removeAttr('checked');;
-  //   logMe("user","90 day option","edit account page","selected");
+  //   logMe("User","90 day option","edit account page","selected");
   //
   // });
 
 
 
     $(".row2").click(function() {
-      logMe("user","Second account - row2","Account Details","Clicked");
+      logMe("User","Second account - row2","Homepage","Clicked");
 
       console.log("row2");
       $('#p7').hide(500);
@@ -1212,8 +1238,8 @@ function change2to7() {
 
     });
     $(".detailEdit2").click(function() {
-      logMe("user","Second account - row2 clicked","Account details page","");
-      logMe("system","Page change","Homepage","Page changed from \"Home page\" to \"Account details page\"");
+      logMe("User","Second account - row2 clicked","Account details page","");
+      logMe("System","Page change","Homepage","Page changed from \"Home page\" to \"Account details page\"");
 
       var user2Radio = localStorage.getItem("radioUser2");
       if (user2Radio){
@@ -1228,15 +1254,15 @@ function change2to7() {
 
     });
     $(".page7_btn2").click(function() {
-      logMe("user","Go button on second created account","Homepage","Clicked and login requested");
+      logMe("User","Go button on second created account","Homepage","Clicked and login requested");
       container(2,"a", "a", "a",0);
     });
     $(".detailLogin2").click(function() {
-      logMe("user","login button on second created account","Detail Page","Clicked and login requested");
+      logMe("User","login button on second created account","Detail Page","Clicked and login requested");
       container(2,"a", "a", "a",0)
     });
     $(".detailDel2").click(function() {
-      logMe("user","Second account - Delete button on detail page","Account Details","Clicked");
+      logMe("User","Second account - Delete button on detail page","Account Details","Clicked");
 
       // console.log("row1");
       $('#p9').hide(500);
@@ -1252,7 +1278,7 @@ function change2to7() {
 
     });
     $(".deleteLocalNO2").click(function() {
-      logMe("user","Second account - Delete from ByPass","Delete account ByPass","no");
+      logMe("User","Second account - Delete from ByPass","Delete account ByPass","no");
 
       // console.log("row1");
       win = window.close();
@@ -1261,7 +1287,7 @@ function change2to7() {
 
     });
     $(".deleteLocalYES2").click(function() {
-      logMe("user","Second account - Delete from ByPass","Delete account ByPass","yes");
+      logMe("User","Second account - Delete from ByPass","Delete account ByPass","yes");
       console.log("deleteLocalYES2");
       console.log(arr[1]);
 
@@ -1306,12 +1332,12 @@ function change2to7() {
         }
       };
       alert("Your account has been deleted from ByPass!");
-      logMe("system","popup","user2 - delete account from bypass","Your records has been deleted from ByPass.");
+      logMe("System","popup","Second Account - delete account from bypass","Your records has been deleted from ByPass.");
 
       // win = window.close();
 
       setTimeout(function() {
-        logMe("system","close tab","window closed","");
+        logMe("System","close tab","window closed","");
         win = window.close();
       }, 1000);
     });
@@ -1328,7 +1354,7 @@ function change2to7() {
 
           if (cursor.key == 2) {
             var updatedPass = cursor.value.loginPassword;
-            logMe("system","save button","user2 - new password saved","new password: "+ updatedPass);
+            logMe("System","save button","Second Account - new password saved","new password: "+ updatedPass);
 
             console.log(cursor.value.loginPassword);
             cursor.value.loginPassword = document.querySelector(".editPassword2").value;
@@ -1351,7 +1377,7 @@ function change2to7() {
             request.onsuccess = function() {
               console.log('Updated...');
               setTimeout(function() {
-                logMe("system","save button","user2 - new password saved","new password: "+ updatedPass);
+                logMe("System","save button","Second Account - new password saved","new password: "+ updatedPass);
                 // win = window.close();
               }, 1000);
             };
@@ -1363,15 +1389,15 @@ function change2to7() {
         }
       };
       alert("Your data has been saved!")
-      logMe("system","popup","Account edit","Your data has been saved!");
-      logMe("system","close tab","window closed","");
+      logMe("System","popup","Account edit","Your data has been saved!");
+      logMe("System","close tab","window closed","");
       win = window.close();
 
 
     });
     $(".deleteAPINO2").click(function() {
-      logMe("user","Second account - Delete from website","Delete account Website","no");
-      logMe("system","close tab","window closed","");
+      logMe("User","Second account - Delete from website","Delete account Website","no");
+      logMe("System","close tab","window closed","");
       // console.log("row1");
       win = window.close();
 
@@ -1379,7 +1405,7 @@ function change2to7() {
 
     });
     $(".deleteAPIYES2").click(function() {
-      logMe("user","Second account - Delete from website","Delete account Website","yes");
+      logMe("User","Second account - Delete from website","Delete account Website","yes");
       // console.log("row1");
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
       n=$(".mp7_row_middle_down.row2").text();
@@ -1391,7 +1417,7 @@ function change2to7() {
       // var objectStore = db.transaction("accounts").objectStore("accounts");
       console.log("row2 wants to be deleted");
       // $(".row2").addClass("off");
-      logMe("system","popup","Delete account website","Your records has been deleted from website.");
+      logMe("System","popup","Delete account website","Your records has been deleted from website.");
       alert("Your account has been deleted from  website.");
 
       document.getElementById("mp10_el_api").style.display = "none";
@@ -1408,7 +1434,7 @@ function change2to7() {
 
 
     $(".row3").click(function() {
-      logMe("user","Third account - row3","Account Details","Clicked");
+      logMe("User","Third account - row3","Homepage","Clicked");
 
       console.log("row3");
       $('#p7').hide(500);
@@ -1422,8 +1448,8 @@ function change2to7() {
 
     });
     $(".detailEdit3").click(function() {
-      logMe("user","Third account - row3 clicked","Account details page","");
-      logMe("system","Page change","Homepage","Page changed from \"Home page\" to \"Account details page\"");
+      logMe("User","Third account - row3 clicked","Account details page","");
+      logMe("System","Page change","Homepage","Page changed from \"Home page\" to \"Account details page\"");
 
       var user3Radio = localStorage.getItem("radioUser3");
       if (user3Radio){
@@ -1438,15 +1464,15 @@ function change2to7() {
 
     });
     $(".page7_btn3").click(function() {
-      logMe("user","Go button on third created account","Homepage","Clicked and login requested");
+      logMe("User","Go button on third created account","Homepage","Clicked and login requested");
       container(3,"a", "a", "a",0);
     });
     $(".detailLogin3").click(function() {
-      logMe("user","login button on third created account","Detail Page","Clicked and login requested");
+      logMe("User","login button on third created account","Detail Page","Clicked and login requested");
       container(3,"a", "a", "a",0)
     });
     $(".detailDel3").click(function() {
-      logMe("user","Third account - Delete button on detail page","Account Details","Clicked");
+      logMe("User","Third account - Delete button on detail page","Account Details","Clicked");
 
       // console.log("row1");
       $('#p9').hide(500);
@@ -1462,7 +1488,7 @@ function change2to7() {
 
     });
     $(".deleteLocalNO3").click(function() {
-      logMe("user","Third account - Delete from ByPass","Delete account ByPass","no");
+      logMe("User","Third account - Delete from ByPass","Delete account ByPass","no");
 
       // console.log("row1");
       win = window.close();
@@ -1471,7 +1497,7 @@ function change2to7() {
 
     });
     $(".deleteLocalYES3").click(function() {
-      logMe("user","Third account - Delete from ByPass","Delete account ByPass","yes");
+      logMe("User","Third account - Delete from ByPass","Delete account ByPass","yes");
 
       console.log("deleteLocalYES3");
       console.log(arr[1]);
@@ -1517,12 +1543,12 @@ function change2to7() {
         }
       };
       alert("Your account has been deleted from ByPass.");
-      logMe("system","popup","user3 - delete account from bypass","Your records has been deleted from ByPass.");
+      logMe("System","popup","Third Account - delete account from bypass","Your records has been deleted from ByPass.");
 
       // win = window.close();
 
       setTimeout(function() {
-        logMe("system","close tab","window closed","");
+        logMe("System","close tab","window closed","");
         win = window.close();
       }, 1000);
     });
@@ -1539,7 +1565,7 @@ function change2to7() {
 
           if (cursor.key == 3) {
             var updatedPass = cursor.value.loginPassword;
-            logMe("system","save button","user3 - new password saved","new password: "+ updatedPass);
+            logMe("System","save button","Third Account - new password saved","new password: "+ updatedPass);
 
             console.log(cursor.value.loginPassword);
             cursor.value.loginPassword = document.querySelector(".editPassword3").value;
@@ -1562,7 +1588,7 @@ function change2to7() {
             request.onsuccess = function() {
               console.log('Updated...');
               setTimeout(function() {
-                logMe("system","save button","user3 - new password saved","new password: "+ updatedPass);
+                logMe("System","save button","Third Account - new password saved","new password: "+ updatedPass);
 
                 // win = window.close();
               }, 1000);
@@ -1575,14 +1601,14 @@ function change2to7() {
         }
       };
       alert("Your data has been saved!")
-      logMe("system","popup","Account edit","Your data has been saved!");
-      logMe("system","close tab","window closed","");
+      logMe("System","popup","Account edit","Your data has been saved!");
+      logMe("System","close tab","window closed","");
       win = window.close();
 
     });
     $(".deleteAPINO3").click(function() {
-      logMe("user","Third account - Delete from website","Delete account Website","no");
-      logMe("system","close tab","window closed","");
+      logMe("User","Third account - Delete from website","Delete account Website","no");
+      logMe("System","close tab","window closed","");
       // console.log("row1");
       win = window.close();
 
@@ -1590,7 +1616,7 @@ function change2to7() {
 
     });
     $(".deleteAPIYES3").click(function() {
-      logMe("user","Third account - Delete from website","Delete account Website","yes");
+      logMe("User","Third account - Delete from website","Delete account Website","yes");
 
       // console.log("row1");
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
@@ -1603,7 +1629,7 @@ function change2to7() {
       // var objectStore = db.transaction("accounts").objectStore("accounts");
       console.log("row3 wants to be deleted");
       // $(".row3").addClass("off");
-      logMe("system","popup","Delete account website","Your records has been deleted from website.");
+      logMe("System","popup","Delete account website","Your records has been deleted from website.");
       alert("Your account has been deleted from website.");
 
       document.getElementById("mp10_el_api").style.display = "none";
@@ -1620,7 +1646,7 @@ function change2to7() {
 
 
     $(".row4").click(function() {
-      logMe("user","Forth account - row4","Account Details","");
+      logMe("User","Forth account - row4","Homepage","");
 
       console.log("row4");
       $('#p7').hide(500);
@@ -1633,8 +1659,8 @@ function change2to7() {
       document.getElementById("p8").style.display = "block";
     });
     $(".detailEdit4").click(function() {
-      logMe("user","Forth account - row4 clicked","Account details page","");
-      logMe("system","Page change","Homepage","Page changed from \"Home page\" to \"Account details page\"");
+      logMe("User","Forth account - row4 clicked","Account details page","");
+      logMe("System","Page change","Homepage","Page changed from \"Home page\" to \"Account details page\"");
 
       var user4Radio = localStorage.getItem("radioUser4");
       if (user4Radio){
@@ -1650,15 +1676,15 @@ function change2to7() {
 
     });
     $(".page7_btn4").click(function() {
-      logMe("user","Go button on forth created account","Homepage","Clicked and login requested");
+      logMe("User","Go button on forth created account","Homepage","Clicked and login requested");
       container(4,"a", "a", "a",0);
     });
     $(".detailLogin4").click(function() {
-      logMe("user","login button on forth created account","Detail Page","Clicked and login requested");
+      logMe("User","login button on forth created account","Detail Page","Clicked and login requested");
       container(4,"a", "a", "a",0)
     });
     $(".detailDel4").click(function() {
-      logMe("user","Forth account - Delete button on detail page","Account Details","Clicked");
+      logMe("User","Forth account - Delete button on detail page","Account Details","Clicked");
 
       // console.log("row1");
       $('#p9').hide(500);
@@ -1674,7 +1700,7 @@ function change2to7() {
 
     });
     $(".deleteLocalNO4").click(function() {
-      logMe("user","Forth account - Delete from ByPass","Delete account ByPass","no");
+      logMe("User","Forth account - Delete from ByPass","Delete account ByPass","no");
 
       // console.log("row1");
       win = window.close();
@@ -1683,7 +1709,7 @@ function change2to7() {
 
     });
     $(".deleteLocalYES4").click(function() {
-      logMe("user","Forth account - Delete from ByPass","Delete account ByPass","yes");
+      logMe("User","Forth account - Delete from ByPass","Delete account ByPass","yes");
 
       console.log("deleteLocalYES1");
       console.log(arr[4]);
@@ -1729,12 +1755,12 @@ function change2to7() {
         }
       };
       alert("Your account has been deleted from ByPass");
-      logMe("system","popup","user2 - delete account from bypass","Your records has been deleted from ByPass.");
+      logMe("System","popup","Second Account - delete account from bypass","Your records has been deleted from ByPass.");
 
       // win = window.close();
 
       setTimeout(function() {
-        logMe("system","close tab","window closed","");
+        logMe("System","close tab","window closed","");
         win = window.close();
       }, 1000);
 
@@ -1752,7 +1778,7 @@ function change2to7() {
 
           if (cursor.key == 4) {
             var updatedPass = cursor.value.loginPassword;
-            logMe("system","save button","Account edit","new password: "+ updatedPass);
+            logMe("System","save button","Account edit","new password: "+ updatedPass);
 
             console.log(cursor.value.loginPassword);
             cursor.value.loginPassword = document.querySelector(".editPassword4").value;
@@ -1775,7 +1801,7 @@ function change2to7() {
             request.onsuccess = function() {
               console.log('Updated...');
               setTimeout(function() {
-                logMe("system","save button","Account edit","new password: "+ updatedPass);
+                logMe("System","save button","Account edit","new password: "+ updatedPass);
 
                 // win = window.close();
               }, 1000);
@@ -1788,14 +1814,14 @@ function change2to7() {
         }
       };
       alert("Your data has been saved!")
-      logMe("system","popup","Account edit","Your data has been saved!");
-      logMe("system","close tab","window closed","");
+      logMe("System","popup","Account edit","Your data has been saved!");
+      logMe("System","close tab","window closed","");
       win = window.close();
 
     });
     $(".deleteAPINO4").click(function() {
-      logMe("user","Second account - Delete from website","Delete account Website","no");
-      logMe("system","close tab","window closed","");
+      logMe("User","Second account - Delete from website","Delete account Website","no");
+      logMe("System","close tab","window closed","");
       // console.log("row1");
       win = window.close();
 
@@ -1803,7 +1829,7 @@ function change2to7() {
 
     });
     $(".deleteAPIYES4").click(function() {
-      logMe("user","Forth account - Delete from website","Delete account Website","yes");
+      logMe("User","Forth account - Delete from website","Delete account Website","yes");
 
       n=$(".mp7_row_middle_down.row4").text();
       e=$(".mp7_row_middle_down.row4").text();
@@ -1816,7 +1842,7 @@ function change2to7() {
       // var objectStore = db.transaction("accounts").objectStore("accounts");
       console.log("row4 wants to be deleted");
       // $(".row4").addClass("off");
-      logMe("system","popup","Delete account website","Your records has been deleted from website.");
+      logMe("System","popup","Delete account website","Your records has been deleted from website.");
       alert("Your account has been deleted from website.");
       document.getElementById("mp10_el_api").style.display = "none";
       document.getElementById("mp10_el_local").style.display = "block";
@@ -1831,7 +1857,7 @@ function change2to7() {
     });
 
     $(".row5").click(function() {
-      logMe("user","Fifth account - row5","Account Details","Clicked");
+      logMe("User","Fifth account - row5","Homepage","Clicked");
 
       // console.log("row5");
       $('#p7').hide(500);
@@ -1844,8 +1870,8 @@ function change2to7() {
       document.getElementById("p8").style.display = "block";
     });
     $(".detailEdit5").click(function() {
-      logMe("user","Fifth account - row5 clicked","Account details page","");
-      logMe("system","Page change","Homepage","Page changed from \"Home page\" to \"Account details page\"");
+      logMe("User","Fifth account - row5 clicked","Account details page","");
+      logMe("System","Page change","Homepage","Page changed from \"Home page\" to \"Account details page\"");
 
       var user5Radio = localStorage.getItem("radioUser5");
       if (user5Radio){
@@ -1860,17 +1886,17 @@ function change2to7() {
 
     });
     $(".page7_btn5").click(function() {
-      logMe("user","Go button on fifth created account","Homepage","Clicked and login requested");
+      logMe("User","Go button on fifth created account","Homepage","Clicked and login requested");
 
       container(5,"a", "a", "a",0);
     });
     $(".detailLogin5").click(function() {
-      logMe("user","login button on second created account","Detail Page","Clicked and login requested");
+      logMe("User","login button on second created account","Detail Page","Clicked and login requested");
 
       container(5,"a", "a", "a",0)
     });
     $(".detailDel5").click(function() {
-      logMe("user","Fifth account - Delete button on detail page","Account Details","Clicked");
+      logMe("User","Fifth account - Delete button on detail page","Account Details","Clicked");
 
       // console.log("row1");
       $('#p9').hide(500);
@@ -1886,7 +1912,7 @@ function change2to7() {
 
     });
     $(".deleteLocalNO5").click(function() {
-      logMe("user","Fifth account - Delete from ByPass","Delete account ByPass","no");
+      logMe("User","Fifth account - Delete from ByPass","Delete account ByPass","no");
 
       // console.log("row1");
       win = window.close();
@@ -1895,7 +1921,7 @@ function change2to7() {
 
     });
     $(".deleteLocalYES5").click(function() {
-      logMe("user","Fifth account - Delete from ByPass","Delete account ByPass","yes");
+      logMe("User","Fifth account - Delete from ByPass","Delete account ByPass","yes");
 
       console.log("deleteLocalYES5");
       console.log(arr[5]);
@@ -1941,12 +1967,12 @@ function change2to7() {
         }
       };
       alert("Your account has been deleted from ByPass.");
-      logMe("system","popup","user2 - delete account from bypass","Your records has been deleted from ByPass.");
+      logMe("System","popup","Second Account - delete account from bypass","Your records has been deleted from ByPass.");
 
       // win = window.close();
 
       setTimeout(function() {
-        logMe("system","close tab","window closed","");
+        logMe("System","close tab","window closed","");
         win = window.close();
       }, 1000);
     });
@@ -1963,7 +1989,7 @@ function change2to7() {
 
           if (cursor.key == 5) {
             var updatedPass = cursor.value.loginPassword;
-            logMe("system","save button","user5 - new password saved","new password: "+ updatedPass);
+            logMe("System","save button","Fifth Account - new password saved","new password: "+ updatedPass);
 
             console.log(cursor.value.loginPassword);
             cursor.value.loginPassword = document.querySelector(".editPassword5").value;
@@ -1986,7 +2012,7 @@ function change2to7() {
             request.onsuccess = function() {
               console.log('Updated...');
               setTimeout(function() {
-                logMe("system","save button","user5 - new password saved","new password: "+ updatedPass);
+                logMe("System","save button","Fifth Account - new password saved","new password: "+ updatedPass);
 
                 // win = window.close();
               }, 1000);
@@ -1999,14 +2025,14 @@ function change2to7() {
         }
       };
       alert("Your data has been saved!")
-      logMe("system","popup","Account edit","Your data has been saved!");
-      logMe("system","close tab","window closed","");
+      logMe("System","popup","Account edit","Your data has been saved!");
+      logMe("System","close tab","window closed","");
       win = window.close();
 
     });
     $(".deleteAPINO5").click(function() {
-      logMe("user","Fifth account - Delete from website","Delete account Website","no");
-      logMe("system","close tab","window closed","");
+      logMe("User","Fifth account - Delete from website","Delete account Website","no");
+      logMe("System","close tab","window closed","");
       // console.log("row1");
       win = window.close();
 
@@ -2014,7 +2040,7 @@ function change2to7() {
 
     });
     $(".deleteAPIYES5").click(function() {
-      logMe("user","Fifth account - Delete from website","Delete account Website","yes");
+      logMe("User","Fifth account - Delete from website","Delete account Website","yes");
 
       n=$(".mp7_row_middle_down.row5").text();
       e=$(".mp7_row_middle_down.row5").text();
@@ -2027,7 +2053,7 @@ function change2to7() {
       // var objectStore = db.transaction("accounts").objectStore("accounts");
       console.log("row5 wants to be deleted");
       // $(".row5").addClass("off");
-      logMe("system","popup","Delete account website","Your records has been deleted from website.");
+      logMe("System","popup","Delete account website","Your records has been deleted from website.");
       alert("Your account has been deleted from website.");
       document.getElementById("mp10_el_api").style.display = "none";
       document.getElementById("mp10_el_local").style.display = "block";
@@ -2042,7 +2068,7 @@ function change2to7() {
     });
 
     $(".row6").click(function() {
-      logMe("user","Sixth account - row6","Account Details","");
+      logMe("User","Sixth account - row6","Homepage","");
 
       // console.log("row6");
       $('#p7').hide(500);
@@ -2055,8 +2081,8 @@ function change2to7() {
       document.getElementById("p8").style.display = "block";
     });
     $(".detailEdit6").click(function() {
-      logMe("user","Sixth account - row6 clicked","Account details page","");
-      logMe("system","Page change","Homepage","Page changed from \"Home page\" to \"Account details page\"");
+      logMe("User","Sixth account - row6 clicked","Account details page","");
+      logMe("System","Page change","Homepage","Page changed from \"Home page\" to \"Account details page\"");
 
       var user6Radio = localStorage.getItem("radioUser6");
       if (user6Radio){
@@ -2072,15 +2098,15 @@ function change2to7() {
 
     });
     $(".page7_btn6").click(function() {
-      logMe("user","Go button on sixth created account","Homepage","Clicked and login requested");
+      logMe("User","Go button on sixth created account","Homepage","Clicked and login requested");
       container(6,"a", "a", "a",0)
     });
     $(".detailLogin6").click(function() {
-      logMe("user","login button on sixth","Detail Page","Clicked and login requested");
+      logMe("User","login button on sixth","Detail Page","Clicked and login requested");
       container(6,"a", "a", "a",0)
     });
     $(".detailDel6").click(function() {
-      logMe("user","Sixth account - Delete button on detail page","Account Details","Clicked");
+      logMe("User","Sixth account - Delete button on detail page","Account Details","Clicked");
 
       // console.log("row1");
       $('#p9').hide(500);
@@ -2097,7 +2123,7 @@ function change2to7() {
     });
     $(".deleteLocalNO6").click(function() {
       // console.log("row1");
-      logMe("user","Sixth account - Delete from ByPass","Delete account ByPass","no");
+      logMe("User","Sixth account - Delete from ByPass","Delete account ByPass","no");
 
       win = window.close();
 
@@ -2105,7 +2131,7 @@ function change2to7() {
 
     });
     $(".deleteLocalYES6").click(function() {
-      logMe("user","Sixth account - Delete from ByPass","Delete account ByPass","yes");
+      logMe("User","Sixth account - Delete from ByPass","Delete account ByPass","yes");
 
       console.log("deleteLocalYES1");
       console.log(arr[6]);
@@ -2151,12 +2177,12 @@ function change2to7() {
         }
       };
       alert("Your account has been deleted from ByPass.");
-      logMe("system","popup","user6 - delete account from bypass","Your records has been deleted from ByPass.");
+      logMe("System","popup","Sixth Account - delete account from bypass","Your records has been deleted from ByPass.");
 
       // win = window.close();
 
       setTimeout(function() {
-        logMe("system","close tab","window closed","");
+        logMe("System","close tab","window closed","");
 
         win = window.close();
       }, 1000);
@@ -2174,7 +2200,7 @@ function change2to7() {
 
           if (cursor.key == 6) {
             var updatedPass = cursor.value.loginPassword;
-            logMe("system","save button","user6 - new password saved","new password: "+ updatedPass);
+            logMe("System","save button","Sixth Account - new password saved","new password: "+ updatedPass);
 
             console.log(cursor.value.loginPassword);
             cursor.value.loginPassword = document.querySelector(".editPassword6").value;
@@ -2197,7 +2223,7 @@ function change2to7() {
             request.onsuccess = function() {
               console.log('Updated...');
               setTimeout(function() {
-                logMe("system","save button","user6 - new password saved","new password: "+ updatedPass);
+                logMe("System","save button","Sixth Account - new password saved","new password: "+ updatedPass);
 
                 // win = window.close();
               }, 1000);
@@ -2210,15 +2236,15 @@ function change2to7() {
         }
       };
       alert("Your data has been saved!")
-      logMe("system","popup","Account edit","Your data has been saved!");
-      logMe("system","close tab","window closed","");
+      logMe("System","popup","Account edit","Your data has been saved!");
+      logMe("System","close tab","window closed","");
       win = window.close();
 
     });
     $(".deleteAPINO6").click(function() {
       // console.log("row1");
-      logMe("user","Sixth account - Delete from website","Delete account Website","no");
-      logMe("system","close tab","window closed","");
+      logMe("User","Sixth account - Delete from website","Delete account Website","no");
+      logMe("System","close tab","window closed","");
 
       win = window.close();
 
@@ -2226,7 +2252,7 @@ function change2to7() {
 
     });
     $(".deleteAPIYES6").click(function() {
-      logMe("user","Sixth account - Delete from website","Delete account Website","yes");
+      logMe("User","Sixth account - Delete from website","Delete account Website","yes");
 
       n=$(".mp7_row_middle_down.row6").text();
       e=$(".mp7_row_middle_down.row6").text();
@@ -2239,7 +2265,7 @@ function change2to7() {
       // var objectStore = db.transaction("accounts").objectStore("accounts");
       console.log("row6 wants to be deleted");
       // $(".row6").addClass("off");
-      logMe("system","popup","Delete account website","Your records has been deleted from website.");
+      logMe("System","popup","Delete account website","Your records has been deleted from website.");
       alert("Your account has been deleted from website.");
       document.getElementById("mp10_el_api").style.display = "none";
       document.getElementById("mp10_el_local").style.display = "block";
@@ -2254,7 +2280,7 @@ function change2to7() {
     });
 
     $(".mp8_back").click(function() {
-      logMe("user","back button clicked","detail page to home page","");
+      logMe("User","back button clicked","detail page to home page","");
 
       console.log("back");
       document.getElementById("p7").style.display = "block";
@@ -2268,7 +2294,7 @@ function change2to7() {
 
     });
     $(".mp8").click(function() {
-      logMe("user","home button clicked","detail page","");
+      // logMe("User","home button clicked","detail page","");
 
       console.log("home");
       document.getElementById("p7").style.display = "block";
@@ -2288,7 +2314,7 @@ function change2to7() {
 
     });
     $(".mp4_back").click(function() {
-      logMe("user","back button clicked","wizard page to home page","");
+      logMe("User","back button clicked","wizard page to home page","");
 
       console.log("back");
       document.getElementById("p7").style.display = "block";
@@ -2310,7 +2336,7 @@ function change2to7() {
 
     });
     $(".mp4").click(function() {
-      logMe("user","home button clicked","wizard page","");
+      // logMe("User","home button clicked","wizard page","");
 
       console.log("home");
       document.getElementById("p7").style.display = "block";
@@ -2331,7 +2357,7 @@ function change2to7() {
 
     });
     $(".mp5_back").click(function() {
-      logMe("user","back button clicked","website name page to wizard page","");
+      logMe("User","back button clicked","website name page to wizard page","");
 
       console.log("back");
 
@@ -2347,7 +2373,7 @@ function change2to7() {
 
     });
     $(".mp5").click(function() {
-      logMe("user","home button clicked","Website name","");
+      // logMe("User","home button clicked","Website name","");
 
       console.log("home");
       document.getElementById("p7").style.display = "block";
@@ -2368,7 +2394,7 @@ function change2to7() {
 
     });
     $(".mp6_back").click(function() {
-      logMe("user","back button clicked","login or create page to website name page","");
+      logMe("User","back button clicked","login or create page to website name page","");
 
       console.log("back");
       document.getElementById("p7").style.display = "none";
@@ -2382,7 +2408,7 @@ function change2to7() {
 
     });
     $(".mp6").click(function() {
-      logMe("user","home button clicked","login or create page","");
+      // logMe("User","home button clicked","login or create page","");
 
       console.log("home");
       document.getElementById("p7").style.display = "block";
@@ -2402,7 +2428,7 @@ function change2to7() {
       }
     });
     $(".mp9_back").click(function() {
-      logMe("user","back button clicked","edit page to detail page","");
+      logMe("User","back button clicked","edit page to detail page","");
 
       console.log("back");
       document.getElementById("p7").style.display = "none";
@@ -2416,7 +2442,7 @@ function change2to7() {
 
     });
     $(".mp9").click(function() {
-      logMe("user","home button clicked","edit page","");
+      // logMe("User","home button clicked","edit page","");
 
       console.log("home");
       document.getElementById("p7").style.display = "block";
@@ -2436,7 +2462,7 @@ function change2to7() {
 
     });
     $(".mp10_back").click(function() {
-      logMe("user","back button clicked","delete page to edit page","");
+      logMe("User","back button clicked","delete page to edit page","");
 
       console.log("back");
       document.getElementById("p7").style.display = "none";
@@ -2452,7 +2478,7 @@ function change2to7() {
 
     });
     $(".mp10").click(function() {
-      logMe("user","home button clicked","edit page","");
+      // logMe("User","home button clicked","edit page","");
 
       console.log("home");
       document.getElementById("p7").style.display = "block";
@@ -2479,7 +2505,7 @@ function change2to7() {
 
     $(".changePass1").click(function() {
       document.querySelector(".editPassword1").value = generatePassword();
-      logMe("user","user1 - genarate password button clicked","edit page",document.querySelector(".editPassword1").value);
+      logMe("User","First Account - genarate password button clicked","edit page",document.querySelector(".editPassword1").value);
 
     });
     $(".editPasswordPageInputToggle1").click(function() {
@@ -2489,11 +2515,11 @@ function change2to7() {
 
       if (editPasswordPageInput.type === 'password') {
 
-        logMe("user","Toggle-Password","Account edit","off");
+        logMe("User","Toggle-Password","Account edit","off");
 
         editPasswordPageInput.type = 'text';
       } else {
-        logMe("user","Toggle-Password","Account edit","on");
+        logMe("User","Toggle-Password","Account edit","on");
 
         editPasswordPageInput.type = 'password';
 
@@ -2501,13 +2527,13 @@ function change2to7() {
 
     });
     $(".changePass2").click(function() {
-      logMe("user","user2 - genarate password button clicked","edit page","");
+      logMe("User","Second Account - genarate password button clicked","edit page","");
 
       var gen = generatePassword();
       passInput = document.querySelector(".editPassword2");
       passInput.value = gen;
       console.log(gen);
-      logMe("user","user2 - genarate password button clicked","edit page",gen);
+      logMe("User","Second Account - genarate password button clicked","edit page",gen);
 
 
 
@@ -2518,12 +2544,12 @@ function change2to7() {
 
       if (editPasswordPageInput.type === 'password') {
 
-        logMe("user","Toggle-Password","Account edit","off");
+        logMe("User","Toggle-Password","Account edit","off");
 
         editPasswordPageInput.type = 'text';
       } else {
 
-        logMe("user","Toggle-Password","Account edit","on");
+        logMe("User","Toggle-Password","Account edit","on");
 
         editPasswordPageInput.type = 'password';
 
@@ -2532,8 +2558,8 @@ function change2to7() {
     });
     $(".changePass3").click(function() {
       document.querySelector(".editPassword3").value = generatePassword();
-      logMe("user","user3 - genarate password button clicked","edit page","");
-      logMe("user","user3 - genarate password button clicked","edit page",document.querySelector(".editPassword3").value);
+      logMe("User","Third Account - genarate password button clicked","edit page","");
+      logMe("User","Third Account - genarate password button clicked","edit page",document.querySelector(".editPassword3").value);
 
 
     });
@@ -2543,12 +2569,12 @@ function change2to7() {
 
       if (editPasswordPageInput.type === 'password') {
 
-        logMe("user","Toggle-Password","Account edit","off");
+        logMe("User","Toggle-Password","Account edit","off");
 
         editPasswordPageInput.type = 'text';
       } else {
 
-        logMe("user","Toggle-Password","Account edit","on");
+        logMe("User","Toggle-Password","Account edit","on");
 
         editPasswordPageInput.type = 'password';
 
@@ -2557,7 +2583,7 @@ function change2to7() {
     });
     $(".changePass4").click(function() {
       document.querySelector(".editPassword4").value = generatePassword();
-      logMe("user","user4 - genarate password button clicked","edit page",document.querySelector(".editPassword4").value);
+      logMe("User","Forth Account - genarate password button clicked","edit page",document.querySelector(".editPassword4").value);
 
 
     });
@@ -2567,12 +2593,12 @@ function change2to7() {
 
       if (editPasswordPageInput.type === 'password') {
 
-        logMe("user","Toggle-Password","Account edit","off");
+        logMe("User","Toggle-Password","Account edit","off");
 
         editPasswordPageInput.type = 'text';
       } else {
 
-        logMe("user","Toggle-Password","Account edit","on");
+        logMe("User","Toggle-Password","Account edit","on");
 
         editPasswordPageInput.type = 'password';
 
@@ -2581,7 +2607,7 @@ function change2to7() {
     });
     $(".changePass5").click(function() {
       document.querySelector(".editPassword5").value = generatePassword();
-      logMe("user","user5 - genarate password button clicked","edit page",document.querySelector(".editPassword5").value);
+      logMe("User","Fifth Account - genarate password button clicked","edit page",document.querySelector(".editPassword5").value);
 
 
     });
@@ -2591,12 +2617,12 @@ function change2to7() {
 
       if (editPasswordPageInput.type === 'password') {
 
-        logMe("user","Toggle-Password","Account edit","off");
+        logMe("User","Toggle-Password","Account edit","off");
 
         editPasswordPageInput.type = 'text';
       } else {
 
-        logMe("user","Toggle-Password","Account edit","on");
+        logMe("User","Toggle-Password","Account edit","on");
 
         editPasswordPageInput.type = 'password';
 
@@ -2605,7 +2631,7 @@ function change2to7() {
     });
     $(".changePass6").click(function() {
       document.querySelector(".editPassword6").value = generatePassword();
-      logMe("user","user6 - genarate password button clicked","edit page",document.querySelector(".editPassword6").value);
+      logMe("User","Sixth Account - genarate password button clicked","edit page",document.querySelector(".editPassword6").value);
 
 
     });
@@ -2615,11 +2641,11 @@ function change2to7() {
 
       if (editPasswordPageInput.type === 'password') {
 
-        logMe("user","Toggle-Password","Account edit","off");
+        logMe("User","Toggle-Password","Account edit","off");
 
         editPasswordPageInput.type = 'text';
       } else {
-        logMe("user","Toggle-Password","Account edit","on");
+        logMe("User","Toggle-Password","Account edit","on");
 
         editPasswordPageInput.type = 'password';
 
@@ -2636,7 +2662,7 @@ function change2to7() {
     // });
     // $(".logout").each(function(index) {
         $(".logout").on("click", function(){
-          logMe("user","logout button clicked","","");
+          logMe("User","logout button clicked","","");
 
           logout();
         });
@@ -2656,7 +2682,7 @@ function change2to3() {
   //   alert(logoutEmailforPage3);
   //   this.innerHTML = "Logout: " + logoutEmailforPage3;
   // });
-  logMe("system","Page change","Confirm master password","Page changed from \"Confirm master password\" to \"Home page\"");
+  logMe("System","Page change","Confirm master password","Page changed from \"Confirm master password\" to \"Home page\"");
 
 }
 
@@ -2676,8 +2702,8 @@ function change3to2() {
 
 function change3to4() {
   // document.getElementById("p1").style.display = "none";
-  logMe("user","Add button","Home page","clicked");
-  logMe("system","page change","Home page","Page changed from \"Home page\" to \"Wizard page\"");
+  logMe("User","Add button","Home page","clicked");
+  logMe("System","page change","Home page","Page changed from \"Home page\" to \"Wizard page\"");
 
   $('#p3').hide(500);
   document.getElementById("p4").style.display = "block";
@@ -2693,8 +2719,8 @@ function change4to3() {
 }
 
 function change4to5() {
-  logMe("user","Step1","Wizard","clicked");
-  logMe("system","Page change","Wizard","Page changed from \"Wizard page\" to \"Website name\"");
+  // logMe("User","Step1","Wizard","clicked");
+  logMe("System","Page change","Wizard","Page changed from \"Wizard page\" to \"Website name\"");
 
   // document.getElementById("p1").style.display = "none";
   $('#p4').hide(500);
@@ -2723,9 +2749,9 @@ function change5to4() {
 }
 
 function change5to6() {
-  logMe("User","Website name input","Website name","clicked");
+  // logMe("User","Website name input","Website name","clicked");
   logMe("User","Next button","Website name","clicked");
-  logMe("system","Page change","Website name","Page changed from \"Website name\" to \"Login/Create account\"");
+  logMe("System","Page change","Website name","Page changed from \"Website name\" to \"Login/Create account\"");
 
   // document.getElementById("p1").style.display = "none";
   document.getElementById("p5").style.display = "none";
@@ -2733,7 +2759,7 @@ function change5to6() {
 
   websiteP = $("#websiteNameP5").val();
   localStorage.setItem("websiteDup", websiteP)
-  logMe("system","website name input","enter website name page",websiteP);
+  logMe("System","website name input","enter website name page",websiteP);
 
 
 
@@ -2774,7 +2800,7 @@ function change5to6() {
     }
   } else {
     alert("Please enter website name!");
-    logMe("system","website name alert","enter website name page","Please enter website name");
+    logMe("System","website name alert","enter website name page","Please enter website name");
 
   }
   // localStorage.setItem("websiteP", websiteP);
@@ -2827,18 +2853,18 @@ function optionPage1() {
   // chrome.tabs.create({url: "http://google.com"});
   var websiteCheck = localStorage.getItem("websiteDup")
   logMe("User","Create account button","login or create page","Clicked");
-  logMe("system","Create account button","login or create page",websiteCheck);
+  logMe("System","Create account button","login or create page",websiteCheck);
 
   if (  websiteCheck.includes("amazon") || websiteCheck.includes("Amazon") || websiteCheck.includes("webmail") || websiteCheck.includes("Webmail"))
   {
-    logMe("system","Page change","Login/Create account","Create(options) tab opened");
+    logMe("System","Page change","Login/Create account","Create(options) tab opened");
 
     openInNewTab("login.html");
 
   } else {
     alert("sorry :( \nIt seems we do not support creating an account on this website.")
-    logMe("system","create account  alert","create account page","sorry :( It seems we do not support creating an account on this website.");
-    logMe("system","close tab","window closed","");
+    logMe("System","create account  alert","create account page","sorry :( It seems we do not support creating an account on this website.");
+    logMe("System","close tab","window closed","");
 
     win = window.close();
 
@@ -2850,7 +2876,7 @@ function option1Tobackground() {
   console.log("option1Tobackground");
   // chrome.tabs.create({'url': "/option1.html"})
   logMe("User","login button","Login/Create account","clicked");
-  logMe("system","Page change","Login/Create account","Login(options) tab opened");
+  logMe("System","Page change","Login/Create account","Login(options) tab opened");
 
 
   openInNewTab("create.html");
@@ -2865,11 +2891,11 @@ function openInNewTab(url) {
 }
 
 function closeTab() {
-  logMe("system","popup","Option Page","Your account has been added to ByPass!");
+  logMe("System","popup","Option Page","Your account has been added to ByPass!");
   alert("Your account has been created and added to ByPass!")
 
   setTimeout(function() {
-    logMe("system","close tab","window closed","");
+    logMe("System","close tab","window closed","");
     win = window.close();
   }, 1000);
 }
@@ -2889,7 +2915,7 @@ $(document).ready(function() {
   $(".loginTitle").innerText = "Login to " + websiteP;
 
   $(".mp8").click(function() {
-    logMe("user","Home button clicked","Account Details","Clicked");
+    logMe("User","Home button clicked","Account Details","Clicked");
 
     console.log("home");
   document.getElementById("p7").style.display = "block";
@@ -2903,7 +2929,7 @@ $(document).ready(function() {
 
 });
 $(".mp4").click(function() {
-  logMe("user","Home button clicked","wizard page","");
+  logMe("User","Home button clicked","wizard page","");
   console.log("home");
   document.getElementById("p7").style.display = "block";
   document.getElementById("p8").style.display = "none";
@@ -2917,7 +2943,7 @@ $(".mp4").click(function() {
 
 });
 $(".mp5").click(function() {
-  logMe("user","Home button clicked","enter website page","");
+  logMe("User","Home button clicked","enter website page","");
 
   console.log("home");
   document.getElementById("p7").style.display = "block";
@@ -2932,7 +2958,7 @@ $(".mp5").click(function() {
 
 });
 $(".mp6").click(function() {
-  logMe("user","Home button clicked","create or login page","");
+  logMe("User","Home button clicked","create or login page","");
 
   // console.log("home");
   document.getElementById("p7").style.display = "block";
@@ -2946,7 +2972,7 @@ $(".mp6").click(function() {
 
 });
 $(".mp9").click(function() {
-  logMe("user","Home button clicked","edit account page","");
+  logMe("User","Home button clicked","edit account page","");
 
   console.log("home");
   document.getElementById("p7").style.display = "block";
@@ -3048,7 +3074,7 @@ function passwordConfirmation() {
   localStorage.setItem("logoutEmailforPage3", masterEmail);
 
 
-  logMe("user","Create ByPass Account button","Create ByPass Account","master Email: " + masterEmail + " / password: " + password + " / masterRePassword: " + masterRePassword);
+  logMe("User","Create ByPass Account button","Create ByPass Account","master Email: " + masterEmail + " / password: " + password + " / masterRePassword: " + masterRePassword);
 
   request.onerror = function(event) {
     // Handle errors!
@@ -3081,7 +3107,7 @@ function passwordConfirmation() {
     if ($("#password").val() == $("#masterRePassword").val()) {
          if ($("#password").val() == "" &&  $("#masterRePassword").val() == "") {
            alert("All the fields required !");
-           logMe("system","popup","Creating Bypass Account","All the fields required !  " + "master Email: " + masterEmail + "password: " + password + "masterRePassword: " + masterRePassword );
+           logMe("System","popup","Creating Bypass Account","All the fields required !  " + "master Email: " + masterEmail + "password: " + password + "masterRePassword: " + masterRePassword );
 
          }
           else
@@ -3091,7 +3117,7 @@ function passwordConfirmation() {
             // alert(validateEmail(email));
             // alert(strength);
             if (validateEmail(email)) {
-              logMe("system","Email Validation","Creating Bypass Account","TRUE");
+              logMe("System","Email Validation","Creating Bypass Account","TRUE");
 
               // alert("Email is valid");
                if (strength =="4") {
@@ -3101,7 +3127,7 @@ function passwordConfirmation() {
               // e.preventDefault();
 
             } else {
-                 logMe("system","popup","Creating Bypass Account","Please choose a strong password!  " + "master Email: " + masterEmail + "password: " + password + "masterRePassword: " + masterRePassword );
+                 logMe("System","popup","Creating Bypass Account","Please choose a strong password!  " + "master Email: " + masterEmail + "password: " + password + "masterRePassword: " + masterRePassword );
 
                  alert("Please choose a strong password!");
 
@@ -3110,7 +3136,7 @@ function passwordConfirmation() {
           }
             else {
               // if (strength != "4") {
-              logMe("system","popup","Creating Bypass Account","Please enter a valid email.example@email.com  " + "master Email: " + masterEmail + "password: " + password + "masterRePassword: " + masterRePassword );
+              logMe("System","popup","Creating Bypass Account","Please enter a valid email.example@email.com  " + "master Email: " + masterEmail + "password: " + password + "masterRePassword: " + masterRePassword );
               alert("Please enter a valid email.\nexample@email.com");
 
             // }
@@ -3120,7 +3146,7 @@ function passwordConfirmation() {
             }
          }
          else {
-      logMe("system","popup","Creating Bypass Account","Your passwords are not matched!  " + "master Email: " + masterEmail + "password: " + password + "masterRePassword: " + masterRePassword );
+      logMe("System","popup","Creating Bypass Account","Your passwords are not matched!  " + "master Email: " + masterEmail + "password: " + password + "masterRePassword: " + masterRePassword );
       alert("Your passwords are not matched!")
          }
        }
@@ -3352,8 +3378,8 @@ function masterPassword() {
         // console.log(note.masterEmail);
         renderRows();
       }else if (note.masterPassword == masterPassword) {
-        logMe("user","Confirm master password box","Confirm master password", masterPassword);
-        logMe("user","Get access button","Confirm master password","DB master password: " + note.masterPassword + "user input master password" + masterPassword);
+        logMe("User","Confirm master password box","Confirm master password", masterPassword);
+        logMe("User","Get access button","Confirm master password","DB master password: " + note.masterPassword + "user input master password" + masterPassword);
 
         console.log("masterPassword (success) Called...");
         localStorage.setItem("flag", 1);
@@ -3375,7 +3401,7 @@ function masterPassword() {
       } else {
         console.log("masterPassword is not correct...");
        alert("You entered a incorrect password...");
-        logMe("user","Confirm master password box","Confirm master password", masterPassword);
+        logMe("User","Confirm master password box","Confirm master password", masterPassword);
 
 
 
@@ -3432,7 +3458,7 @@ function addMaster(e) {
   //   }
   // }
   console.log("About to add " + masterEmail + "/" + password + "/" + masterRePassword);
-  logMe("user","Create ByBass Account button ","create bypass account","Master Email: " + masterEmail + "Master password: "+ password +"Master confirm password: "+masterRePassword);
+  logMe("User","Create ByBass Account button ","create bypass account","Master Email: " + masterEmail + " / Master password: "+ password +" / Master confirm password: "+masterRePassword);
 
   //Get a transaction
   //default for OS list is all, default for type is read
@@ -3502,7 +3528,7 @@ function addMaster(e) {
 
 function dontLoadSignUp() {
   logMe("User","auto check","masterpassword Confrim","ByPass extension clicked");
-  logMe("system","auto check","Confirm master password","TRUE");
+  logMe("System","auto check","Confirm master password","TRUE");
 
   console.log("dontLoadSignUp called ....");
   var masterPassword = $("#masterPassword").val();
@@ -3524,7 +3550,7 @@ function dontLoadSignUp() {
     let note = event.target.result;
     if (note) {
 
-      logMe("user","create logout button","create bypass account page","Bypass logout email: " + note.masterEmail );
+      logMe("User","create logout button","create bypass account page","Bypass logout email: " + note.masterEmail );
 
       console.log("user 1  found...");
       $(".logout").each(function(index) {
@@ -3601,7 +3627,7 @@ function dontLoadSignUp() {
 }
 
 function addFromLogin() {
-  logMe("user","login account button clicked","create or login page","");
+  logMe("User","login account button clicked","create or login page","");
 
   console.log("addFromLogin in out side htmls Called...");
 
@@ -3644,8 +3670,8 @@ function addFromLogin() {
 
   //Perform the add
   if (validateEmail(loginEmail)) {
-    logMe("user","Add to ByPass button","Login(options)","Email: "+ loginEmail + " / password: "+ loginPassword + " / website name: "+loginWebsite);
-    logMe("system","Email Validation","Login(options)","TRUE");
+    logMe("User","Add to ByPass button","Login(options)","Email: "+ loginEmail + " / password: "+ loginPassword + " / website name: "+loginWebsite);
+    logMe("System","Email Validation","Login(options)","TRUE");
 
   var loginAcc = {
     // masterEmail: masterEmail,
@@ -3669,30 +3695,30 @@ function addFromLogin() {
   // console.log("Create account added...");
   // }
   if (loginWebsite.includes("amazon") || loginWebsite.includes("Amazon") ) {
-    logMe("system","Popup msg1","Login(options)","Your account has been added to ByPass Do you want to login right now?");
+    logMe("System","Popup msg1","Login(options)","Your account has been added to ByPass Do you want to login right now?");
 
     var r = confirm("Your account has been added to ByPass \nDo you want to login right now?");
     if (r == true) {
       loginToPage("nothing", loginEmail, loginPassword);
-      logMe("user","User response to popup msg","Login(options)","OK");
+      logMe("User","User response to popup msg","Login(options)","OK");
 
       setTimeout(function() {
-        logMe("system","closeTab","Login(options)","");
+        logMe("System","closeTab","Login(options)","");
         win = window.close();
       }, 1000);
     } else {
-      logMe("user","User response to popup msg","Login(options)","CANCEL");
-      logMe("system","closeTab","Login(options)","");
+      logMe("User","User response to popup msg","Login(options)","CANCEL");
+      logMe("System","closeTab","Login(options)","");
 
       closeTab();
     }
   } else {
     alert("Your account has been added to ByPass.");
-    logMe("system","Popup msg2","Login(options)","Your account has been added to ByPass.");
+    logMe("System","Popup msg2","Login(options)","Your account has been added to ByPass.");
 
     setTimeout(function() {
-      logMe("user","User response to popup msg","Login(options)","OK");
-      logMe("system","closeTab","Login(options)","True");
+      logMe("User","User response to popup msg","Login(options)","OK");
+      logMe("System","closeTab","Login(options)","True");
       win = window.close();
 
     }, 1000);
@@ -3700,7 +3726,7 @@ function addFromLogin() {
 }
 else {
   alert("Enter valid email...");
-    logMe("system","popup","Login(options)","Enter valid email...");
+    logMe("System","popup","Login(options)","Enter valid email...");
 
   }
   // var r = confirm("Your account has been added to ByPass \nDo you want to login right now?");
@@ -3723,14 +3749,19 @@ function addFromCreate() {
   var createPassword = $("#createPassword").val();
   var createWebsite = localStorage.getItem("websiteDup");
   var res = createEmail.split("@");
+  var createFirstName = $("#createFirstName").val();
+  var createLastName = $("#createLastName").val();
+  var createdateOfBirth = $("#createdateOfBirth").val();
+
+
   console.log("Data of Create" + createEmail + "/" + createPassword + "/" + createWebsite);
   var transaction = db.transaction(["accounts"], "readwrite");
   var store = transaction.objectStore("accounts");
 
        if ($("#createFirstName").val() == "" ||  $("#createLastName").val() == "" ||  $("#createdateOfBirth").val() == "" ||  $("#createEmail").val() == "" ||  $("#createPassword").val() == "" ) {
          if (createWebsite.includes("webmail") || createWebsite !== "webmail") {
-           logMe("user","website name entered","create account page","websitename:" + createWebsite );
-           logMe("user","Create account button","create account page","clicked");
+           logMe("User","website name entered","create account page","websitename:" + createWebsite );
+           logMe("User","Create account button","create account page","clicked");
 
            ffnn = document.querySelector(".fnameSection").value;
            llnn = document.querySelector(".lnameSection").value;
@@ -3745,8 +3776,8 @@ function addFromCreate() {
            // alert(strength);
            if (validateEmail(email)) {
              console.log("if of validateEmail");
-             logMe("user","Add to ByPass button","Create(options)","Email: "+ createEmail + " / password: "+ createPassword + " / website name: "+createWebsite);
-             logMe("system","Email validation","create account page","True");
+             logMe("User","Add to ByPass button","Create(options)","Email: "+ createEmail + " / password: "+ createPassword + " / website name: "+createWebsite);
+             logMe("System","Email validation","create account page","True");
 
 
              function loginPOSTmailCow() {
@@ -3786,7 +3817,7 @@ function addFromCreate() {
 
 
 
-             logMe("user","Create and add to ByPass button","Create account options","Clikced / Email: "+ createEmail + " / password: "+ createPassword + " / website name: "+createWebsite);
+             logMe("User","Create and add to ByPass button","Create account options","Clikced / Email: "+ createEmail + " / password: "+ createPassword + " / website name: "+createWebsite);
 
              var createAcc = {
                  // masterEmail: masterEmail,
@@ -3800,7 +3831,7 @@ function addFromCreate() {
                var request = store.add(createAcc);
                console.log("Create account added...");
                alert("Your account has been created and added to ByPass.");
-               logMe("system","popup","create page"," Your account has been created and added to ByPass..  -  create Email: "+ createEmail + " create Password: "+ createPassword+" webiste name: "+createWebsite);
+               logMe("System","popup","create page"," Your account has been created and added to ByPass..  -  create Email: "+ createEmail + " create Password: "+ createPassword+" webiste name: "+createWebsite);
 
 
              setTimeout(function() {
@@ -3818,7 +3849,7 @@ function addFromCreate() {
            else {
              // if (strength != "4") {
              alert("Please enter a valid email.\nexample@email.com");
-             logMe("system","popup","create page"," Please enter a valid email.example@email.com  -  create Email: "+ createEmail + " create Password: "+ createPassword+" webiste name: "+createWebsite);
+             logMe("System","popup","create page"," Please enter a valid email.example@email.com  -  create Email: "+ createEmail + " / create Password: "+ createPassword+" / webiste name: "+createWebsite);
 
              // }
            }
@@ -3827,21 +3858,21 @@ function addFromCreate() {
          }
          else {
            alert("All the fields required !");
-           logMe("system","popup","create page"," All the fields required !-  create Email: "+ createEmail + " create Password: "+ createPassword+" webiste name: "+createWebsite);
+           logMe("System","popup","create page"," All the fields required !-  create Email: "+ createEmail + " create Password: "+ createPassword+" webiste name: "+createWebsite);
 
          }
          }
         else
         {
-          logMe("user","website name entered","create account page","websitename:"+ createWebsite );
-          logMe("user","Create account button","create account page","clicked");
+          logMe("User","website name entered","create account page","websitename:"+ createWebsite );
+          logMe("User","Create account button","create account page","clicked");
           console.log("into Email check....");
           var email = $("#createEmail").val();
           // alert(validateEmail(email));
           // alert(strength);
           if (validateEmail(email)) {
             console.log("if of validateEmail");
-            logMe("system","Email Validation","Creating amazon account","TRUE");
+            logMe("System","Email Validation","Creating amazon account","TRUE");
 
 
             function loginPOST() {
@@ -3851,10 +3882,10 @@ function addFromCreate() {
               request.onload = function() {
                 if (request.status >= 200 && request.status < 400) {
                   console.log(this.response)
-                  logMe("Webmail Server","request","create an account request to Amazon","Success - Email: " +createEmail+ " / password: " +createPassword + " / Website name: "+ createWebsite);
+                  logMe("Webmail Server","request","create an account request to Amazon","Success - Email: " +createEmail+ " / password: " +createPassword + " / Website name: "+ createWebsite +" / Firstname: "+ createFirstName+" / Lastname: "+ createLastName+" / Date of Birth: "+createdateOfBirth);
                   logMe("Webmail Server","request","create an account request to Amazon","Server respond: " + this.response);
                 }
-                logMe("Webmail Server","request","create an account request to Amazon","Failure - Email: " +createEmail+ " / password: " +createPassword + " / Website name: "+ createWebsite);
+                logMe("Webmail Server","request","create an account request to Amazon","Failure - Email: " +createEmail+ " / password: " +createPassword + " / Website name: "+ createWebsite +" / Firstname: "+ createFirstName+" / Lastname: "+ createLastName+" / Date of Birth: "+createdateOfBirth);
 
               }
               // alert(createWebsite + " / " + createEmail + " / " + createPassword);
@@ -3880,7 +3911,7 @@ function addFromCreate() {
               var request = store.add(createAcc);
               console.log("Create account added...");
               alert("Your account has been created and added to ByPass");
-              logMe("system","popup","create page"," Your account has been created and added to ByPass..  -  create Email: "+ createEmail + " create Password: "+ createPassword+" webiste name: "+createWebsite);
+              logMe("System","popup","create page"," Your account has been created and added to ByPass..  -  create Email: "+ createEmail + " create Password: "+ createPassword+" webiste name: "+createWebsite);
 
             setTimeout(function() {
                 win = window.close();
@@ -3897,7 +3928,7 @@ function addFromCreate() {
           else {
             // if (strength != "4") {
             alert("Please enter a valid email.\nexample@email.com");
-            logMe("system","popup","create page"," Please enter a valid email.example@email.com  -  create Email: "+ createEmail + " create Password: "+ createPassword+" webiste name: "+createWebsite);
+            logMe("System","popup","create page"," Please enter a valid email.example@email.com  -  create Email: "+ createEmail + " / create Password: "+ createPassword+" / webiste name: "+createWebsite);
 
             // }
           }
@@ -3915,19 +3946,19 @@ function logout() {
   // onsuccess handler
   console.log("logout.....");
 
-  logMe("user","logout button clicked","logout called","");
+  logMe("User","logout button clicked","logout called","");
 
   var r = confirm("Are you sure you want to logout?");
-  logMe("system","popup","logout button clicked","Are you sure you want to logout?");
+  logMe("System","popup","logout button clicked","Are you sure you want to logout?");
 
   if (r == true) {
-    logMe("user","popup","logout button clicked","user seleceted - OK");
+    logMe("User","popup","logout button clicked","user seleceted - OK");
 
     var objectStore = db.transaction(["master"], "readwrite").objectStore("master").delete(1);
     var objectStoreClear = db.transaction(["accounts"], "readwrite").objectStore("accounts").clear();
     win = window.close();
   } else {
-    logMe("user","popup","logout button clicked","user seleceted - Cancel");
+    logMe("User","popup","logout button clicked","user seleceted - Cancel");
 
   }
   // objectStore.onsuccess = function(event) {
