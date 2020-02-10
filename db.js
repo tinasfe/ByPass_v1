@@ -281,14 +281,14 @@ function showPassMasterPassword() {
 
 
 function loginToPage(name, user, pass) {
-  loadingPage();
+  // loadingPage();
   console.log(name + " / " + user + " / " + pass);
   var request = new XMLHttpRequest()
   request.open('POST', 'http://amazon.safaie.ca/api/login', true)
   request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
   request.onload = function() {
-    // console.log('login');
+    console.log('login');
     if (request.status >= 200 && request.status < 400) {
       logMe("Amazon Server","request","login to amazon request","success - name: " +name+ "/email: " +user+ "/password: "+pass);
       console.log(this.response)
@@ -297,6 +297,7 @@ function loginToPage(name, user, pass) {
       token = token.replace("\"", "");
       window.open("http://amazon.safaie.ca/Users/Apilogin?username=" + user + "&token=" + token, '_blank');
     } else {
+      // alert("hh");
       loadingPageClose();
       alert("Hmm... There was an error undrestanding request.");
       // alert("Account does not exist in the website! \nCheck your account detail for more information.");
@@ -318,7 +319,7 @@ function container(number,name,user,pass,saveOrReturn) {
 
     if (number == 1 && saveOrReturn == 1) {
       // a1 = [name,user,pass]
-      a1 = { "name": name, "User": user, "pass": pass};
+      a1 = { "name": name, "user": user, "pass": pass};
       localStorage.setItem('acc1', JSON.stringify(a1));
       // console.log(a1);
     }
@@ -330,7 +331,7 @@ function container(number,name,user,pass,saveOrReturn) {
       loginToPage(data.name,data.user,data.pass);
     }
     if (number == 2 && saveOrReturn == 1) {
-      a2 = { "name": name, "User": user, "pass": pass};
+      a2 = { "name": name, "user": user, "pass": pass};
       localStorage.setItem('acc2', JSON.stringify(a2));
     }
     if (number == 2 && saveOrReturn == 0) {
@@ -341,7 +342,7 @@ function container(number,name,user,pass,saveOrReturn) {
       loginToPage(data.name,data.user,data.pass);
     }
     if (number == 3 && saveOrReturn == 1) {
-      a3 = { "name": name, "User": user, "pass": pass};
+      a3 = { "name": name, "user": user, "pass": pass};
       localStorage.setItem('acc3', JSON.stringify(a3));
     }
     if (number == 3 && saveOrReturn == 0) {
@@ -352,7 +353,7 @@ function container(number,name,user,pass,saveOrReturn) {
       loginToPage(data.name,data.user,data.pass);
     }
     if (number == 4 && saveOrReturn == 1) {
-      a4 = { "name": name, "User": user, "pass": pass};
+      a4 = { "name": name, "user": user, "pass": pass};
       localStorage.setItem('acc4', JSON.stringify(a4));
     }
     if (number == 4 && saveOrReturn == 0) {
@@ -363,7 +364,7 @@ function container(number,name,user,pass,saveOrReturn) {
       loginToPage(data.name,data.user,data.pass);
     }
     if (number == 5 && saveOrReturn == 1) {
-      a5 = { "name": name, "User": user, "pass": pass};
+      a5 = { "name": name, "user": user, "pass": pass};
       localStorage.setItem('acc5', JSON.stringify(a5));
     }
     if (number == 5 && saveOrReturn == 0) {
@@ -374,7 +375,7 @@ function container(number,name,user,pass,saveOrReturn) {
       loginToPage(data.name,data.user,data.pass);
     }
     if (number == 6 && saveOrReturn == 1) {
-      a6 = { "name": name, "User": user, "pass": pass};
+      a6 = { "name": name, "user": user, "pass": pass};
       localStorage.setItem('acc6', JSON.stringify(a6));
     }
     if (number == 6 && saveOrReturn == 0) {
@@ -385,7 +386,7 @@ function container(number,name,user,pass,saveOrReturn) {
       loginToPage(data.name,data.user,data.pass);
     }
     if (number == 7 && saveOrReturn == 1) {
-      a7 = { "name": name, "User": user, "pass": pass};
+      a7 = { "name": name, "user": user, "pass": pass};
       localStorage.setItem('acc7', JSON.stringify(a7));
     }
     if (number == 7 && saveOrReturn == 0) {
@@ -3034,8 +3035,8 @@ document.addEventListener('DOMContentLoaded', function() {
   $(".page5_btn").on("click", change5to6);
   $(".page6_btn1").on("click", option1Tobackground);
   $(".page6_btn2").on("click", optionPage1);
-  $("#addToTinapass_login").one("click", addFromLogin);
-  $("#addToTinapass_create").one("click", addFromCreate);
+  $("#addToTinapass_login").on("click", addFromLogin);
+  $("#addToTinapass_create").on("click", addFromCreate);
   // $(".logout").on("click", logout);
 
 
@@ -3940,7 +3941,7 @@ function addFromCreate() {
               logMe("System","popup","create page"," Your account has been created and added to ByPass..  -  create Email: "+ createEmail + " create Password: "+ createPassword+" webiste name: "+createWebsite);
 
             setTimeout(function() {
-                win = window.close();
+                // win = window.close();
               }, 1000);
               // if (loginEmail != "") {
               //   var request = store.add(loginAcc);
