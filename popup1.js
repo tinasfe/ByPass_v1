@@ -22,7 +22,7 @@ function logMe(who,action,mode,data){
 function generatePassword1() {
   var a;
   if ($("#passLength").val() == "" ){
-    a = 12;
+    a = 20;
   } else {
     a = $("#passLength").val();
   }
@@ -54,6 +54,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     showPassCreatePassword();
     });
+
+  $("#createPassword").one("click", function(){
+    alert("For the best security, keep the ByPass password!");
+
+  });
   });
 
 function showPassLoginPassword() {

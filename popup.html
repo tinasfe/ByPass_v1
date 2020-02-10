@@ -39,11 +39,12 @@
       </div>
       <div class=" middle_page1 ">
         <!-- <form method="post"> -->
-        <div class=" input1_page1 ">
+        <div class=" input1_page1">
 
           <section class=" section">
             <label class=" label1_page1" for="email">Email</label>
-            <input type="email" name="email" id="masterEmail" title="We ask for your age only for statistical purposes.">
+<!--            <input type="email" name="email" id="masterEmail" >-->
+            <input type="email" name="email" id="masterEmail" >
             <div class=" redMessageBox">
               *This is the only <strong>password</strong> that you have to remember.
               Please choose it as <strong>secure</strong> as you can!
@@ -54,7 +55,7 @@
           <section class=" section">
             <label class=" label2_page1" for="password">Master Password</label>
             <input type="password" name="password" id="password">
-            <span toggle="#password-field" class=" fa fa-fw fa-eye field-icon toggle-password" id=""></span>
+            <span toggle="#password-field" class=" fa fa-fw fa-eye field-icon toggle-password" id="" title="Click on me to see your enter password"></span>
             <meter max="4" id="password-strength-meter"></meter>
             <p id="password-strength-text"></p>
           </section>
@@ -141,20 +142,20 @@
           <h1>STEP 1</h1>
           <p class=" page4_p">What website are you adding?</p>
         </div>
-        <div class=" p4_row2 p4_row">
+        <div class=" p4_row2 p4_row" title="You should start from Step1">
           <h1>STEP 2</h1>
-          <p class=" page4_p">Do you already have an account?</p>
+          <p class=" page4_p" >Do you already have an account?</p>
         </div>
-        <div class=" p4_row3 p4_row">
+        <div class=" p4_row3 p4_row" title="You should start from Step1">
           <h1>STEP 3</h1>
-          <p class=" page4_p">Enter your account information</p>
+          <p class=" page4_p" >Enter your account information</p>
         </div>
-        <div class=" p4_row4 p4_row">
+        <div class=" p4_row4 p4_row" title="You should start from Step1">
           <h1>STEP 4</h1>
           <p class=" page4_p">All done! You are ready to go</p>
         </div>
       </div>
-      <div class=" bottom_page4 ">
+      <div class=" bottom_page4 " >
         <div class=" logout logout_p4">
 
         </div>
@@ -367,7 +368,7 @@
             </div>
             <div class=" mp9_edit_element_bottom">
               <div class=" page9_btn_edit detailDel">Delete</div>
-              <div class=" page9_btn_edit_left changePass">Generate New Password</div>
+              <div class=" page9_btn_edit_left changePass" title="Each time you click on me, I generate a new password for you">Generate New Password</div>
               <div class=" page9_btn_save savebtn">Save Changes</div>
             </div>
 

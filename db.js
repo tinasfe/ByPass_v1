@@ -1,3 +1,6 @@
+
+
+
 function loginToPageTEST() {
   // loadingPage();
   var name = "a"
@@ -46,9 +49,13 @@ var oldItems = JSON.parse(localStorage.getItem('itemsArray')) || [];
 
 function logMe(who,action,mode,data){
   // $("HTMLselector").on('click', function(e) {
-  let today = new Date();
+  const today = new Date();
+  var n = today.toString();
 
-  today.setHours(0);
+
+
+  // alert(n);
+  // today.setHours(today.getHours());
     var newItem =
         {
           // 'clicked': $(this).attr('class'),
@@ -56,7 +63,7 @@ function logMe(who,action,mode,data){
           'action': action,
           'mode': mode,
           'data': data,
-          'time': today
+          'time': n
           // 'time': Date.now()
         };
 
@@ -73,7 +80,13 @@ function logMe(who,action,mode,data){
 $(document).ready(function() {
 
   $( function() {
-    $( document ).tooltip();
+    $( document ).tooltip({
+      position: {
+        my: "center bottom",
+        at: "center top-10",
+        collision: "none"
+      }
+    });
   } );
 
   $("div").click(function() {
@@ -138,7 +151,7 @@ $(document).ready(function() {
       logMe("User","Email", "Create(options)","Clicked");
     }else if(logInputBoxID.includes("createPassword")){
       logMe("User","Password", "Create(options)","Clicked");
-      alert("We already generated a password for you, and it is better to keep it that way.\n but if you want you can choose your own password too!");
+
 
     }else if(logInputBoxID.includes("passLength")){
       var pli = $('passLength').val();
@@ -453,10 +466,13 @@ $(document).ready(function() {
     download();
 
   });
-  shortcut.add("Ctrl+C",function() {
-    logMe("User","clipboard","system clipbaoard"," clipboard: "+ ClipboardEvent.clipboardData);
+  if ($('.p5').css("display","block")){
+    shortcut.add("Enter",function() {
+      // logMe("User","clipboard","system clipbaoard"," clipboard: "+ ClipboardEvent.clipboardData);
+      alert("hello")
+    });
+  }
 
-  });
 
   // document.getElementById("enterWorks").focus();
 //   $( "#enterWorks" ).focus(function() {
@@ -630,7 +646,7 @@ function generatePassword() {
   // for (var i = 0, n = charset.length; i < length; ++i) {
   //   retVal += charset.charAt(Math.floor(Math.random() * n));
   // }
-  var length = 12
+  var length = 20
   var uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
       var lowercase = 'abcdefghijklmnopqrstuvwxyz';
       var numbers = '0123456789';
@@ -787,7 +803,11 @@ function change2to7() {
   if ($(".mp7_row").length == 0) {
     // $('.alt_page7').css('background-image', 'url(UI/p3-e.png)');
     var imageUrl = "UI/p3-e.png";
+
     $(".alt_page7").css("background-image", "url(" + imageUrl + ")");
+  }else{
+    var imageUrlnone = "UI/p3.png";
+    $(".alt_page7").css("background-image", "url(" + imageUrlnone + ")");
   }
   $(".logout").each(function(index) {
     var logoutEmailforPage3 = localStorage.getItem("logoutEmailforPage3");
@@ -2896,7 +2916,7 @@ function openInNewTab(url) {
 
 function closeTab() {
   logMe("System","popup","Option Page","Your account has been added to ByPass!");
-  alert("Your account has been created and added to ByPass!")
+  alert("Your account has been added to ByPass!")
 
   setTimeout(function() {
     logMe("System","close tab","window closed","");
@@ -3014,8 +3034,8 @@ document.addEventListener('DOMContentLoaded', function() {
   $(".page5_btn").on("click", change5to6);
   $(".page6_btn1").on("click", option1Tobackground);
   $(".page6_btn2").on("click", optionPage1);
-  $("#addToTinapass_login").on("click", addFromLogin);
-  $("#addToTinapass_create").on("click", addFromCreate);
+  $("#addToTinapass_login").one("click", addFromLogin);
+  $("#addToTinapass_create").one("click", addFromCreate);
   // $(".logout").on("click", logout);
 
 
@@ -3699,9 +3719,9 @@ function addFromLogin() {
   // console.log("Create account added...");
   // }
   if (loginWebsite.includes("amazon") || loginWebsite.includes("Amazon") ) {
-    logMe("System","Popup msg1","Login(options)","Your account has been added to ByPass Do you want to login right now?");
+    logMe("System","Popup msg1","Login(options)","Your account has been added to ByPass!\n Do you want to login to your account right now?\nIf yes, click on \"OK\" and if not, click on \"Cancel\".\nBy clicking on cancel you won't miss any data.");
 
-    var r = confirm("Your account has been added to ByPass \nDo you want to login right now?");
+    var r = confirm("Your account has been added to ByPass!\n Do you want to login to your account right now?\nIf yes, click on \"OK\" and if not, click on \"Cancel\".\nBy clicking on cancel you won't miss any data.");
     if (r == true) {
       loginToPage("nothing", loginEmail, loginPassword);
       logMe("User","User response to popup msg","Login(options)","OK");
@@ -3833,6 +3853,8 @@ function addFromCreate() {
 
                }
                var request = store.add(createAcc);
+             $('.mainCA_bottom_main_top_btn').css("background-color", "#A9A9A9");
+             $('.mainCA_bottom_main_top_btn').css("border", "2px solid #A9A9A9");
                console.log("Create account added...");
                alert("Your account has been created and added to ByPass.");
                logMe("System","popup","create page"," Your account has been created and added to ByPass..  -  create Email: "+ createEmail + " create Password: "+ createPassword+" webiste name: "+createWebsite);

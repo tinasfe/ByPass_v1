@@ -2013,3 +2013,21 @@ margin-top: 10%;
   display: none;
   text-align: center;
 }
+
+.ui-tooltip-content::after, .ui-tooltip-content::before {
+  content: "";
+  position: absolute;
+  border-style: solid;
+  display: block;
+  left: 90px;
+}
+.ui-tooltip-content::before {
+  bottom: -10px;
+  border-color: #AAA transparent;
+  border-width: 10px 10px 0;
+}
+.ui-tooltip-content::after {
+  bottom: -7px;
+  border-color: white transparent;
+  border-width: 10px 10px 0;
+}
