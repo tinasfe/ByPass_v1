@@ -1,6 +1,7 @@
 function logMe(who,action,mode,data){
   // $("HTMLselector").on('click', function(e) {
-
+  const today = new Date();
+  var n = today.toString();
   var newItem =
       {
         // 'clicked': $(this).attr('class'),
@@ -8,7 +9,7 @@ function logMe(who,action,mode,data){
         'action': action,
         'mode': mode,
         'data': data,
-        'time': Date.now()
+        'time': n
       };
 
   oldItems.push(newItem);
