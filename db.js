@@ -5,7 +5,7 @@ function loginPOSTmailCowTest() {
   var name = "a"
   var pass = "a"
   var user = "a"+n
-  alert(user);
+  // alert(user);
   var request = new XMLHttpRequest()
   request.open('POST', 'http://webmail.montreal-events.com/api/v1/add/mailbox', true);
   request.setRequestHeader("Content-Type", "application/json");
