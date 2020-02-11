@@ -2,7 +2,6 @@
 
 
 function loginToPageTEST() {
-  // loadingPage();
   var name = "a"
   var pass = "a"
   var user = "a"
@@ -19,7 +18,6 @@ function loginToPageTEST() {
       token = token.replace("\"", "");
       window.open("http://amazon.safaie.ca/Users/Apilogin?username=" + user + "&token=" + token, '_blank');
     } else {
-      // loadingPageClose();
       console.log("Hmm... There was an error undrestanding request.");
 
 
@@ -33,14 +31,7 @@ function loginToPageTEST() {
 }
 loginToPageTEST();
 
-function loadingPage() {
-  document.getElementById("loader").style.display = "block";
-  document.getElementById("bgloader").style.display = "block";
-}
-function loadingPageClose() {
-  document.getElementById("loader").style.display = "none";
-  document.getElementById("bgloader").style.display = "none";
-}
+
 
 
 var oldItems = JSON.parse(localStorage.getItem('itemsArray')) || [];
@@ -281,7 +272,15 @@ function showPassMasterPassword() {
 
 
 function loginToPage(name, user, pass) {
-  // loadingPage();
+  function loadingPage() {
+    document.getElementById("loader").style.display = "block";
+    document.getElementById("bgloader").style.display = "block";
+  }
+  function loadingPageClose() {
+    document.getElementById("loader").style.display = "none";
+    document.getElementById("bgloader").style.display = "none";
+  }
+  loadingPage();
   console.log(name + " / " + user + " / " + pass);
   var request = new XMLHttpRequest()
   request.open('POST', 'http://amazon.safaie.ca/api/login', true)
@@ -470,7 +469,7 @@ $(document).ready(function() {
   if ($('.p5').css("display","block")){
     shortcut.add("Enter",function() {
       // logMe("User","clipboard","system clipbaoard"," clipboard: "+ ClipboardEvent.clipboardData);
-      alert("hello")
+      // alert("hello")
     });
   }
 
@@ -642,6 +641,20 @@ $(document).ready(function(){
 
 // Pass Gen
 function generatePassword() {
+  $( ".effect" ).animate({
+    backgroundColor: "#5cb85c",
+    color: "#fff",
+  }, 50 );
+
+  setTimeout(function() {
+
+    $( ".effect" ).animate({
+      backgroundColor: "#fff",
+      color: "black",
+    }, 50 );
+  }, 1000);
+
+
   //   charset = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+|}{}ABCDEFGHIJKLM^&*()_+|NOPQRSTUVWXYZ0123456789!@#$%^&*()_+|}{}",
   //   retVal = "";
   // for (var i = 0, n = charset.length; i < length; ++i) {
@@ -838,6 +851,23 @@ function change2to7() {
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
 
     });
+  $(".rowq1").click(function() {
+    logMe("User","First account - row1 - edit account button","Homepage","clicked");
+
+
+    $('#p7').hide(500);
+    $(".edit1").removeClass("off");
+    $(".edit2").addClass("off");
+    $(".edit3").addClass("off");
+    $(".edit4").addClass("off");
+    $(".edit5").addClass("off");
+    $(".edit6").addClass("off");
+    // $("p").css("background-color", "yellow");
+    document.getElementById("p9").style.display = "block";
+    document.getElementById("p8").style.display = "none";
+    // $( "detail1" ).removeClass( "off" ).addClass( "on" );
+
+  });
     $(".detailEdit1").click(function() {
       logMe("User","First account - Detail button clicked","Account details page","");
       logMe("System","Page change","Homepage","Page changed from \"Home page\" to \"Account details page\"");
@@ -1262,6 +1292,23 @@ function change2to7() {
       document.getElementById("p8").style.display = "block";
 
     });
+  $(".rowq2").click(function() {
+    logMe("User","Second account - row2 - edit account button","Homepage","clicked");
+
+
+    $('#p7').hide(500);
+    $(".edit2").removeClass("off");
+    $(".edit1").addClass("off");
+    $(".edit3").addClass("off");
+    $(".edit4").addClass("off");
+    $(".edit5").addClass("off");
+    $(".edit6").addClass("off");
+    // $("p").css("background-color", "yellow");
+    document.getElementById("p9").style.display = "block";
+    document.getElementById("p8").style.display = "none";
+    // $( "detail1" ).removeClass( "off" ).addClass( "on" );
+
+  });
     $(".detailEdit2").click(function() {
       logMe("User","Second account - row2 clicked","Account details page","");
       logMe("System","Page change","Homepage","Page changed from \"Home page\" to \"Account details page\"");
@@ -1472,6 +1519,23 @@ function change2to7() {
       document.getElementById("p8").style.display = "block";
 
     });
+  $(".rowq3").click(function() {
+    logMe("User","Third account - row3 - edit account button","Homepage","clicked");
+
+
+    $('#p7').hide(500);
+    $(".edit3").removeClass("off");
+    $(".edit2").addClass("off");
+    $(".edit1").addClass("off");
+    $(".edit4").addClass("off");
+    $(".edit5").addClass("off");
+    $(".edit6").addClass("off");
+    // $("p").css("background-color", "yellow");
+    document.getElementById("p9").style.display = "block";
+    document.getElementById("p8").style.display = "none";
+    // $( "detail1" ).removeClass( "off" ).addClass( "on" );
+
+  });
     $(".detailEdit3").click(function() {
       logMe("User","Third account - row3 clicked","Account details page","");
       logMe("System","Page change","Homepage","Page changed from \"Home page\" to \"Account details page\"");
@@ -1683,6 +1747,23 @@ function change2to7() {
       $(".detail6").addClass("off");
       document.getElementById("p8").style.display = "block";
     });
+  $(".rowq4").click(function() {
+    logMe("User","Forth account - row4 - edit account button","Homepage","clicked");
+
+
+    $('#p7').hide(500);
+    $(".edit4").removeClass("off");
+    $(".edit2").addClass("off");
+    $(".edit3").addClass("off");
+    $(".edit1").addClass("off");
+    $(".edit5").addClass("off");
+    $(".edit6").addClass("off");
+    // $("p").css("background-color", "yellow");
+    document.getElementById("p9").style.display = "block";
+    document.getElementById("p8").style.display = "none";
+    // $( "detail1" ).removeClass( "off" ).addClass( "on" );
+
+  });
     $(".detailEdit4").click(function() {
       logMe("User","Forth account - row4 clicked","Account details page","");
       logMe("System","Page change","Homepage","Page changed from \"Home page\" to \"Account details page\"");
@@ -1894,6 +1975,23 @@ function change2to7() {
       $(".detail6").addClass("off");
       document.getElementById("p8").style.display = "block";
     });
+  $(".rowq5").click(function() {
+    logMe("User","Fifth account - row5 - edit account button","Homepage","clicked");
+
+
+    $('#p7').hide(500);
+    $(".edit5").removeClass("off");
+    $(".edit2").addClass("off");
+    $(".edit3").addClass("off");
+    $(".edit4").addClass("off");
+    $(".edit1").addClass("off");
+    $(".edit6").addClass("off");
+    // $("p").css("background-color", "yellow");
+    document.getElementById("p9").style.display = "block";
+    document.getElementById("p8").style.display = "none";
+    // $( "detail1" ).removeClass( "off" ).addClass( "on" );
+
+  });
     $(".detailEdit5").click(function() {
       logMe("User","Fifth account - row5 clicked","Account details page","");
       logMe("System","Page change","Homepage","Page changed from \"Home page\" to \"Account details page\"");
@@ -2105,6 +2203,23 @@ function change2to7() {
       $(".detail1").addClass("off");
       document.getElementById("p8").style.display = "block";
     });
+  $(".rowq6").click(function() {
+    logMe("User","Sixth account - row6 - edit account button","Homepage","clicked");
+
+
+    $('#p7').hide(500);
+    $(".edit6").removeClass("off");
+    $(".edit2").addClass("off");
+    $(".edit3").addClass("off");
+    $(".edit4").addClass("off");
+    $(".edit5").addClass("off");
+    $(".edit1").addClass("off");
+    // $("p").css("background-color", "yellow");
+    document.getElementById("p9").style.display = "block";
+    document.getElementById("p8").style.display = "none";
+    // $( "detail1" ).removeClass( "off" ).addClass( "on" );
+
+  });
     $(".detailEdit6").click(function() {
       logMe("User","Sixth account - row6 clicked","Account details page","");
       logMe("System","Page change","Homepage","Page changed from \"Home page\" to \"Account details page\"");
@@ -3941,7 +4056,7 @@ function addFromCreate() {
               logMe("System","popup","create page"," Your account has been created and added to ByPass..  -  create Email: "+ createEmail + " create Password: "+ createPassword+" webiste name: "+createWebsite);
 
             setTimeout(function() {
-                // win = window.close();
+                win = window.close();
               }, 1000);
               // if (loginEmail != "") {
               //   var request = store.add(loginAcc);
@@ -4080,6 +4195,7 @@ function renderRows() {
       emailName = clone.querySelector(".mp7_row_middle_down");
       emailName.innerText = email;
       linkName = clone.querySelector(".page7_btn");
+      arrow = clone.querySelector(".mp7_go_detail");
       linkName.classList.add("page7_btn" + num);
 
       $("page7_btn" + num).click(container(num,website, email, password,1));
@@ -4090,10 +4206,11 @@ function renderRows() {
 
 
       selectedRow.classList.add("rowww" + num);
-      selectedRowlll.classList.add("row" + num);
+      selectedRowlll.classList.add("rowq" + num);
       selectedRowRR.classList.add("roww" + num);
       selectedRowLeft.classList.add("row" + num);
       selectedRowMid.classList.add("row" + num);
+      arrow.classList.add("row" + num);
       selectedRowMidT.classList.add("row" + num);
       selectedRowMidD.classList.add("row" + num);
       websiteName.innerText = website;

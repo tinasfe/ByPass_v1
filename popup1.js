@@ -21,11 +21,40 @@ function logMe(who,action,mode,data){
 }
 
 function generatePassword1() {
+  $( ".effect" ).animate({
+    backgroundColor: "#5cb85c",
+    color: "#fff",
+  }, 50 );
+
+  setTimeout(function() {
+
+    $( ".effect" ).animate({
+      backgroundColor: "#fff",
+      color: "black",
+    }, 50 );
+  }, 1000);
+
+  $( ".lock" ).animate({
+    color: "#5cb85c",
+  }, 50 );
+
+  setTimeout(function() {
+
+    $( ".lock" ).animate({
+      color: "black",
+    }, 50 );
+  }, 1000);
+
   var a;
   if ($("#passLength").val() == "" ){
     a = 20;
   } else {
-    a = $("#passLength").val();
+    if ($("#passLength").val() == 0){
+      a=20;
+      document.getElementById('passLength').value=20;
+    }else{
+      a = $("#passLength").val();
+    }
   }
   var length = a,
     charset = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()_+|}{}ABCDEFGHIJKLM^&*()_+|NOPQRSTUVWXYZ0123456789!@#$%^&*()_+|}{}",
@@ -84,6 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
   window.onload = function() {
   const createPassword = document.getElementById('createPassword');
   createPassword.value = generatePassword1();
+
 };
 document.addEventListener('DOMContentLoaded', function() {
   $(".changePassCreate").click(function(){

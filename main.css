@@ -880,7 +880,7 @@ display: none;
 }
 .mp7_row_middle{
   height: 100%;
-  width: 35%;
+  width: 43%;
   float: left;
 }
 .mp7_row_middle_top{
@@ -899,13 +899,13 @@ display: none;
 }
 .mp7_row_right_left{
   height: 100%;
-  width: 50%;
+  width: 35%;
   float: left;
   z-index: 100;
 }
 .mp7_row_right_right{
   height: 100%;
-  width: 50%;
+  width: 45%;
   float: left;
 }
 .page7_btn{
@@ -2030,4 +2030,13 @@ margin-top: 10%;
   bottom: -7px;
   border-color: white transparent;
   border-width: 10px 10px 0;
+}
+
+#cog{
+  margin-top: 0.4em;
+}
+
+#cog:hover{
+  color: #00a3bc;
+  /*cursor: pointer;*/
 }
