@@ -1773,12 +1773,12 @@ display: none;
   font-size: 20px;
 }
 .mp10_jooje{
-  display: none;
+  display: block;
   width: 3em;
   position: absolute;
   left: 70px;
   z-index: 0;
-  margin-top: 3.1em;
+  margin-top: -10.9em;
 
 }
 /*----------------------------------------------Page 10  */
