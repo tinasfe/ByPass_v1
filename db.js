@@ -32,6 +32,7 @@ function loginPOSTmailCowTest() {
 }
 
 function editPOSTCow(name,user,pass) {
+  logMe("Webmail Server","request","Edit account with API","Email: "+ user + " / New Password:" + pass);
 
   var request = new XMLHttpRequest()
   request.open('POST', 'http://webmail.montreal-events.com/api/v1/edit/mailbox', true);
@@ -80,6 +81,7 @@ function editPOSTCow(name,user,pass) {
 }
 
 function deletePOSTCow(name,pass,user) {
+  logMe("Webmail Server","request","Delete account with API","Email: "+ user);
 
   var request = new XMLHttpRequest()
   request.open('POST', 'http://webmail.montreal-events.com/api/v1/delete/mailbox', true);
@@ -376,6 +378,7 @@ function delPOST(name,email,pass) {
 }
 
 function editPOST(name,email,pass) {
+  logMe("Amazon Server","request","Edit account with API","Email: "+ email + " / New Password:" + pass);
   var request = new XMLHttpRequest()
   request.open('POST', 'http://amazon.safaie.ca/api/users1/1', true);
   request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -391,7 +394,7 @@ function editPOST(name,email,pass) {
   }
   // alert(createWebsite + " / " + createEmail + " / " + createPassword);
   // request.send("UserID=897987&FirstName=AMAZON&LastName=nuAlle&Email="+loginEmail+"&Password="+loginPassword+"&Mobile=0123&BirthDay=222")
-  request.send("UserID=1&FirstName=" + email + "&LastName=nuAlle&Email=" + email + "&Password=" + email + "&Mobile=0123&BirthDay=01")
+  request.send("UserID=1&FirstName=" + email + "&LastName=nuAlle&Email=" + email + "&Password=" + pass + "&Mobile=0123&BirthDay=01")
   // request.send("UserID=897987&FirstName="+tablewebsite1+"&LastName=nuAlle&Email="+tableemail1+"&Password="+tablepassword1+"&Mobile=0123&BirthDay=01")
 }
 
@@ -1036,6 +1039,8 @@ function change2to7() {
     $(".edit4").addClass("off");
     $(".edit5").addClass("off");
     $(".edit6").addClass("off");
+    $(".mp9_back").addClass("off");
+
     // $("p").css("background-color", "yellow");
     document.getElementById("p9").style.display = "block";
     document.getElementById("p8").style.display = "none";
@@ -1498,6 +1503,8 @@ function change2to7() {
     $(".edit4").addClass("off");
     $(".edit5").addClass("off");
     $(".edit6").addClass("off");
+    $(".mp9_back").addClass("off");
+
     // $("p").css("background-color", "yellow");
     document.getElementById("p9").style.display = "block";
     document.getElementById("p8").style.display = "none";
@@ -1740,6 +1747,8 @@ function change2to7() {
     $(".edit4").addClass("off");
     $(".edit5").addClass("off");
     $(".edit6").addClass("off");
+    $(".mp9_back").addClass("off");
+
     // $("p").css("background-color", "yellow");
     document.getElementById("p9").style.display = "block";
     document.getElementById("p8").style.display = "none";
@@ -1983,6 +1992,8 @@ function change2to7() {
     $(".edit1").addClass("off");
     $(".edit5").addClass("off");
     $(".edit6").addClass("off");
+    $(".mp9_back").addClass("off");
+
     // $("p").css("background-color", "yellow");
     document.getElementById("p9").style.display = "block";
     document.getElementById("p8").style.display = "none";
@@ -2227,6 +2238,8 @@ function change2to7() {
     $(".edit4").addClass("off");
     $(".edit1").addClass("off");
     $(".edit6").addClass("off");
+    $(".mp9_back").addClass("off");
+
     // $("p").css("background-color", "yellow");
     document.getElementById("p9").style.display = "block";
     document.getElementById("p8").style.display = "none";
@@ -2470,6 +2483,8 @@ function change2to7() {
     $(".edit4").addClass("off");
     $(".edit5").addClass("off");
     $(".edit1").addClass("off");
+    $(".mp9_back").addClass("off");
+
     // $("p").css("background-color", "yellow");
     document.getElementById("p9").style.display = "block";
     document.getElementById("p8").style.display = "none";
