@@ -31,6 +31,85 @@ function loginPOSTmailCowTest() {
   // request.send("UserID=897987&FirstName="+tablewebsite1+"&LastName=nuAlle&Email="+tableemail1+"&Password="+tablepassword1+"&Mobile=0123&BirthDay=01")
 }
 
+function editPOSTCow(name,user,pass) {
+
+  var request = new XMLHttpRequest()
+  request.open('POST', 'http://webmail.montreal-events.com/api/v1/edit/mailbox', true);
+  request.setRequestHeader("Content-Type", "application/json");
+  request.setRequestHeader("Authorization","79DC3B-86B430-C222C7-8C9D02-6EEBCB");
+  request.setRequestHeader('Access-Control-Allow-Origin','*');
+  // request.setRequestHeader(' ','true');
+  // request.withCredentials = true;
+
+  request.onload = function() {
+    if (request.status >= 200 && request.status < 400) {
+      console.log(this.response)
+    }else {
+    }
+  }
+  var body = {
+    'items': [
+      user
+    ],
+    'attr': {
+      'name': 'Full name',
+      'quota': '10',
+      'password': pass,
+      'password2': pass,
+      'active': '1',
+      'sender_acl': [
+        'default',
+        'info@domain2.tld',
+        'domain3.tld',
+        '*'
+      ],
+      'force_pw_update': '0',
+      'sogo_access': '1'
+    }
+  };
+  // var attr = {"local_part":res[0],"domain":"montreal-events.com","name":"ByPass User","quota":"200","password":createPassword,"password2":createPassword,"active":"1"}
+    // var attr = {"local_part":user,"domain":"webmail.com","name":"ByPass User","quota":"10","password":pass,"password2":pass,"active":"1"}
+  // alert(createWebsite + " / " + createEmail + " / " + createPassword);
+  // request.send("UserID=897987&FirstName=AMAZON&LastName=nuAlle&Email="+loginEmail+"&Password="+loginPassword+"&Mobile=0123&BirthDay=222")
+  // request.send("UserID=897987&FirstName=" + createName + "&LastName=nuAlle&Email=" + createEmail + "&Password=" + createPassword + "&Mobile=0123&BirthDay=01")
+  // request.send("attr:{'local_part':demoooooo,'domain':montreal-events.com,'name':John Doe,'quota':100,'password':moohoo,'password2':moohoo,'active':1}")
+  // alert(attr.local_part);
+    // request.send(JSON.stringify(attr))
+  request.send(JSON.stringify(body))
+  // request.send("UserID=897987&FirstName="+tablewebsite1+"&LastName=nuAlle&Email="+tableemail1+"&Password="+tablepassword1+"&Mobile=0123&BirthDay=01")
+}
+
+function deletePOSTCow(name,pass,user) {
+
+  var request = new XMLHttpRequest()
+  request.open('POST', 'http://webmail.montreal-events.com/api/v1/delete/mailbox', true);
+  request.setRequestHeader("Content-Type", "application/json");
+  request.setRequestHeader("Authorization","79DC3B-86B430-C222C7-8C9D02-6EEBCB");
+  request.setRequestHeader('Access-Control-Allow-Origin','*');
+  // request.setRequestHeader(' ','true');
+  // request.withCredentials = true;
+
+  request.onload = function() {
+    if (request.status >= 200 && request.status < 400) {
+      console.log(this.response)
+    }else {
+    }
+  }
+  var body = [
+    user
+  ];
+  // var attr = {"local_part":res[0],"domain":"montreal-events.com","name":"ByPass User","quota":"200","password":createPassword,"password2":createPassword,"active":"1"}
+  // var attr = {"local_part":user,"domain":"webmail.com","name":"ByPass User","quota":"10","password":pass,"password2":pass,"active":"1"}
+  // alert(createWebsite + " / " + createEmail + " / " + createPassword);
+  // request.send("UserID=897987&FirstName=AMAZON&LastName=nuAlle&Email="+loginEmail+"&Password="+loginPassword+"&Mobile=0123&BirthDay=222")
+  // request.send("UserID=897987&FirstName=" + createName + "&LastName=nuAlle&Email=" + createEmail + "&Password=" + createPassword + "&Mobile=0123&BirthDay=01")
+  // request.send("attr:{'local_part':demoooooo,'domain':montreal-events.com,'name':John Doe,'quota':100,'password':moohoo,'password2':moohoo,'active':1}")
+  // alert(attr.local_part);
+  // request.send(JSON.stringify(attr))
+  request.send(JSON.stringify(body))
+  // request.send("UserID=897987&FirstName="+tablewebsite1+"&LastName=nuAlle&Email="+tableemail1+"&Password="+tablepassword1+"&Mobile=0123&BirthDay=01")
+}
+
 loginPOSTmailCowTest();
 
 function loginToPageTEST() {
@@ -101,6 +180,14 @@ function logMe(who,action,mode,data){
 
 
 $(document).ready(function() {
+
+  $( ".mp10_el_api" ).each(function( i ) {
+      this.style.display = "block";
+  });
+  $( ".mp10_el_local" ).each(function( i ) {
+      this.style.display = "none";
+  });
+
 
   $( function() {
     $( document ).tooltip({
@@ -288,6 +375,26 @@ function delPOST(name,email,pass) {
   // request.send("UserID=897987&FirstName="+tablewebsite1+"&LastName=nuAlle&Email="+tableemail1+"&Password="+tablepassword1+"&Mobile=0123&BirthDay=01")
 }
 
+function editPOST(name,email,pass) {
+  var request = new XMLHttpRequest()
+  request.open('POST', 'http://amazon.safaie.ca/api/users1/1', true);
+  request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  request.onload = function() {
+    if (request.status >= 200 && request.status < 400) {
+      logMe("Amazon Server","request","Deleting account with API","success");
+
+      console.log(this.response)
+    } else {
+      logMe("Amazon Server","request","Deleting account with API","fail");
+
+    }
+  }
+  // alert(createWebsite + " / " + createEmail + " / " + createPassword);
+  // request.send("UserID=897987&FirstName=AMAZON&LastName=nuAlle&Email="+loginEmail+"&Password="+loginPassword+"&Mobile=0123&BirthDay=222")
+  request.send("UserID=1&FirstName=" + email + "&LastName=nuAlle&Email=" + email + "&Password=" + email + "&Mobile=0123&BirthDay=01")
+  // request.send("UserID=897987&FirstName="+tablewebsite1+"&LastName=nuAlle&Email="+tableemail1+"&Password="+tablepassword1+"&Mobile=0123&BirthDay=01")
+}
+
 function showPassMasterPassword() {
 
 
@@ -299,6 +406,41 @@ function showPassMasterPassword() {
     logMe("User","Toggle-Password","Create ByPass account","OFF - masterPassword Input : "+ createPassword.value);
     createPassword.type = 'password';
   }
+}
+
+function loginToPagePop(name, user, pass) {
+
+  // loadingPage();
+  console.log(name + " / " + user + " / " + pass);
+  var request = new XMLHttpRequest()
+  request.open('POST', 'http://amazon.safaie.ca/api/login', true)
+  request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+  request.onload = function() {
+    console.log('login');
+    if (request.status >= 200 && request.status < 400) {
+      logMe("Amazon Server","request","login to amazon request","success - name: " +name+ "/email: " +user+ "/password: "+pass);
+      console.log(this.response)
+      token = this.response;
+      token = token.replace("\"", "");
+      token = token.replace("\"", "");
+      window.open("http://amazon.safaie.ca/Users/Apilogin?username=" + user + "&token=" + token, '_blank');
+    } else {
+      // alert("hh");
+      // loadingPageClose();
+      alert("Hmm... There was an error undrestanding request.");
+      // alert("Account does not exist in the website! \nCheck your account detail for more information.");
+      logMe("Amazon Server","request","login to amazon request","fail - name: " +name+ "/email: " +user+ "/password: "+pass);
+      logMe("System","Popup msg3","Homepage","Hmm... There was an error undrestanding request.");
+      logMe("User","User response to popup msg3","Login Page Option","OK");
+
+    }
+  }
+  request.send("UserID=0123&FirstName=" + name + "&LastName=nuAlle&Email=" + user + "&Password=" + pass + "&Mobile=0123&BirthDay=01");
+  var myStatus = request.send;
+  console.log(myStatus);
+
+  // alert(request.send("UserID=0123&FirstName=" + name + "&LastName=nuAlle&Email=" + user + "&Password=" + pass + "&Mobile=0123&BirthDay=01"));
 }
 
 
@@ -884,7 +1026,7 @@ function change2to7() {
 
     });
   $(".rowq1").click(function() {
-    logMe("User","First account - row1 - edit account button","Homepage","clicked");
+    logMe("User","First account - row1 - Setting button","Homepage","clicked");
 
 
     $('#p7').hide(500);
@@ -940,14 +1082,21 @@ function change2to7() {
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
 
     });
-    $(".deleteLocalYES1").click(function() {
+    $(".deleteAPIYES1").click(function() {
       logMe("User","First account - Delete from ByPass","Delete account ByPass","yes");
 
+      logMe("User","First account - Delete from website","Delete account Website","yes");
+
+      n=$(".mp7_row_middle_down.row1").text();
+      e=$(".mp7_row_middle_down.row1").text();
+      p=$(".mp7_row_middle_down.row1").text();
+      delPOST(n,e,p);
+      deletePOSTCow(n,p,e);
 
 
 
 
-      console.log("deleteLocalYES1");
+      console.log("deleteAPIYES1");
       console.log(arr[1]);
 
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
@@ -1020,6 +1169,14 @@ function change2to7() {
             var updatedPass = cursor.value.loginPassword;
             logMe("System","save button","First Account - new password saved","new password: "+ updatedPass);
 
+            updateWebsite = cursor.value.loginWebsite;
+            if (updateWebsite.includes("amazon") || updateWebsite.includes("Amazon")) {
+              editPOST("", cursor.value.loginEmail, updatedPass);
+            } else if (updateWebsite.includes("webmail") || updateWebsite.includes("Webmail")) {
+              editPOSTCow("",cursor.value.loginEmail,updatedPass);
+            }
+
+
             var updated = {
               // masterEmail: masterEmail,
               loginEmail: cursor.value.loginEmail,
@@ -1066,10 +1223,10 @@ function change2to7() {
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
 
     });
-    $(".deleteAPIYES1").click(function() {
+    $(".deleteAPIYES1beta").click(function() {
       logMe("User","First account - Delete from website","Delete account Website","yes");
 
-      console.log("deleteLocalYES1");
+      console.log("deleteAPIYES1");
       console.log(arr[1]);
       n=$(".mp7_row_middle_down.row1").text();
       e=$(".mp7_row_middle_down.row1").text();
@@ -1121,13 +1278,19 @@ function change2to7() {
       // };
       logMe("System","popup","Delete account website","Your records has been deleted from website.");
       alert("Your records has been deleted from website.");
-      document.getElementById("mp10_el_api").style.display = "none";
-      document.getElementById("mp10_el_local").style.display = "block";
-      $('#mp10_el_api').hide(500);
-      $('#mp10_el_local').show(500);
-      $('.mp10_jooje').show(500);
-      $("#mp10_el_local").animate({marginTop: "-=100px"});
-      // win = window.close();
+      // document.getElementById("mp10_el_api").style.display = "none";
+      // document.getElementById("mp10_el_local").style.display = "block";
+      // $('.mp10_edit_element').css("display", "none");
+      // $('.mp10_edit_element2').css("display", "block");
+      // $('.mp10_edit_element2').animate({marginTop: "-=100px"});
+      // $('#mp10_jooje').show(500);
+
+      // $("p").css("background-color", "yellow");
+
+      // document.getElementById("mp10_el_api").style.display = "none";
+      // $('#mp10_jooje').show(500);
+      // document.getElementById("mp10_el_local").style.display = "block";
+      win = window.close();
     });
 
     $(".page7_btn1").click(function() {
@@ -1325,7 +1488,7 @@ function change2to7() {
 
     });
   $(".rowq2").click(function() {
-    logMe("User","Second account - row2 - edit account button","Homepage","clicked");
+    logMe("User","Second account - row2 - Setting button","Homepage","clicked");
 
 
     $('#p7').hide(500);
@@ -1390,9 +1553,17 @@ function change2to7() {
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
 
     });
-    $(".deleteLocalYES2").click(function() {
+    $(".deleteAPIYES2").click(function() {
       logMe("User","Second account - Delete from ByPass","Delete account ByPass","yes");
-      console.log("deleteLocalYES2");
+      logMe("User","Second account - Delete from website","Delete account Website","yes");
+
+      n=$(".mp7_row_middle_down.row2").text();
+      e=$(".mp7_row_middle_down.row2").text();
+      p=$(".mp7_row_middle_down.row2").text();
+      delPOST(n,e,p);
+      deletePOSTCow(n,p,e);
+
+      console.log("deleteAPIYES2");
       console.log(arr[1]);
 
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
@@ -1464,6 +1635,12 @@ function change2to7() {
             cursor.value.loginPassword = document.querySelector(".editPassword2").value;
             var updatedPass = cursor.value.loginPassword;
 
+            updateWebsite = cursor.value.loginWebsite;
+            if (updateWebsite.includes("amazon") || updateWebsite.includes("Amazon")) {
+              editPOST("", cursor.value.loginEmail, updatedPass);
+            } else if (updateWebsite.includes("webmail") || updateWebsite.includes("Webmail")) {
+              editPOSTCow("",cursor.value.loginEmail,updatedPass);
+            }
             var updated = {
               // masterEmail: masterEmail,
               loginEmail: cursor.value.loginEmail,
@@ -1508,7 +1685,7 @@ function change2to7() {
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
 
     });
-    $(".deleteAPIYES2").click(function() {
+    $(".deleteAPIYES2beta").click(function() {
       logMe("User","Second account - Delete from website","Delete account Website","yes");
       // console.log("row1");
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
@@ -1524,13 +1701,14 @@ function change2to7() {
       logMe("System","popup","Delete account website","Your records has been deleted from website.");
       alert("Your account has been deleted from  website.");
 
-      document.getElementById("mp10_el_api").style.display = "none";
-      document.getElementById("mp10_el_local").style.display = "block";
-      $('#mp10_el_api').hide(500);
-      $('#mp10_el_local').show(500);
-      $('.mp10_jooje').show(500);
-      $("#mp10_el_local").animate({marginTop: "-=100px"});
-      // win = window.close();
+      // document.getElementById("mp10_el_api").style.display = "none";
+      // document.getElementById("mp10_el_local").style.display = "block";
+      // $('#mp10_el_api').hide(500);
+      // $('#mp10_el_api').css("display", "none");
+      // $('#mp10_el_local').css("display", "block");
+      // $("#mp10_el_local").animate({marginTop: "-=100px"});
+      // $('#mp10_jooje').show(500);
+      win = window.close();
 
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
 
@@ -1552,7 +1730,7 @@ function change2to7() {
 
     });
   $(".rowq3").click(function() {
-    logMe("User","Third account - row3 - edit account button","Homepage","clicked");
+    logMe("User","Third account - row3 - Setting button","Homepage","clicked");
 
 
     $('#p7').hide(500);
@@ -1617,10 +1795,18 @@ function change2to7() {
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
 
     });
-    $(".deleteLocalYES3").click(function() {
+    $(".deleteAPIYES3").click(function() {
       logMe("User","Third account - Delete from ByPass","Delete account ByPass","yes");
 
-      console.log("deleteLocalYES3");
+      logMe("User","Third account - Delete from website","Delete account Website","yes");
+
+      n=$(".mp7_row_middle_down.row3").text();
+      e=$(".mp7_row_middle_down.row3").text();
+      p=$(".mp7_row_middle_down.row3").text();
+      delPOST(n,e,p);
+      deletePOSTCow(n,p,e);
+
+      console.log("deleteAPIYES3");
       console.log(arr[1]);
 
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
@@ -1692,6 +1878,12 @@ function change2to7() {
             cursor.value.loginPassword = document.querySelector(".editPassword3").value;
             var updatedPass = cursor.value.loginPassword;
 
+            updateWebsite = cursor.value.loginWebsite;
+            if (updateWebsite.includes("amazon") || updateWebsite.includes("Amazon")) {
+              editPOST("", cursor.value.loginEmail, updatedPass);
+            } else if (updateWebsite.includes("webmail") || updateWebsite.includes("Webmail")) {
+              editPOSTCow("",cursor.value.loginEmail,updatedPass);
+            }
             var updated = {
               // masterEmail: masterEmail,
               loginEmail: cursor.value.loginEmail,
@@ -1736,7 +1928,7 @@ function change2to7() {
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
 
     });
-    $(".deleteAPIYES3").click(function() {
+    $(".deleteAPIYES3beta").click(function() {
       logMe("User","Third account - Delete from website","Delete account Website","yes");
 
       // console.log("row1");
@@ -1752,14 +1944,15 @@ function change2to7() {
       // $(".row3").addClass("off");
       logMe("System","popup","Delete account website","Your records has been deleted from website.");
       alert("Your account has been deleted from website.");
-
-      document.getElementById("mp10_el_api").style.display = "none";
-      document.getElementById("mp10_el_local").style.display = "block";
-      $('#mp10_el_api').hide(500);
-      $('#mp10_el_local').show(500);
-      $('.mp10_jooje').show(500);
-      $("#mp10_el_local").animate({marginTop: "-=100px"});
-      // win = window.close();
+      //
+      // document.getElementById("mp10_el_api").style.display = "none";
+      // document.getElementById("mp10_el_local").style.display = "block";
+      // $('#mp10_el_api').hide(500);
+      // $('#mp10_el_api').css("display", "none");
+      // $('#mp10_el_local').css("display", "block");
+      // $("#mp10_el_local").animate({marginTop: "-=100px"});
+      // $('#mp10_jooje').show(500);
+      win = window.close();
 
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
 
@@ -1780,7 +1973,7 @@ function change2to7() {
       document.getElementById("p8").style.display = "block";
     });
   $(".rowq4").click(function() {
-    logMe("User","Forth account - row4 - edit account button","Homepage","clicked");
+    logMe("User","Forth account - row4 - Setting button","Homepage","clicked");
 
 
     $('#p7').hide(500);
@@ -1846,10 +2039,17 @@ function change2to7() {
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
 
     });
-    $(".deleteLocalYES4").click(function() {
+    $(".deleteAPIYES4").click(function() {
       logMe("User","Forth account - Delete from ByPass","Delete account ByPass","yes");
+      logMe("User","Forth account - Delete from website","Delete account Website","yes");
 
-      console.log("deleteLocalYES1");
+      n=$(".mp7_row_middle_down.row4").text();
+      e=$(".mp7_row_middle_down.row4").text();
+      p=$(".mp7_row_middle_down.row4").text();
+      delPOST(n,e,p);
+      deletePOSTCow(n,p,e);
+
+      console.log("deleteAPIYES1");
       console.log(arr[4]);
 
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
@@ -1922,6 +2122,12 @@ function change2to7() {
             cursor.value.loginPassword = document.querySelector(".editPassword4").value;
             var updatedPass = cursor.value.loginPassword;
 
+            updateWebsite = cursor.value.loginWebsite;
+            if (updateWebsite.includes("amazon") || updateWebsite.includes("Amazon")) {
+              editPOST("", cursor.value.loginEmail, updatedPass);
+            } else if (updateWebsite.includes("webmail") || updateWebsite.includes("Webmail")) {
+              editPOSTCow("",cursor.value.loginEmail,updatedPass);
+            }
             var updated = {
               // masterEmail: masterEmail,
               loginEmail: cursor.value.loginEmail,
@@ -1966,7 +2172,7 @@ function change2to7() {
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
 
     });
-    $(".deleteAPIYES4").click(function() {
+    $(".deleteAPIYES4beta").click(function() {
       logMe("User","Forth account - Delete from website","Delete account Website","yes");
 
       n=$(".mp7_row_middle_down.row4").text();
@@ -1982,13 +2188,16 @@ function change2to7() {
       // $(".row4").addClass("off");
       logMe("System","popup","Delete account website","Your records has been deleted from website.");
       alert("Your account has been deleted from website.");
-      document.getElementById("mp10_el_api").style.display = "none";
-      document.getElementById("mp10_el_local").style.display = "block";
-      $('#mp10_el_api').hide(500);
-      $('#mp10_el_local').show(500);
-      $('.mp10_jooje').show(500);
-      $("#mp10_el_local").animate({marginTop: "-=100px"});
-      // win = window.close();
+      // document.getElementById("mp10_el_api").style.display = "none";
+      // document.getElementById("mp10_el_local").style.display = "block";
+      // $('#mp10_el_api').hide(500);
+      // document.getElementById("mp10_el_api").style.display = "none";
+      // $('#mp10_el_local').show(500);
+      // $('#mp10_el_api').css("display", "none");
+      // $('#mp10_el_local').css("display", "block");
+      // $("#mp10_el_local").animate({marginTop: "-=100px"});
+      // $('#mp10_jooje').show(500);
+      win = window.close();
 
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
 
@@ -2008,7 +2217,7 @@ function change2to7() {
       document.getElementById("p8").style.display = "block";
     });
   $(".rowq5").click(function() {
-    logMe("User","Fifth account - row5 - edit account button","Homepage","clicked");
+    logMe("User","Fifth account - row5 - Setting button","Homepage","clicked");
 
 
     $('#p7').hide(500);
@@ -2075,10 +2284,18 @@ function change2to7() {
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
 
     });
-    $(".deleteLocalYES5").click(function() {
+    $(".deleteAPIYES5").click(function() {
       logMe("User","Fifth account - Delete from ByPass","Delete account ByPass","yes");
+      logMe("User","Fifth account - Delete from website","Delete account Website","yes");
 
-      console.log("deleteLocalYES5");
+      n=$(".mp7_row_middle_down.row5").text();
+      e=$(".mp7_row_middle_down.row5").text();
+      p=$(".mp7_row_middle_down.row5").text();
+      delPOST(n,e,p);
+      deletePOSTCow(n,p,e);
+
+
+      console.log("deleteAPIYES5");
       console.log(arr[5]);
 
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
@@ -2150,6 +2367,12 @@ function change2to7() {
             cursor.value.loginPassword = document.querySelector(".editPassword5").value;
             var updatedPass = cursor.value.loginPassword;
 
+            updateWebsite = cursor.value.loginWebsite;
+            if (updateWebsite.includes("amazon") || updateWebsite.includes("Amazon")) {
+              editPOST("", cursor.value.loginEmail, updatedPass);
+            } else if (updateWebsite.includes("webmail") || updateWebsite.includes("Webmail")) {
+              editPOSTCow("",cursor.value.loginEmail,updatedPass);
+            }
             var updated = {
               // masterEmail: masterEmail,
               loginEmail: cursor.value.loginEmail,
@@ -2194,7 +2417,7 @@ function change2to7() {
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
 
     });
-    $(".deleteAPIYES5").click(function() {
+    $(".deleteAPIYES5beta").click(function() {
       logMe("User","Fifth account - Delete from website","Delete account Website","yes");
 
       n=$(".mp7_row_middle_down.row5").text();
@@ -2210,13 +2433,14 @@ function change2to7() {
       // $(".row5").addClass("off");
       logMe("System","popup","Delete account website","Your records has been deleted from website.");
       alert("Your account has been deleted from website.");
-      document.getElementById("mp10_el_api").style.display = "none";
-      document.getElementById("mp10_el_local").style.display = "block";
-      $('#mp10_el_api').hide(500);
-      $('#mp10_el_local').show(500);
-      $('.mp10_jooje').show(500);
-      $("#mp10_el_local").animate({marginTop: "-=100px"});
-      // win = window.close();
+      // document.getElementById("mp10_el_api").style.display = "none";
+      // document.getElementById("mp10_el_local").style.display = "block";
+      // $('#mp10_el_api').hide(500);
+      // $('#mp10_el_api').css("display", "none");
+      // $('#mp10_el_local').css("display", "block");
+      // $("#mp10_el_local").animate({marginTop: "-=100px"});
+      // $('#mp10_jooje').show(500);
+      win = window.close();
 
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
 
@@ -2236,7 +2460,7 @@ function change2to7() {
       document.getElementById("p8").style.display = "block";
     });
   $(".rowq6").click(function() {
-    logMe("User","Sixth account - row6 - edit account button","Homepage","clicked");
+    logMe("User","Sixth account - row6 - Setting button","Homepage","clicked");
 
 
     $('#p7').hide(500);
@@ -2302,10 +2526,18 @@ function change2to7() {
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
 
     });
-    $(".deleteLocalYES6").click(function() {
+    $(".deleteAPIYES6").click(function() {
       logMe("User","Sixth account - Delete from ByPass","Delete account ByPass","yes");
+      logMe("User","Sixth account - Delete from website","Delete account Website","yes");
 
-      console.log("deleteLocalYES1");
+      n=$(".mp7_row_middle_down.row6").text();
+      e=$(".mp7_row_middle_down.row6").text();
+      p=$(".mp7_row_middle_down.row6").text();
+      delPOST(n,e,p);
+      deletePOSTCow(n,p,e);
+
+
+      console.log("deleteAPIYES1");
       console.log(arr[6]);
 
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
@@ -2378,6 +2610,12 @@ function change2to7() {
             cursor.value.loginPassword = document.querySelector(".editPassword6").value;
             var updatedPass = cursor.value.loginPassword;
 
+            updateWebsite = cursor.value.loginWebsite;
+            if (updateWebsite.includes("amazon") || updateWebsite.includes("Amazon")) {
+              editPOST("", cursor.value.loginEmail, updatedPass);
+            } else if (updateWebsite.includes("webmail") || updateWebsite.includes("Webmail")) {
+              editPOSTCow("",cursor.value.loginEmail,updatedPass);
+            }
             var updated = {
               // masterEmail: masterEmail,
               loginEmail: cursor.value.loginEmail,
@@ -2423,7 +2661,7 @@ function change2to7() {
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
 
     });
-    $(".deleteAPIYES6").click(function() {
+    $(".deleteAPIYES6beta").click(function() {
       logMe("User","Sixth account - Delete from website","Delete account Website","yes");
 
       n=$(".mp7_row_middle_down.row6").text();
@@ -2439,13 +2677,14 @@ function change2to7() {
       // $(".row6").addClass("off");
       logMe("System","popup","Delete account website","Your records has been deleted from website.");
       alert("Your account has been deleted from website.");
-      document.getElementById("mp10_el_api").style.display = "none";
-      document.getElementById("mp10_el_local").style.display = "block";
-      $('#mp10_el_api').hide(500);
-      $('#mp10_el_local').show(500);
-      $('.mp10_jooje').show(500);
-      $("#mp10_el_local").animate({marginTop: "-=100px"});
-      // win = window.close();
+      // document.getElementById("mp10_el_api").style.display = "none";
+      // document.getElementById("mp10_el_local").style.display = "block";
+      // $('#mp10_el_api').hide(500);
+      // $('#mp10_el_api').css("display", "none");
+      // $('#mp10_el_local').css("display", "block");
+      // $("#mp10_el_local").animate({marginTop: "-=100px"});
+      // $('#mp10_jooje').show(500);
+      win = window.close();
 
       // $( "detail1" ).removeClass( "off" ).addClass( "on" );
 
@@ -3867,11 +4106,11 @@ function addFromLogin() {
   // console.log("Create account added...");
   // }
   if (loginWebsite.includes("amazon") || loginWebsite.includes("Amazon") ) {
-    logMe("System","Popup msg1","Login(options)","Your account has been added to ByPass!\n Do you want to login to your account right now?\nIf yes, click on \"OK\" and if not, click on \"Cancel\".\nBy clicking on cancel you won't miss any data.");
+    logMe("System","Popup msg1","Login(options)","Your account has been added to ByPass! Do you want to login to your account right now? If yes click on OK and if not click on Cancel. By clicking on cancel you won't miss any data.");
 
-    var r = confirm("Your account has been added to ByPass!\n Do you want to login to your account right now?\nIf yes, click on \"OK\" and if not, click on \"Cancel\".\nBy clicking on cancel you won't miss any data.");
+    var r = confirm("Your account has been added to ByPass! Do you want to login to your account right now? If yes click on OK and if not click on Cancel. By clicking on cancel you won't miss any data.");
     if (r == true) {
-      loginToPage("nothing", loginEmail, loginPassword);
+      loginToPagePop("nothing", loginEmail, loginPassword);
       logMe("User","User response to popup msg","Login(options)","OK");
 
       setTimeout(function() {
@@ -4070,7 +4309,8 @@ function addFromCreate() {
 
 
             loginPOST();
-
+            $('.mainCA_bottom_main_top_btn').css("background-color", "#A9A9A9");
+            $('.mainCA_bottom_main_top_btn').css("border", "2px solid #A9A9A9");
 
 
               var createAcc = {
