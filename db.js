@@ -4493,7 +4493,7 @@ function renderRows() {
           logoName.src = "UI/amazon.png";
         } else if (website == "facebook") {
           logoName.src = "UI/facebook.png";
-        } else if (website.includes("webmail")) {
+        } else if (website.includes("webmail") || website.includes("Webmail")) {
           logoName.src = "UI/gmail.png";
         }
       }
@@ -4529,7 +4529,7 @@ function renderRows() {
           logo_details.src = "UI/amazon.png";
         } else if (website == "facebook") {
           logo_details.src = "UI/facebook.png";
-        } else if (website.includes("webmail")) {
+        } else if (website.includes("webmail") || website.includes("Webmail")) {
           logo_details.src = "UI/gmail.png";
         }
       }
@@ -4566,7 +4566,7 @@ function renderRows() {
         logo_edit.src = "UI/amazon.png";
       } else if (website == "facebook") {
         logo_edit.src = "UI/facebook.png";
-      } else if (website.includes("webmail")) {
+      } else if (website.includes("webmail") || website.includes("Webmail")) {
         logo_edit.src = "UI/gmail.png";
       }
       editWebsiteName = clone3.querySelector(".editWebsiteName");
