@@ -1,46 +1,5 @@
 
 
-function loginPOSTmailCowTest() {
-  var d = new Date();
-  var n = d.getMinutes();
-  var name = "a";
-  var pass = "aadaasd34434ASDASD";
-  var user = "test"+n;
-
-  // alert(createWebsite + " / " + createEmail + " / " + createPassword);
-  // request.send("UserID=897987&FirstName=AMAZON&LastName=nuAlle&Email="+loginEmail+"&Password="+loginPassword+"&Mobile=0123&BirthDay=222")
-  // request.send("UserID=897987&FirstName=" + createName + "&LastName=nuAlle&Email=" + createEmail + "&Password=" + createPassword + "&Mobile=0123&BirthDay=01")
-  // request.send("attr:{'local_part':demoooooo,'domain':montreal-events.com,'name':John Doe,'quota':100,'password':moohoo,'password2':moohoo,'active':1}")
-  // alert(attr.local_part);
-  // console.log(JSON.stringify(attr));
-  // request.send(JSON.stringify(attr))
-
-  var request = new XMLHttpRequest();
-
-  request.open('POST', 'http://webmail.montreal-events.com/api/v1/add/mailbox');
-
-  request.setRequestHeader('Content-Type', 'application/json');
-  request.setRequestHeader('X-API-Key', '79DC3B-86B430-C222C7-8C9D02-6EEBCB');
-  request.setRequestHeader('Access-Control-Allow-Origin','*');
-
-
-  request.onreadystatechange = function () {
-    if (this.readyState === 4) {
-      console.log('Status:', this.status);
-      console.log('Headers:', this.getAllResponseHeaders());
-      console.log('Body:', this.responseText);
-    } else {
-
-    }
-  };
-
-  var body = {"local_part":user,"domain":"webmail.com","name":"ByPass User","quota":"10","password":pass,"password2":pass,"active":"1"};
-
-  request.send(JSON.stringify(body));
-  // request.send("UserID=897987&FirstName="+tablewebsite1+"&LastName=nuAlle&Email="+tableemail1+"&Password="+tablepassword1+"&Mobile=0123&BirthDay=01")
-}
-
-
 function editPOSTCow(name,user,pass) {
   logMe("Webmail Server","request","Edit account with API","Email: "+ user + " / New Password:" + pass);
 
@@ -122,7 +81,6 @@ function deletePOSTCow(name,pass,user) {
   // request.send("UserID=897987&FirstName="+tablewebsite1+"&LastName=nuAlle&Email="+tableemail1+"&Password="+tablepassword1+"&Mobile=0123&BirthDay=01")
 }
 
-loginPOSTmailCowTest();
 
 function loginToPageTEST() {
   var name = "a"
