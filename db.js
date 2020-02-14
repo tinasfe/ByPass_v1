@@ -1115,8 +1115,8 @@ function change2to7() {
 
         }
       };
-      alert("Your records has been deleted from ByPass.");
-      logMe("System","popup","First Account - delete account from bypass","Your records has been deleted from ByPass.");
+      alert("Your records has been deleted from website and ByPass too.");
+      logMe("System","popup","First Account - delete account from bypass","Your records has been deleted from website and ByPass too.");
 
 
       setTimeout(function() {
@@ -1249,8 +1249,8 @@ function change2to7() {
       //
       //   }
       // };
-      logMe("System","popup","Delete account website","Your records has been deleted from website.");
-      alert("Your records has been deleted from website.");
+      logMe("System","popup","Delete account website","Your records has been deleted from website and ByPass too.");
+      alert("Your records has been deleted from website and ByPass too.");
       // document.getElementById("mp10_el_api").style.display = "none";
       // document.getElementById("mp10_el_local").style.display = "block";
       // $('.mp10_edit_element').css("display", "none");
@@ -1581,8 +1581,8 @@ function change2to7() {
 
         }
       };
-      alert("Your account has been deleted from ByPass!");
-      logMe("System","popup","Second Account - delete account from bypass","Your records has been deleted from ByPass.");
+      alert("Your records has been deleted from website and ByPass too.");
+      logMe("System","popup","Second Account - delete account from bypass","Your records has been deleted from website and ByPass too.");
 
       // win = window.close();
 
@@ -1673,8 +1673,8 @@ function change2to7() {
       // var objectStore = db.transaction("accounts").objectStore("accounts");
       console.log("row2 wants to be deleted");
       // $(".row2").addClass("off");
-      logMe("System","popup","Delete account website","Your records has been deleted from website.");
-      alert("Your account has been deleted from  website.");
+      logMe("System","popup","Delete account website","Your records has been deleted from website and ByPass too.");
+      alert("Your records has been deleted from website and ByPass too.");
 
       // document.getElementById("mp10_el_api").style.display = "none";
       // document.getElementById("mp10_el_local").style.display = "block";
@@ -1826,8 +1826,8 @@ function change2to7() {
 
         }
       };
-      alert("Your account has been deleted from ByPass.");
-      logMe("System","popup","Third Account - delete account from bypass","Your records has been deleted from ByPass.");
+      alert("Your records has been deleted from website and ByPass too.");
+      logMe("System","popup","Third Account - delete account from bypass","Your records has been deleted from website and ByPass too.");
 
       // win = window.close();
 
@@ -1919,8 +1919,8 @@ function change2to7() {
       // var objectStore = db.transaction("accounts").objectStore("accounts");
       console.log("row3 wants to be deleted");
       // $(".row3").addClass("off");
-      logMe("System","popup","Delete account website","Your records has been deleted from website.");
-      alert("Your account has been deleted from website.");
+      logMe("System","popup","Delete account website","Your records has been deleted from website and ByPass too.");
+      alert("Your records has been deleted from website and ByPass too.");
       //
       // document.getElementById("mp10_el_api").style.display = "none";
       // document.getElementById("mp10_el_local").style.display = "block";
@@ -2071,8 +2071,8 @@ function change2to7() {
 
         }
       };
-      alert("Your account has been deleted from ByPass");
-      logMe("System","popup","Second Account - delete account from bypass","Your records has been deleted from ByPass.");
+      alert("Your records has been deleted from website and ByPass too.");
+      logMe("System","popup","Second Account - delete account from bypass","Your records has been deleted from website and ByPass too.");
 
       // win = window.close();
 
@@ -2165,8 +2165,8 @@ function change2to7() {
       // var objectStore = db.transaction("accounts").objectStore("accounts");
       console.log("row4 wants to be deleted");
       // $(".row4").addClass("off");
-      logMe("System","popup","Delete account website","Your records has been deleted from website.");
-      alert("Your account has been deleted from website.");
+      logMe("System","popup","Delete account website","Your records has been deleted from website and ByPass too.");
+      alert("Your records has been deleted from website and ByPass too.");
       // document.getElementById("mp10_el_api").style.display = "none";
       // document.getElementById("mp10_el_local").style.display = "block";
       // $('#mp10_el_api').hide(500);
@@ -2319,8 +2319,8 @@ function change2to7() {
 
         }
       };
-      alert("Your account has been deleted from ByPass.");
-      logMe("System","popup","Second Account - delete account from bypass","Your records has been deleted from ByPass.");
+      alert("Your records has been deleted from website and ByPass too.");
+      logMe("System","popup","Second Account - delete account from bypass","Your records has been deleted from website and ByPass too.");
 
       // win = window.close();
 
@@ -2412,8 +2412,8 @@ function change2to7() {
       // var objectStore = db.transaction("accounts").objectStore("accounts");
       console.log("row5 wants to be deleted");
       // $(".row5").addClass("off");
-      logMe("System","popup","Delete account website","Your records has been deleted from website.");
-      alert("Your account has been deleted from website.");
+      logMe("System","popup","Delete account website","Your records has been deleted from website and ByPass too.");
+      alert("Your records has been deleted from website and ByPass too.");
       // document.getElementById("mp10_el_api").style.display = "none";
       // document.getElementById("mp10_el_local").style.display = "block";
       // $('#mp10_el_api').hide(500);
@@ -2563,8 +2563,8 @@ function change2to7() {
 
         }
       };
-      alert("Your account has been deleted from ByPass.");
-      logMe("System","popup","Sixth Account - delete account from bypass","Your records has been deleted from ByPass.");
+      alert("Your records has been deleted from website and ByPass too.");
+      logMe("System","popup","Sixth Account - delete account from bypass","Your records has been deleted from website and ByPass too.");
 
       // win = window.close();
 
@@ -2658,8 +2658,8 @@ function change2to7() {
       // var objectStore = db.transaction("accounts").objectStore("accounts");
       console.log("row6 wants to be deleted");
       // $(".row6").addClass("off");
-      logMe("System","popup","Delete account website","Your records has been deleted from website.");
-      alert("Your account has been deleted from website.");
+      logMe("System","popup","Delete account website","Your records has been deleted from website and ByPass too.");
+      alert("Your records has been deleted from website and ByPass too.");
       // document.getElementById("mp10_el_api").style.display = "none";
       // document.getElementById("mp10_el_local").style.display = "block";
       // $('#mp10_el_api').hide(500);
