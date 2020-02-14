@@ -4195,7 +4195,7 @@ function addFromCreate() {
   var store = transaction.objectStore("accounts");
 
        if ($("#createFirstName").val() == "" ||  $("#createLastName").val() == "" ||  $("#createdateOfBirth").val() == "" ||  $("#createEmail").val() == "" ||  $("#createPassword").val() == "" ) {
-         if (createWebsite.includes("webmail") || createWebsite !== "webmail") {
+         if (createWebsite.includes("webmail") || createWebsite.includes("Webmail") ||createWebsite !== "webmail") {
            logMe("User","website name entered","create account page","websitename:" + createWebsite );
            logMe("User","Create account button","create account page","clicked");
 
