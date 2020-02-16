@@ -1115,8 +1115,8 @@ function change2to7() {
 
         }
       };
-      alert("Your records has been deleted from website and ByPass too.");
-      logMe("System","popup","First Account - delete account from bypass","Your records has been deleted from website and ByPass too.");
+      alert("Your records has been deleted both from the website and ByPass!");
+      logMe("System","popup","First Account - delete account from bypass","Your records has been deleted both from the website and ByPass!");
 
 
       setTimeout(function() {
@@ -1305,7 +1305,7 @@ function change2to7() {
       } else if (radioCheck.includes("radiobtn4-1")){
 
         localStorage.setItem("radioUser1", 4);
-        logMe("User","Automatic change passwrod function ","Account edit","Every 3year");
+        logMe("User","Automatic change passwrod function ","Account edit","Every year");
 
 
       } else if (radioCheck.includes("radiobtn1-2")){
@@ -1581,8 +1581,8 @@ function change2to7() {
 
         }
       };
-      alert("Your records has been deleted from website and ByPass too.");
-      logMe("System","popup","Second Account - delete account from bypass","Your records has been deleted from website and ByPass too.");
+      alert("Your records has been deleted from both the website and ByPass.");
+      logMe("System","popup","Second Account - delete account from bypass","Your records has been deleted from both the website and ByPass.");
 
       // win = window.close();
 
@@ -1673,8 +1673,8 @@ function change2to7() {
       // var objectStore = db.transaction("accounts").objectStore("accounts");
       console.log("row2 wants to be deleted");
       // $(".row2").addClass("off");
-      logMe("System","popup","Delete account website","Your records has been deleted from website and ByPass too.");
-      alert("Your records has been deleted from website and ByPass too.");
+      logMe("System","popup","Delete account website","Your records has been deleted from both the website and ByPass.");
+      alert("Your records has been deleted from both the website and ByPass.");
 
       // document.getElementById("mp10_el_api").style.display = "none";
       // document.getElementById("mp10_el_local").style.display = "block";
@@ -1827,7 +1827,7 @@ function change2to7() {
         }
       };
       alert("Your records has been deleted from website and ByPass too.");
-      logMe("System","popup","Third Account - delete account from bypass","Your records has been deleted from website and ByPass too.");
+      logMe("System","popup","Third Account - delete account from bypass","Your records has been deleted from both the website and ByPass.");
 
       // win = window.close();
 
@@ -1919,8 +1919,8 @@ function change2to7() {
       // var objectStore = db.transaction("accounts").objectStore("accounts");
       console.log("row3 wants to be deleted");
       // $(".row3").addClass("off");
-      logMe("System","popup","Delete account website","Your records has been deleted from website and ByPass too.");
-      alert("Your records has been deleted from website and ByPass too.");
+      logMe("System","popup","Delete account website","Your records has been deleted from both the website and ByPass.");
+      alert("Your records has been deleted from both the website and ByPass.");
       //
       // document.getElementById("mp10_el_api").style.display = "none";
       // document.getElementById("mp10_el_local").style.display = "block";
@@ -2072,7 +2072,7 @@ function change2to7() {
         }
       };
       alert("Your records has been deleted from website and ByPass too.");
-      logMe("System","popup","Second Account - delete account from bypass","Your records has been deleted from website and ByPass too.");
+      logMe("System","popup","Second Account - delete account from bypass","Your records has been deleted from both the website and ByPass.");
 
       // win = window.close();
 
@@ -2165,8 +2165,8 @@ function change2to7() {
       // var objectStore = db.transaction("accounts").objectStore("accounts");
       console.log("row4 wants to be deleted");
       // $(".row4").addClass("off");
-      logMe("System","popup","Delete account website","Your records has been deleted from website and ByPass too.");
-      alert("Your records has been deleted from website and ByPass too.");
+      logMe("System","popup","Delete account website","Your records has been deleted from both the website and ByPass.");
+      alert("Your records has been deleted from both the website and ByPass.");
       // document.getElementById("mp10_el_api").style.display = "none";
       // document.getElementById("mp10_el_local").style.display = "block";
       // $('#mp10_el_api').hide(500);
@@ -2320,7 +2320,7 @@ function change2to7() {
         }
       };
       alert("Your records has been deleted from website and ByPass too.");
-      logMe("System","popup","Second Account - delete account from bypass","Your records has been deleted from website and ByPass too.");
+      logMe("System","popup","Second Account - delete account from bypass","Your records has been deleted from both the website and ByPass.");
 
       // win = window.close();
 
@@ -2412,8 +2412,8 @@ function change2to7() {
       // var objectStore = db.transaction("accounts").objectStore("accounts");
       console.log("row5 wants to be deleted");
       // $(".row5").addClass("off");
-      logMe("System","popup","Delete account website","Your records has been deleted from website and ByPass too.");
-      alert("Your records has been deleted from website and ByPass too.");
+      logMe("System","popup","Delete account website","Your records has been deleted from both the website and ByPass.");
+      alert("Your records has been deleted from both the website and ByPass.");
       // document.getElementById("mp10_el_api").style.display = "none";
       // document.getElementById("mp10_el_local").style.display = "block";
       // $('#mp10_el_api').hide(500);
@@ -2564,7 +2564,7 @@ function change2to7() {
         }
       };
       alert("Your records has been deleted from website and ByPass too.");
-      logMe("System","popup","Sixth Account - delete account from bypass","Your records has been deleted from website and ByPass too.");
+      logMe("System","popup","Sixth Account - delete account from bypass","Your records has been deleted from both the website and ByPass.");
 
       // win = window.close();
 
@@ -2658,8 +2658,8 @@ function change2to7() {
       // var objectStore = db.transaction("accounts").objectStore("accounts");
       console.log("row6 wants to be deleted");
       // $(".row6").addClass("off");
-      logMe("System","popup","Delete account website","Your records has been deleted from website and ByPass too.");
-      alert("Your records has been deleted from website and ByPass too.");
+      logMe("System","popup","Delete account website","Your records has been deleted from both the website and ByPass.");
+      alert("Your records has been deleted from both the website and ByPass.");
       // document.getElementById("mp10_el_api").style.display = "none";
       // document.getElementById("mp10_el_local").style.display = "block";
       // $('#mp10_el_api').hide(500);
@@ -3306,7 +3306,7 @@ $(document).ready(function() {
 
 
   $(".createTitle").innerText = "Create an account on " + websiteP;
-  $(".loginTitle").innerText = "Login to " + websiteP;
+  $(".loginTitle").innerText = "Add your " + websiteP + "account to ByPass by filling the form below";
 
   $(".mp8").click(function() {
     logMe("User","Home button clicked","Account Details","Clicked");
@@ -4089,9 +4089,9 @@ function addFromLogin() {
   // console.log("Create account added...");
   // }
   if (loginWebsite.includes("amazon") || loginWebsite.includes("Amazon") ) {
-    logMe("System","Popup msg1","Login(options)","Your account has been added to ByPass! Do you want to login to your account right now? If yes click on OK and if not click on Cancel. By clicking on cancel you won't miss any data.");
+    logMe("System","Popup msg1","Login(options)","Your account has been added to ByPass! Do you want to login to your account right now? If yes click on OK and if not click on Cancel. Your account will be still added to ByPass.");
 
-    var r = confirm("Your account has been added to ByPass! Do you want to login to your account right now? If yes click on OK and if not click on Cancel. By clicking on cancel you won't miss any data.");
+    var r = confirm("Your account has been added to ByPass! Do you want to login to your account right now? If yes click on OK and if not click on Cancel. Your account will be still added to ByPass.");
     if (r == true) {
       loginToPagePop("nothing", loginEmail, loginPassword);
       logMe("User","User response to popup msg","Login(options)","OK");
