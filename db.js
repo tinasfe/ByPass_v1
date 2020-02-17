@@ -1268,7 +1268,13 @@ function change2to7() {
 
     $(".page7_btn1").click(function() {
       logMe("User","Go button on first created account","Homepage","Clicked and login requested");
-      container(1,"a", "a", "a",0);
+      var web = $(".webGo1").text();
+      if (web.includes("webmail") || web.includes("Webmail")){
+        url = "http://webmail1.montreal-events.com/";
+        openInNewTab(url)
+      } else if (web.includes("amazon") || web.includes("Amazon")){
+        container(1,"a", "a", "a",0);
+      }
     });
     $(".detailLogin1").click(function() {
       logMe("User","login button on first created account","Detail Page","Clicked and login requested");
@@ -1497,7 +1503,13 @@ function change2to7() {
     });
     $(".page7_btn2").click(function() {
       logMe("User","Go button on second created account","Homepage","Clicked and login requested");
-      container(2,"a", "a", "a",0);
+      var web = $(".webGo2").text();
+      if (web.includes("webmail") || web.includes("Webmail")){
+        url = "http://webmail1.montreal-events.com/";
+        openInNewTab(url)
+      } else if (web.includes("amazon") || web.includes("Amazon")){
+        container(2,"a", "a", "a",0);
+      }
     });
     $(".detailLogin2").click(function() {
       logMe("User","login button on second created account","Detail Page","Clicked and login requested");
@@ -1741,7 +1753,14 @@ function change2to7() {
     });
     $(".page7_btn3").click(function() {
       logMe("User","Go button on third created account","Homepage","Clicked and login requested");
-      container(3,"a", "a", "a",0);
+      var web = $(".webGo3").text();
+      if (web.includes("webmail") || web.includes("Webmail")){
+        url = "http://webmail1.montreal-events.com/";
+        openInNewTab(url)
+      } else if (web.includes("amazon") || web.includes("Amazon")){
+        container(3,"a", "a", "a",0);
+      }
+
     });
     $(".detailLogin3").click(function() {
       logMe("User","login button on third created account","Detail Page","Clicked and login requested");
@@ -1987,7 +2006,15 @@ function change2to7() {
     });
     $(".page7_btn4").click(function() {
       logMe("User","Go button on forth created account","Homepage","Clicked and login requested");
-      container(4,"a", "a", "a",0);
+      // container(4,"a", "a", "a",0);
+      var web = $(".webGo4").text();
+      if (web.includes("webmail") || web.includes("Webmail")){
+        url = "http://webmail1.montreal-events.com/";
+        openInNewTab(url)
+      } else if (web.includes("amazon") || web.includes("Amazon")){
+        container(4,"a", "a", "a",0);
+      }
+
     });
     $(".detailLogin4").click(function() {
       logMe("User","login button on forth created account","Detail Page","Clicked and login requested");
@@ -2233,7 +2260,14 @@ function change2to7() {
     $(".page7_btn5").click(function() {
       logMe("User","Go button on fifth created account","Homepage","Clicked and login requested");
 
-      container(5,"a", "a", "a",0);
+      var web = $(".webGo5").text();
+      if (web.includes("webmail") || web.includes("Webmail")){
+        url = "http://webmail1.montreal-events.com/";
+        openInNewTab(url)
+      } else if (web.includes("amazon") || web.includes("Amazon")){
+        container(5,"a", "a", "a",0);
+      }
+
     });
     $(".detailLogin5").click(function() {
       logMe("User","login button on second created account","Detail Page","Clicked and login requested");
@@ -2478,7 +2512,14 @@ function change2to7() {
     });
     $(".page7_btn6").click(function() {
       logMe("User","Go button on sixth created account","Homepage","Clicked and login requested");
-      container(6,"a", "a", "a",0)
+      var web = $(".webGo6").text();
+      if (web.includes("webmail") || web.includes("Webmail")){
+        url = "http://webmail1.montreal-events.com/";
+        openInNewTab(url)
+      } else if (web.includes("amazon") || web.includes("Amazon")){
+        container(6,"a", "a", "a",0);
+      }
+
     });
     $(".detailLogin6").click(function() {
       logMe("User","login button on sixth","Detail Page","Clicked and login requested");
@@ -3279,6 +3320,7 @@ var win;
 
 function openInNewTab(url) {
   win = window.open(url, '_blank');
+  logMe("System","newTab","Homepage","new tab has been opened with url of " + url);
 
 
   // win.focus();
@@ -4476,6 +4518,7 @@ function renderRows() {
       selectedRowMid.classList.add("row" + num);
       arrow.classList.add("row" + num);
       selectedRowMidT.classList.add("row" + num);
+      selectedRowMidT.classList.add("webGo" + num);
       selectedRowMidD.classList.add("row" + num);
       websiteName.innerText = website;
 
