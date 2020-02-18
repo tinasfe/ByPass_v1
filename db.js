@@ -4329,9 +4329,17 @@ function addFromCreate() {
              $('.mainCA_bottom_main_top_btn').css("background-color", "#A9A9A9");
              $('.mainCA_bottom_main_top_btn').css("border", "2px solid #A9A9A9");
                console.log("Create account added...");
-               alert("Your account has been created and added to ByPass.");
-               logMe("System","popup","create page"," Your account has been created and added to ByPass..  -  create Email: "+ createEmail + " create Password: "+ createPassword+" webiste name: "+createWebsite);
+               // alert("Your account has been created and added to ByPass.");
+               // logMe("System","popup","create page"," Your account has been created and added to ByPass..  -  create Email: "+ createEmail + " create Password: "+ createPassword+" webiste name: "+createWebsite);
 
+             var r = confirm("Your account has been added to ByPass! Do you want to login to your account right now? If yes click on OK and if not click on Cancel. Your account will be still added to ByPass.");
+             if (r == true) {
+               url = "http://webmail1.montreal-events.com/";
+               openInNewTab(url);
+               logMe("User", "User response to popup msg", "Login(options)", "OK");
+             }else{
+
+             }
 
              setTimeout(function() {
                  win = window.close();
