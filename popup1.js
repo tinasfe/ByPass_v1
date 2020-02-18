@@ -362,7 +362,7 @@ $(document).ready(function() {
   });
 
   chrome.storage.sync.get(['websiteP'], function(items) {
-    document.getElementById("LoginTitlee").innerText = "Login to " + items.websiteP;
+    document.getElementById("LoginTitlee").innerText = "Add your " + items.websiteP + " account to ByPass by completing the form below";
   });
 
 

@@ -379,6 +379,38 @@ function showPassMasterPassword() {
   }
 }
 
+
+
+function loginToPagePopWebmail(name, user, pass) {
+  var request = new XMLHttpRequest();
+
+  request.open('POST', 'http://webmail.montreal-events.com/api/v1/add/mailbox');
+
+  request.setRequestHeader('Content-Type', 'application/json');
+  request.setRequestHeader('X-API-Key', '79DC3B-86B430-C222C7-8C9D02-6EEBCB');
+  request.setRequestHeader('Access-Control-Allow-Origin','*');
+
+
+  request.onreadystatechange = function () {
+    if (this.readyState === 4) {
+      console.log('Status:', this.status);
+      console.log('Headers:', this.getAllResponseHeaders());
+      console.log('Body:', this.responseText);
+      logMe("Webmail Server","request","Login an account request to webmail","Success - Email: " +user+ "@webmail.com / password: " +pass);
+      logMe("Webmail Server","request","Login an account request to webmail","Server respond: " + this.response);
+    } else {
+      logMe("Webmail Server", "request", "Login an account request to webmail", "Failure - Email: " + user + "@webmail.com / password: " + pass);
+
+    }
+  };
+
+  var body = {"local_part":user,"domain":"webmail.com","name":"ByPass User","quota":"10","password":pass,"password2":pass,"active":"1"};
+
+  request.send(JSON.stringify(body));
+
+
+}
+
 function loginToPagePop(name, user, pass) {
 
   // loadingPage();
@@ -1021,6 +1053,7 @@ function change2to7() {
       var user1Radio = localStorage.getItem("radioUser1");
       if (user1Radio){
         $("."+"radiobtn"+user1Radio+"-1").attr("checked","checked");
+
       }
 
       // console.log("row1");
@@ -4136,6 +4169,25 @@ function addFromLogin() {
     var r = confirm("Your account has been added to ByPass! Do you want to login to your account right now? If yes click on OK and if not click on Cancel. Your account will be still added to ByPass.");
     if (r == true) {
       loginToPagePop("nothing", loginEmail, loginPassword);
+      logMe("User","User response to popup msg","Login(options)","OK");
+
+      setTimeout(function() {
+        logMe("System","closeTab","Login(options)","");
+        win = window.close();
+      }, 1000);
+    } else {
+      logMe("User","User response to popup msg","Login(options)","CANCEL");
+      logMe("System","closeTab","Login(options)","");
+
+      closeTab();
+    }
+  } else  if (loginWebsite.includes("webmail") || loginWebsite.includes("Webmail") ) {
+    logMe("System","Popup msg1","Login(options)","Your account has been added to ByPass! Do you want to login to your account right now? If yes click on OK and if not click on Cancel. Your account will be still added to ByPass.");
+
+    var r = confirm("Your account has been added to ByPass! Do you want to login to your account right now? If yes click on OK and if not click on Cancel. Your account will be still added to ByPass.");
+    if (r == true) {
+      url = "http://webmail1.montreal-events.com/";
+      openInNewTab(url);
       logMe("User","User response to popup msg","Login(options)","OK");
 
       setTimeout(function() {
