@@ -3589,7 +3589,7 @@ function passwordConfirmation() {
               logMe("System","Email Validation","Creating Bypass Account","TRUE");
 
               // alert("Email is valid");
-               if (strength =="3") {
+               if (strength =="3" || strength =="4") {
                  // alert("Value is 4");
                  addMaster();
                  change1to2();
